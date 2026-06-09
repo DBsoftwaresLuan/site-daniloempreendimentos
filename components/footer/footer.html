@@ -1,0 +1,126 @@
+<!-- ===== FOOTER MINIMAL & ELEGANTE ===== -->
+<footer class="apple-footer">
+  
+  <div class="footer-content">
+
+    <!-- Marca -->
+    <div class="footer-brand">
+      <h2>Danilo Empreendimentos</h2>
+      <p>
+  Trabalhamos com imóveis pensando no longo prazo,
+  com clareza, estratégia e compromisso.
+      </p>
+    </div>
+
+    <!-- Navegação -->
+    <nav class="footer-nav">
+      <a href="https://wa.me/554191057438" target="_blank">Serviços</a>
+      <a href="https://wa.me/554191057438" target="_blank">Contato</a>
+    </nav>
+
+    <!-- Social -->
+    <div class="footer-social">
+      <a href="https://www.instagram.com/daniloempreendimentos_/" target="_blank">Instagram</a>
+    </div>              
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> DaniloEmpreendimentos. Todos os direitos reservados.</span>
+  </div>
+
+</footer>
+
+<!-- ===== ESTILO ===== -->
+<style>
+/* Base */
+.apple-footer {
+  background: #ffffff;
+  border-top: 1px solid #eef1f5;
+  padding: 60px 20px 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  color: #0b1f3a;
+}
+
+/* Container */
+.footer-content {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Marca */
+.footer-brand h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  margin: 0 0 6px;
+  color: #294069;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Navegação */
+.footer-nav a {
+  display: block;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #0b1f3a;
+  margin-bottom: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-nav a:hover {
+  opacity: 0.6;
+}
+
+/* Social */
+.footer-social a {
+  display: block;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #c9a24d; /* dourado */
+  margin-bottom: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social a:hover {
+  opacity: 0.7;
+}
+
+/* Bottom */
+.footer-bottom {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #eef1f5;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer-nav a,
+  .footer-social a {
+    margin-bottom: 10px;
+  }
+}
+</style>
+
+<!-- ===== JS ===== -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>

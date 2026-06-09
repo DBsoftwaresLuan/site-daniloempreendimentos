@@ -1,0 +1,3522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danilo Empreendimentos - Imóveis Premium</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+    <!-- favicon-->
+    <link rel="icon" href="https://static.wixstatic.com/media/e9ba97_f317477360304fc2bfa590e76e693c77~mv2.png" type="image/x-icon">
+   <link rel="stylesheet" href="/styles/CSS/index.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <div class="navbar__container">
+
+      <!-- Logo -->
+      <a href="https://www.daniloempreendimentos.com.br/" class="navbar__logo" title="Danilo Empreendimentos">
+        <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"
+          alt="Danilo Empreendimentos" class="navbar__logo-img">
+      </a>
+
+      <!-- Menu Desktop -->
+      <ul class="navbar__menu">
+        <li class="navbar__menu-item">
+          <a href="https://www.daniloempreendimentos.com.br/" class="navbar__menu-link">
+            In&iacute;cio
+          </a>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="#imoveis" class="navbar__menu-link navbar__menu-link--active">
+            Im&oacute;veis
+          </a>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="https://www.daniloempreendimentos.com.br/perito" target="_blank" rel="noopener noreferrer"
+            class="navbar__menu-link">
+            Perito
+          </a>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="/public/lotes/lote.html" class="navbar__menu-link">
+            Lotes &mdash; Colombo
+          </a>
+        </li>
+        <li class="navbar__menu-item navbar__submenu-wrapper">
+          <button class="navbar__submenu-trigger">
+            Contato
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="navbar__submenu">
+            <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+              target="_blank" rel="noopener noreferrer" class="navbar__submenu-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>
+                <span class="navbar__submenu-item-label">WhatsApp</span>
+                <span class="navbar__submenu-item-value">+55 41 9105-7438</span>
+              </span>
+            </a>
+            <a href="mailto:Danilo@daniloempreendimentos.com.br" class="navbar__submenu-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>
+                <span class="navbar__submenu-item-label">E-mail</span>
+                <span class="navbar__submenu-item-value">Danilo@daniloempreendimentos.com.br</span>
+              </span>
+            </a>
+          </div>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+            target="_blank" rel="noopener noreferrer" class="navbar__menu-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"/>
+            </svg>
+            Falar com Consultor
+          </a>
+        </li>
+      </ul>
+
+      <!-- Hamburger Mobile -->
+      <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="sideMenuImoveis" onclick="toggleSideMenu()">
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="navbar__mobile-overlay" id="sideOverlayImoveis" onclick="toggleSideMenu()" role="presentation"></div>
+
+  <!-- Menu lateral deslizante -->
+  <nav class="navbar__mobile-menu" id="sideMenuImoveis" aria-label="Menu de navegação" aria-hidden="true">
+
+    <!-- Cabeçalho -->
+    <div class="side-head">
+      <a href="https://www.daniloempreendimentos.com.br/" class="side-head-logo">
+        <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"
+          alt="Danilo Empreendimentos">
+      </a>
+      <button class="side-close-btn" onclick="toggleSideMenu()" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+          aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Corpo -->
+    <div class="side-body">
+
+      <!-- Card da empresa -->
+      <div style="padding: 12px 12px 0;">
+        <div class="side-empresa-card">
+          <p class="side-empresa-label">Portf&oacute;lio exclusivo</p>
+          <p class="side-empresa-name">Im&oacute;veis Premium</p>
+          <div class="side-empresa-feats">
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Casas, apartamentos e terrenos no Paran&aacute;
+            </div>
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Lotes em Colombo &mdash; PR
+            </div>
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Perito avaliador de im&oacute;veis
+            </div>
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Negocia&ccedil;&atilde;o facilitada
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-separator" style="margin: 12px 0;"></div>
+
+      <!-- Navegação -->
+      <p class="side-section-label">Navega&ccedil;&atilde;o</p>
+      <div class="side-nav" role="list">
+
+        <a href="https://www.daniloempreendimentos.com.br/" class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            In&iacute;cio
+            <span class="side-link-sub">P&aacute;gina principal</span>
+          </div>
+        </a>
+
+        <a href="#imoveis" class="side-link" onclick="toggleSideMenu()" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            Buscar Im&oacute;veis
+            <span class="side-link-sub">Curitiba, Pontal, Guaraque&ccedil;aba</span>
+          </div>
+        </a>
+
+        <a href="https://www.daniloempreendimentos.com.br/perito" target="_blank" rel="noopener noreferrer"
+          class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            Perito
+            <span class="side-link-sub">Avalia&ccedil;&atilde;o de im&oacute;veis</span>
+          </div>
+        </a>
+
+        <a href="/public/lotes/lote.html" class="side-link side-link--lotes" onclick="toggleSideMenu()" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            Lotes &mdash; Colombo
+            <span class="side-link-sub">14 lotes dispon&iacute;veis a partir de R$&nbsp;189k</span>
+          </div>
+          <span class="side-link-badge">14</span>
+        </a>
+      </div>
+
+      <div class="side-separator"></div>
+
+      <!-- Contato -->
+      <p class="side-section-label">Contato direto</p>
+      <div class="side-nav" role="list">
+        <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+          target="_blank" rel="noopener noreferrer" class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            WhatsApp
+            <span class="side-link-sub">+55 41 9105-7438</span>
+          </div>
+        </a>
+        <a href="mailto:Danilo@daniloempreendimentos.com.br" class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            E-mail
+            <span class="side-link-sub">Danilo@daniloempreendimentos.com.br</span>
+          </div>
+        </a>
+      </div>
+
+      <div style="height: 12px;"></div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="side-footer">
+      <div class="side-cta-group">
+        <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+          target="_blank" rel="noopener noreferrer" class="side-btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+          </svg>
+          Falar no WhatsApp
+        </a>
+        <a href="/public/lotes/lote.html" class="side-btn-lotes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          </svg>
+          Ver lotes em Colombo
+        </a>
+      </div>
+
+      <div class="side-contact-info">
+        <div class="side-contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Curitiba, Pontal do Paran&aacute; e Colombo &mdash; PR
+        </div>
+        <div class="side-contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 013 1.05h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+          </svg>
+          (41) 9105-7438
+        </div>
+        <div class="side-contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          Danilo@daniloempreendimentos.com.br
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+  <header class="hi-hero" role="banner">
+    <div class="hi-hero-inner">
+      <span class="hi-hero-badge">Portfólio Exclusivo</span>
+      <h1>Encontre o Imóvel dos Seus Sonhos</h1>
+      <p>Descubra as melhores oportunidades em imóveis premium. Casas, apartamentos e terrenos selecionados com excelência.</p>
+      <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" target="_blank" rel="noopener noreferrer" class="hi-hero-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"/></svg>
+        Falar com um Consultor
+      </a>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="main-content" id="imoveis">
+
+    <div class="controls-bar">
+      <!-- Barra de busca inteligente -->
+      <div class="search-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        <input type="text" class="search-input-main" id="searchInput" placeholder="Buscar por tipo, cidade ou bairro..."
+          oninput="onSearchInput(event)" onkeydown="onSearchKeyDown(event)" autocomplete="off">
+        <div class="search-suggestions" id="searchSuggestions"></div>
+        <button class="clear-search-btn" id="clearSearchBtn" onclick="limparBusca()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="controls-left">
+
+        <div class="filters-wrapper">
+          <button class="filters-toggle-btn" id="filtersToggleBtn" onclick="toggleFilters()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+            </svg>
+            Filtros
+            <span class="filters-badge" id="filtersBadge" style="display:none;"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+
+          <div class="filters-dropdown" id="filtersDropdown">
+            <!-- Botão de fechar para mobile -->
+            <button class="mobile-filter-close" onclick="toggleFilters()" aria-label="Fechar filtros">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div class="filter-section" id="filterSectionTipo">
+              <div class="filter-section-header" onclick="toggleFilterSection('filterSectionTipo')">
+                <div class="filter-section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                  Tipo de imóvel
+                </div>
+                <a href="#" class="filter-clear-link"
+                  onclick="clearSectionFilters('tipo'); event.stopPropagation(); return false;">Limpar Filtros</a>
+              </div>
+              <div class="filter-section-content">
+                <div class="filter-section-inner">
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="apartamento" onchange="aplicarFiltros()">
+                      <span>Apartamento</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="casa" onchange="aplicarFiltros()">
+                      <span>Casa</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="sobrado" onchange="aplicarFiltros()">
+                      <span>Sobrado</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="comercial" onchange="aplicarFiltros()">
+                      <span>Comercial</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="terreno" onchange="aplicarFiltros()">
+                      <span>Terreno</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="chacara" onchange="aplicarFiltros()">
+                      <span>Chácara</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="tipo" value="pousada" onchange="aplicarFiltros()">
+                      <span>Pousada</span>
+                    </label>
+                    <label class="checkbox-item checkbox-item--lotes" id="checkboxLotesLabel">
+                      <input type="checkbox" name="tipo" value="lotes" id="checkboxLotes" onchange="aplicarFiltros()">
+                      <span>Lotes &mdash; Colombo</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filterSectionCaracteristicas">
+              <div class="filter-section-header" onclick="toggleFilterSection('filterSectionCaracteristicas')">
+                <div class="filter-section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                  Características do imóvel
+                </div>
+                <a href="#" class="filter-clear-link"
+                  onclick="clearSectionFilters('caracteristicas'); event.stopPropagation(); return false;">Limpar
+                  Filtros</a>
+              </div>
+              <div class="filter-section-content">
+                <div class="filter-section-inner">
+                  <div class="filter-group-label">Dormitórios</div>
+                  <div class="number-buttons" id="quartosButtons">
+                    <button class="number-btn" data-value="2" data-type="quartos"
+                      onclick="toggleNumberFilter(2, 'quartos', event)">2</button>
+                    <button class="number-btn" data-value="3" data-type="quartos"
+                      onclick="toggleNumberFilter(3, 'quartos', event)">3</button>
+                    <button class="number-btn" data-value="5" data-type="quartos"
+                      onclick="toggleNumberFilter(5, 'quartos', event)">5+</button>
+                  </div>
+
+                  <div class="filter-group-label">Vagas</div>
+                  <div class="number-buttons" id="vagasButtons">
+                    <button class="number-btn" data-value="1" data-type="vagas"
+                      onclick="toggleNumberFilter(1, 'vagas', event)">1</button>
+                    <button class="number-btn" data-value="2" data-type="vagas"
+                      onclick="toggleNumberFilter(2, 'vagas', event)">2</button>
+                    <button class="number-btn" data-value="3" data-type="vagas"
+                      onclick="toggleNumberFilter(3, 'vagas', event)">3</button>
+                    <button class="number-btn" data-value="4" data-type="vagas"
+                      onclick="toggleNumberFilter(4, 'vagas', event)">4+</button>
+                  </div>
+
+                  <div class="filter-group-label">Suítes</div>
+                  <div class="number-buttons" id="suitesButtons">
+                    <button class="number-btn" data-value="1" data-type="suites"
+                      onclick="toggleNumberFilter(1, 'suites', event)">1</button>
+                    <button class="number-btn" data-value="4" data-type="suites"
+                      onclick="toggleNumberFilter(4, 'suites', event)">4+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filterSectionArea">
+              <div class="filter-section-header" onclick="toggleFilterSection('filterSectionArea')">
+                <div class="filter-section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                  Área
+                </div>
+                <a href="#" class="filter-clear-link"
+                  onclick="clearSectionFilters('area'); event.stopPropagation(); return false;">Limpar Filtros</a>
+              </div>
+              <div class="filter-section-content">
+                <div class="filter-section-inner">
+                  <div class="range-inputs">
+                    <div class="range-input-wrapper">
+                      <label class="range-input-label">m² Mínima</label>
+                      <input type="number" class="range-input" id="areaMin" placeholder="0" onchange="aplicarFiltros()">
+                    </div>
+                    <div class="range-input-wrapper">
+                      <label class="range-input-label">m² M��xima</label>
+                      <input type="number" class="range-input" id="areaMax" placeholder="1000"
+                        onchange="aplicarFiltros()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filterSectionValor">
+              <div class="filter-section-header" onclick="toggleFilterSection('filterSectionValor')">
+                <div class="filter-section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                  Valor
+                </div>
+                <a href="#" class="filter-clear-link"
+                  onclick="clearSectionFilters('valor'); event.stopPropagation(); return false;">Limpar Filtros</a>
+              </div>
+              <div class="filter-section-content">
+                <div class="filter-section-inner">
+                  <div class="range-inputs">
+                    <div class="range-input-wrapper">
+                      <label class="range-input-label">Valor Mínimo</label>
+                      <input type="number" class="range-input" id="precoMin" placeholder="R$ 0"
+                        onchange="aplicarFiltros()">
+                    </div>
+                    <div class="range-input-wrapper">
+                      <label class="range-input-label">Valor Máximo</label>
+                      <input type="number" class="range-input" id="precoMax" placeholder="R$ 10.000.000"
+                        onchange="aplicarFiltros()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-section" id="filterSectionOutros">
+              <div class="filter-section-header" onclick="toggleFilterSection('filterSectionOutros')">
+                <div class="filter-section-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                  Outros filtros
+                </div>
+                <a href="#" class="filter-clear-link"
+                  onclick="clearSectionFilters('outros'); event.stopPropagation(); return false;">Limpar Filtros</a>
+              </div>
+              <div class="filter-section-content">
+                <div class="filter-section-inner">
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input type="checkbox" id="filterVenda" onchange="aplicarFiltros()">
+                      <span>Venda</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" id="filterAluguel" onchange="aplicarFiltros()">
+                      <span>Aluguel</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" id="filterDestaque" onchange="aplicarFiltros()">
+                      <span>Apenas Destaques</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="apply-filters-btn" onclick="aplicarFiltrosEFechar()">
+              Aplicar os filtros selecionados
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-center">
+        <div class="results-count" id="resultsCount">
+          Carregando imóveis...
+        </div>
+      </div>
+
+      <div class="controls-right">
+        <!-- Botão de mapa -->
+        <button class="map-toggle-btn" id="mapToggleBtn" onclick="toggleMapPanel()" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+            <line x1="8" y1="2" x2="8" y2="18" />
+            <line x1="16" y1="6" x2="16" y2="22" />
+          </svg>
+          Mapa
+        </button>
+        <!-- Botões de alternância de visualização -->
+        <div class="view-toggle" role="group" aria-label="Modo de visualização">
+          <button class="view-btn active" id="viewGridBtn" onclick="setViewMode('grid')" title="Visualização em grade"
+            aria-pressed="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+          </button>
+          <button class="view-btn" id="viewListBtn" onclick="setViewMode('list')" title="Visualização em lista"
+            aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <div class="sort-group">
+          <label class="sort-label">Ordenar por:</label>
+          <select class="sort-select" id="sortSelect" onchange="aplicarOrdenacao()">
+            <option value="relevancia">Relevância</option>
+            <option value="recentes">Mais Recentes</option>
+            <option value="preco-menor">Menor Preço</option>
+            <option value="preco-maior">Maior Preço</option>
+            <option value="area-maior">Maior Área</option>
+            <option value="preco-m2-menor">Menor Preço/m²</option>
+            <option value="preco-m2-maior">Maior Preço/m²</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Painel do Mapa -->
+    <div class="map-panel" id="mapPanel" role="region" aria-label="Mapa de imóveis">
+      <div class="map-panel-header">
+        <span class="map-panel-title">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+            <line x1="8" y1="2" x2="8" y2="18" />
+            <line x1="16" y1="6" x2="16" y2="22" />
+          </svg>
+          Mapa de Imóveis
+          <span class="map-results-count" id="mapResultsCount"></span>
+        </span>
+        <button class="map-panel-close" onclick="fecharMapPanel()" aria-label="Fechar mapa">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="mapContainer"></div>
+    </div>
+
+    <!-- Barra de chips de filtros ativos -->
+    <div class="active-filters-bar" id="activeFiltersBar" role="region" aria-label="Filtros ativos">
+      <span class="active-filters-label">Filtros:</span>
+      <div id="activeFilterChips" style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;"></div>
+      <button class="clear-all-chips-btn" onclick="limparTodosFiltros()">Limpar todos</button>
+    </div>
+
+    <!-- Card Premium LOTES -->
+    <a href="/public/lotes/lote.html" class="lotes-premium-card" aria-label="Ver lotes disponíveis em Colombo">
+      <!-- Badge tipo -->
+      <div class="lotes-premium-type">
+        LOTES
+      </div>
+      <!-- Selo premium -->
+      <div class="lotes-premium-badge">PREMIUM</div>
+
+      <!-- Coluna imagem -->
+      <div class="lotes-premium-img-wrap">
+        <img
+          src="https://static.wixstatic.com/media/690653_0baa779d6eb84bb0ba59c428fb31b6f0~mv2.jpg"
+          alt="Vista aérea do loteamento em Colombo"
+          loading="lazy"
+        />
+        <div class="lotes-premium-img-overlay">
+          <span class="lotes-premium-disponivel">
+            <span class="lotes-premium-dot"></span>
+            14 lotes disponíveis
+          </span>
+        </div>
+      </div>
+
+      <!-- Coluna conteúdo -->
+      <div class="lotes-premium-content">
+        <div class="lotes-premium-header">
+          <div>
+            <p class="lotes-premium-label">Loteamento em Colombo &mdash; PR</p>
+            <h2 class="lotes-premium-title">Lotes para desenvolvimento residencial</h2>
+          </div>
+          <div class="lotes-premium-preco-wrap">
+            <span class="lotes-premium-preco-from">a partir de</span>
+            <span class="lotes-premium-preco">R$&nbsp;189.000</span>
+          </div>
+        </div>
+
+        <address class="lotes-premium-address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          R. da Tulípa &mdash; Colombo &mdash; PR, 83411-680
+        </address>
+
+        <div class="lotes-premium-pills">
+          <span class="lotes-premium-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+            14 lotes
+          </span>
+          <span class="lotes-premium-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            1.600 m² – 3.900 m²
+          </span>
+          <span class="lotes-premium-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Docs regularizados
+          </span>
+          <span class="lotes-premium-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Infraestrutura completa
+          </span>
+        </div>
+
+        <div class="lotes-premium-cta-row">
+          <span class="lotes-premium-cta">
+            Ver lotes disponíveis
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+          <span class="lotes-premium-financiamento">Negociação facilitada</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="properties-grid" id="propertiesGrid">
+    </div>
+
+    <!-- Banner motivacional - posição fixa entre os grids -->
+    <section class="mid-banner" id="midBanner" aria-label="Mensagem motivacional">
+        <div class="mid-banner-inner">
+
+          <!-- COLUNA 1: Logo + Informações da empresa -->
+          <div class="mid-banner-company">
+            <!-- =====================================================
+               LOGO: substitua o src abaixo pelo caminho da sua logo
+               Exemplo: src="images/logo-danilo.png"
+               ===================================================== -->
+            <div class="mid-banner-logo-wrap" aria-label="Logo Danilo Empreendimentos">
+              <img src="https://static.wixstatic.com/media/e9ba97_f317477360304fc2bfa590e76e693c77~mv2.png"
+                alt="Danilo Empreendimentos" class="mid-banner-logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+
+              <!-- Placeholder exibido enquanto a logo não for adicionada -->
+              <div class="mid-banner-logo-placeholder" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                <span>Danilo<br>Empreendimentos.</span>
+              </div>
+            </div>
+
+            <div class="mid-banner-company-info">
+              <p class="mid-banner-company-slogan">Realizando sonhos em Curitiba</p>
+
+              <ul class="mid-banner-contact-list" aria-label="Informações de contato">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.41 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
+                  </svg>
+                  <a href="tel:+554191057438">(41) 9105-7438</a>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                    style="fill:#25D366;stroke:none">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <a href="https://wa.me/554191057438" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Emanuel+Kant,+60+-+Cap%C3%A3o+Raso,+Curitiba+-+PR"
+                    target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">R. Emanuel
+                    Kant, 60 - Capão Raso - Curitiba</a>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                  <a href="mailto:Danilo@daniloempreendimentos.com.br">Danilo@daniloempreendimentos.com.br</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COLUNA 2: Texto motivacional -->
+          <div class="mid-banner-left">
+            <div class="mid-banner-text">
+              <span class="mid-banner-label">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+                Continue explorando
+              </span>
+              <h2 class="mid-banner-title">
+                O imóvel dos seus <span>sonhos</span><br>ainda está por vir.
+              </h2>
+              <p class="mid-banner-desc">
+                Cada detalhe importa na busca pelo lugar certo. Se não encontrou ainda, nossa equipe conhece opções
+                exclusivas — algumas nem aparecem na listagem.
+              </p>
+            </div>
+          </div>
+
+          <!-- COLUNA 3: Mini formulário de busca -->
+          <div class="mid-banner-search-form" aria-label="Busca personalizada de imóvel">
+            <div class="mid-banner-search-header">
+              <p class="mid-banner-search-title">Busca personalizada</p>
+              <p class="mid-banner-search-subtitle">Diga o que procura e entraremos em contato</p>
+            </div>
+            <form class="mid-banner-form" onsubmit="enviarBuscaWhatsApp(event)">
+              <div class="mid-banner-field">
+                <label class="mid-banner-field-label" for="searchBairro">Qual bairro?</label>
+                <input type="text" id="searchBairro" class="mid-banner-field-input"
+                  placeholder="Ex: Batel, Agua Verde..." autocomplete="off" />
+              </div>
+              <div class="mid-banner-field">
+                <label class="mid-banner-field-label" for="searchTipo">Tipo de imóvel</label>
+                <select id="searchTipo" class="mid-banner-field-input">
+                  <option value="">Selecione...</option>
+                  <option value="Apartamento">Apartamento</option>
+                  <option value="Casa">Casa</option>
+                  <option value="Terreno">Terreno</option>
+                  <option value="Cobertura">Cobertura</option>
+                  <option value="Sala Comercial">Sala Comercial</option>
+                  <option value="Galpão">Galpão</option>
+                </select>
+              </div>
+              <div class="mid-banner-field">
+                <label class="mid-banner-field-label" for="searchValor">Valor máximo</label>
+                <input type="text" id="searchValor" class="mid-banner-field-input" placeholder="Ex: R$ 500.000"
+                  autocomplete="off" />
+              </div>
+              <button type="submit" class="mid-banner-search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+                Quero indicações
+              </button>
+            </form>
+          </div>
+
+          <!-- COLUNA 4: Botões de ação + Métricas -->
+          <div class="mid-banner-actions">
+            <a href="https://wa.me/554191057438?text=Ol%C3%A1%21+Estou+procurando+um+im%C3%B3vel+e+gostaria+de+ver+op%C3%A7%C3%B5es+exclusivas."
+              target="_blank" rel="noopener noreferrer" class="mid-banner-btn-primary"
+              aria-label="Ver opções exclusivas pelo WhatsApp">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              Ver opções exclusivas
+            </a>
+            <a href="https://wa.me/554191057438?text=Ol%C3%A1%21+Gostaria+de+agendar+uma+visita+a+um+im%C3%B3vel."
+              target="_blank" rel="noopener noreferrer" class="mid-banner-btn-secondary"
+              aria-label="Agendar visita pelo WhatsApp">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Agendar uma visita
+            </a>
+
+
+          </div>
+        </div>
+      </section>
+
+    <!-- Grid de imóveis continuação -->
+    <div class="properties-grid" id="propertiesGrid2">
+    </div>
+
+    <!-- Barra flutuante do comparador -->
+    <div class="compare-bar" id="compareBar" role="complementary" aria-label="Comparar imóveis">
+      <div class="compare-bar-slots" id="compareBarSlots"></div>
+      <div class="compare-bar-actions">
+        <button class="compare-btn-action" onclick="abrirModalComparador()">Comparar agora</button>
+        <button class="compare-btn-clear" onclick="limparComparador()">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Modal do Comparador -->
+    <div class="compare-modal-overlay" id="compareModalOverlay" role="dialog" aria-modal="true"
+      aria-label="Comparação de imóveis" onclick="fecharModalComparador(event)">
+      <div class="compare-modal">
+        <div class="compare-modal-header">
+          <span class="compare-modal-title">Comparar Imóveis</span>
+          <button class="compare-modal-close" onclick="fecharModalComparador()" aria-label="Fechar comparador">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="compare-table-wrap">
+          <table class="compare-table" id="compareTable">
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado de carregamento -->
+    <div class="loading" id="loading" style="display: none;">
+      <p>Carregando imóveis...</p>
+    </div>
+
+    <!-- Estado vazio (quando não há resultados) -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <h3>Nenhum imóvel encontrado</h3>
+      <p>Tente ajustar os filtros de busca para encontrar mais opções.</p>
+    </div>
+
+
+
+  </main>
+
+  <script>
+    /* ========================================
+       DADOS DOS IMÓVEIS
+       Array com todos os imóveis disponíveis
+       ======================================== */
+    let imoveis = [
+      //Ponto Comercial Hauer ( RESTAURANTE ) - 4MO2JF
+      {
+        id: 109,
+        titulo: "Ponto comercial à venda – Hauer, Curitiba/PR – Restaurante - 4MO2JF",
+        tipo: "comercial",
+        finalidade: "venda, aluguel",
+        preco: 450000,
+        local: "Hauer, Curitiba - PR",
+        lat: -25.474335742594008, lng: -49.25045657116511,
+        localizacao: "zona-sul",
+        quartos: null,
+        banheiros: null,
+        area: 480,
+        img: "https://static.wixstatic.com/media/443a8d_9908def04558402eb69d20fc0a5a5ae7~mv2.jpg",
+        destaque: true,
+        endereco: "Avenida Marechal Floriano Peixoto, 5269, Sala 05 - Curitiba-PR",
+        link: "public/comercial/ponto_comercial_hauer.html",
+        pagina: "ponto_comercial_hauer.html",
+        status: "Pronto para uso",
+        garagem: null,
+        suites: null
+      },
+
+
+    //triplex - 17DE2JF
+      {
+        id: 109,
+        titulo: "Sobrado à venda – Residencial Benaroma, Curitiba/PR – triplex - 17DE2JF",
+        tipo: "Casa, Sobrado",
+        finalidade: "venda, aluguel",
+        preco: 1100000,
+        local: "Hauer, Curitiba - PR",
+        lat: -25.47580342241284, lng: -49.25570151513636,
+        localizacao: "zona-sul",
+        quartos: 3,
+        banheiros: 2,
+        area: 166,
+        img: "https://static.wixstatic.com/media/443a8d_3d53183acdaf4779964bac0c3916a70d~mv2.jpg",
+        destaque: true,
+        endereco: "R. Maj. Fabriciano do Rêgo Barros, 1126 - Hauer, Curitiba - PR, 81630-260, Brasil",
+        link: "public/sobrados/sobrado-triplex-17de2jf.html",
+        status: "Pronto para morar",
+        garagem: 4,
+        suites: 1
+
+      },
+
+      // IMÓVEL 13 : Casa/Comercial ( ID 1jso2jf )
+
+      {
+        id: 5,
+        titulo: "Casa/Comercial Uberaba - 1jso2jf",
+        tipo: "comercial, Casa, Sobrado",
+        finalidade: "venda",
+        preco: 2130000,
+        local: "Uberaba, Curitiba - PR",
+        lat: -25.5100, lng: -49.2700,
+        localizacao: "zona-sul",
+        quartos: 3,
+        banheiros: 4,
+        area: 400,
+        img: "https://static.wixstatic.com/media/443a8d_f0786217bed147ceb818b42f8164ebc9~mv2.jpeg",
+        destaque: true,
+        endereco: "R. Prof. João Doetzer, 785 - Uberaba, Curitiba - PR, 81540-190",
+        link: "/public/sobrados/sobrado-comercio-1JSO2JF.html",
+        status: "Pronto para morar",
+        garagem: 2,
+        suites: 1
+      },
+
+      /* imovel novo Chácara Santa Gema 1OIE2JF */
+      {
+        id: 108,
+        titulo: "Chácara Santa Gema 1OIE2JF",
+        tipo: "chacara, terreno",
+        finalidade: "venda",
+        preco: 827000,
+        local: "Santa Gema - Colombo-PR",
+        lat: -25.2941, lng: -49.2228,
+        localizacao: "Centro",
+        quartos: 0,
+        banheiros: 0,
+        area: 3568,
+        img: "https://static.wixstatic.com/media/443a8d_3ff50f3b6c6445e3b0e7cc46fcf9a506~mv2.png",
+        destaque: true,
+        endereco: "Rua Luiz Ariosto Cunha ",
+        link: "/public/chacara/chacara.html",
+        status: "Pronto para morar",
+        garagem: 0,
+        suites: 0
+      },
+
+       // IMÓVEL 17 : Apartamento Silva Jardim
+      {
+        id: 9,
+        titulo: "Apartamento Silva Jardim",
+        tipo: "apartamento",
+        finalidade: "venda",
+        preco: 1030000,
+        local: "Avenida Silva Jardim, Rebouças, Curitiba - PR",
+        lat: -25.4290, lng: -49.2720,
+        localizacao: "zona-central",
+        quartos: 3,
+        banheiros: 3,
+        area: 101,
+        img: "https://static.wixstatic.com/media/e9ba97_32b0db47a76b42c6a65cfd88d7203b5f~mv2.jpg",
+        destaque: true,
+        endereco: "Avenida Silva Jardim, Rebouças, Curitiba - PR",
+        link: "/public/apt/apto-silva-jardim.html",
+        status: "Pronto para morar",
+        garagem: 1,
+        suites: 1
+      },
+
+      //Apartamento NOVO 0 ( adicionado recentemente ) : Aparatamento agua verde 
+
+      {
+        id: 107,
+        titulo: "Apartamento Água Verde - 151JTCH",
+        tipo: "apartamento",
+        finalidade: "venda",
+        preco: 1295000,
+        local: "Rua Guilherme Pugsley, 1551 apto 32",
+        lat: -25.4530, lng: -49.2830,
+        localizacao: "Centro",
+        quartos: 3,
+        banheiros: 4,
+        area: 123,
+        img: "https://static.wixstatic.com/media/443a8d_269fcd346a8a4c13924fcf4103359b9d~mv2.jpg",
+        destaque: true,
+        endereco: "Rua Guilherme Pugsley, 1551 apto 32 ",
+        link: "public/apt/apto-agua-verde-8uttch.html",
+        status: "Pronto para morar",
+        garagem: 2,
+        suites: 1
+      },
+
+
+      //Terreno 1 ( adicionado recentemente ) : Campo Magro ( ID 1DO7TCH)
+      {
+        id: 106,
+        titulo: "Terreno Campo Magro - 1F2RTCH",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 350000,
+        local: "Campo Magro",
+        lat: -25.2076, lng: -49.4322,
+        localizacao: "Centro",
+        quartos: 0,
+        banheiros: 0,
+        area: 20259,
+        img: "https://static.wixstatic.com/media/443a8d_63172e1886f7431eab667ce3fe4746b5~mv2.jpg",
+        destaque: true,
+        endereco: "Campo Magro - PR, 83535-000",
+        link: "/public/terrenos/campo-magro/terreno-campo-magro-1f2rtch.html",
+        status: "Pronto para construir",
+        garagem: 0,
+        suites: 0
+      },
+
+      //Terreno 2 : Rural Colombo ( ID 1DO7TCH)
+      {
+        id: 102,
+        titulo: "Terreno 370.000m2 - 1DO7TCH",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 13500000,
+        local: "R. Aleixo Nodari",
+        lat: -25.3110, lng: -49.2180,
+        localizacao: "zona-sul",
+        quartos: 0,
+        banheiros: 0,
+        area: 370261,
+        img: "https://static.wixstatic.com/media/443a8d_220ede8b519e462f8cd7241bafbf2615~mv2.jpg",
+        destaque: true,
+        endereco: "R. Aleixo Nodari",
+        link: "/public/terrenos/colombo/terreno-colombo-1do7tch.html",
+        status: "Pronto para construir",
+        garagem: 0,
+        suites: 0
+      },
+      // TERRENO 3 : Colombo 72.670 metros ( ID 1RJPTCH )
+      {
+        id: 100,
+        titulo: "Terreno 72.670m2 - 1RJPTCH",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 1970000,
+        local: "Colombo - PR",
+        lat: -25.2960, lng: -49.2240,
+        localizacao: "Colombo",
+        quartos: 0,
+        banheiros: 0,
+        area: 72670,
+        img: "https://static.wixstatic.com/media/443a8d_59a52ed2dcd44ef1a023a89a795ca4da~mv2.png",
+        destaque: true,
+        endereco: "R. Aleixo Nodari",
+        link: "/public/terrenos/colombo/terreno-72-670m2-1rjptch.html",
+        status: "Pronto para construir",
+        garagem: 0,
+        suites: 0
+      },
+
+
+      // TERRENO 5 : Campo magro  - 11GI2JF
+      {
+        id: 104,
+        titulo: "Terreno Campo Magro - 11GI2JF",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 1500000,
+        local: "Campo Magro - PR",
+        lat: -25.2140, lng: -49.4400,
+        localizacao: "Campo Magro",
+        quartos: 0,
+        banheiros: 0,
+        area: 37044,
+        img: "https://static.wixstatic.com/media/443a8d_c43e6a422abb45638dbf625659b4b25c~mv2.jpeg",
+        destaque: true,
+        endereco: "Estrada Do Cerne, Jardim Pioneiros, Campo Magro - PR",
+        link: "/public/terrenos/campo-magro/terreno-campo-magro-chacara-alba-11gi2jf.html",
+        status: "100% regularizado com CIB ativo",
+        garagem: 0,
+        suites: 0
+      },
+
+      // IMÓVEL  6: Pousada do Biguá, Guaraqueçaba
+      {
+        id: 15,
+        titulo: "Pousada do Biguá - O4C2JF",
+        tipo: "pousada",
+        finalidade: "venda",
+        preco: 2303000,
+        local: "Guaraqueçaba",
+        lat: -25.2980, lng: -48.3200,
+        localizacao: null,
+        salas: 10,
+        banheiros: 16,
+        area: 2500,
+        img: "https://static.wixstatic.com/media/443a8d_d95a1522b10843f283a7402e5fa6bee1~mv2.jpeg",
+        destaque: false,
+        endereco: "R.Paulo Miranda, 73 - Centro, Guaraqueçaba - PR, 83390-000",
+        link: "/public/pousada/pousada.html",
+        status: "Disponível",
+        garagem: 10,
+        suites: null,
+      },
+
+      // TERRENO 7: Almirante tamandare
+      {
+        id: 101,
+        titulo: "Terreno Almirante Tamandaré - QFTCH",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 1817000,
+        local: "Almirante Tamandaré",
+        lat: -25.3218, lng: -49.3096,
+        localizacao: "Almirante Tamandaré",
+        quartos: 0,
+        banheiros: 0,
+        area: 170000,
+        img: "https://static.wixstatic.com/media/443a8d_2340a2bbce954996845d549513bec38f~mv2.jpeg",
+        destaque: true,
+        endereco: "Cachoeira, Alm. Tamandaré - PR",
+        link: "/public/terrenos/almirante-tamandare/terreno-almirante-tamandare.html",
+        status: "Pronto para Construção",
+        garagem: 0,
+        suites: 0
+      },
+
+      // IMÓVEL 9 : Apartamento Boa Vista
+      {
+        id: 1,
+        titulo: "Apto Boa Vista - 1RD7TCH",
+        tipo: "apartamento",
+        finalidade: "venda",
+        preco: 377000,
+        local: "Boa Vista, Curitiba - PR",
+        lat: -25.3780, lng: -49.2560,
+        localizacao: "zona-sul",
+        quartos: 2,
+        banheiros: 2,
+        area: 86,
+        img: "https://static.wixstatic.com/media/e9ba97_1fc99633827948529fccf9bad845e952~mv2.jpg",
+        destaque: true,
+        endereco: "Rua dos Dominicanos, 1158 - Boa Vista, Curitiba - PR, 82560-390",
+        link: "/public/apt/aptoboavista-1rd7tch.html",
+        status: "Pronto para morar",
+        garagem: 1,
+        suites: 1
+      },
+
+
+      // IMÓVEL 10 : Apartamento Ahú Premium
+      {
+        id: 2,
+        titulo: "Apartamento Ahú Premium",
+        tipo: "apartamento",
+        finalidade: "venda",
+        preco: 1110000,
+        local: "Ahú, Curitiba - PR",
+        lat: -25.4025, lng: -49.2735,
+        localizacao: "zona-norte",
+        quartos: 2,
+        banheiros: 2,
+        area: 81,
+        img: "https://static.wixstatic.com/media/e9ba97_e0f534046f8b4ddca2c807c6bcdacdab~mv2.jpg",
+        destaque: true,
+        endereco: "Rua Guaratuba, 211, Ahú, Curitiba - PR",
+        link: "https://lp.dwvapp.com.br/6b275b83-226d-4b6d-90c5-b2fbfc6d8cd3",
+        status: "97% concluído",
+        garagem: 2,
+        suites: 1
+      },
+
+      // IMÓVEL 11 : Apartamento Juvevê Luxo
+      {
+        id: 3,
+        titulo: "Apartamento Juvevê Luxo",
+        tipo: "apartamento",
+        finalidade: "venda",
+        preco: 2380000,
+        local: "Juvevê, Curitiba - PR",
+        lat: -25.4085, lng: -49.2590,
+        localizacao: "zona-central",
+        quartos: 3,
+        banheiros: 2,
+        area: 173,
+        img: "https://static.wixstatic.com/media/e9ba97_56d05d1eb0154d27a00da50957bca7a3~mv2.jpg",
+        destaque: true,
+        endereco: "Rua Constantino Marochi, 447, Juvevê, Curitiba - PR",
+        link: "https://lp.dwvapp.com.br/1ef58c1b-bb05-4128-b42c-e52881b1c878",
+        status: "Pronto Para Morar",
+        garagem: 3,
+        suites: 1
+      },
+
+      // IMÓVEL 12 : Apartamento Jeune
+      {
+        id: 4,
+        titulo: "Apartamento Jeune",
+        tipo: "apartamento",
+        finalidade: "venda",
+        preco: 1387000,
+        local: "Juvevê, Curitiba - PR",
+        lat: -25.4072, lng: -49.2605,
+        localizacao: "zona-central",
+        quartos: 3,
+        banheiros: 2,
+        area: 105,
+        img: "https://static.wixstatic.com/media/e9ba97_2598800f68ea42d3ac580af024f2074b~mv2.jpg",
+        destaque: false,
+        endereco: "Rua Moysés Marcondes, 53, Juvevê, Curitiba - PR",
+        link: "https://lp.dwvapp.com.br/4e97e1b3-bb53-4bc4-af00-ac7018448e6b",
+        status: "100% Concluído",
+        garagem: 2,
+        suites: 1
+      },
+
+      // IMÓVEL 14 : Sala Comercial Mossunguê
+      {
+        id: 6,
+        titulo: "Sala Comercial - H042JF",
+        tipo: "comercial",
+        finalidade: "venda",
+        preco: 606068,
+        local: "Mossunguê, Curitiba - PR",
+        lat: -25.4318, lng: -49.3352,
+        localizacao: "zona-oeste",
+        quartos: 0,
+        banheiros: 0,
+        area: 36,
+        img: "https://static.wixstatic.com/media/e9ba97_4db4992ab4ed4e13ba28cd6f0091d5aa~mv2.jpg",
+        destaque: false,
+        endereco: "Rua João Nicco, 126, Mossunguê, Curitiba - PR",
+        link: "https://lp.dwvapp.com.br/d2815f76-48ae-4de0-96e9-031e4cbcf111",
+        status: "100% concluído",
+        garagem: 1,
+        suites: 0,
+        areaTotal: 91
+      },
+
+      // IMÓVEL 15 : Sala Comercial-16 Mossunguê
+      {
+        id: 7,
+        titulo: "Sala Comercial - 126U2JF",
+        tipo: "comercial",
+        finalidade: "venda",
+        preco: 583778,
+        local: "Mossunguê, Curitiba - PR",
+        lat: -25.4322, lng: -49.3360,
+        localizacao: "zona-oeste",
+        quartos: 0,
+        banheiros: 0,
+        area: 35,
+        img: "https://static.wixstatic.com/media/e9ba97_df96167e2c2a414fb90c327422b3cca2~mv2.jpg",
+        destaque: false,
+        endereco: "Rua João Nicco, 126, Mossunguê, Curitiba - PR",
+        link: "https://lp.dwvapp.com.br/6ae903d5-24c5-4567-b7d4-59b1ce28cb53",
+        status: "100% Concluído",
+        garagem: 1,
+        suites: 0,
+        areaTotal: 88
+      },
+
+      // IMÓVEL 16 : Terreno Portao - 9282jf
+      {
+        id: 8,
+        titulo: "Terreno Portão - 9282jf",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 4400000,
+        local: "Portão, Curitiba - PR",
+        lat: -25.4780, lng: -49.3000,
+        localizacao: "zona-sul",
+        quartos: 0,
+        banheiros: 0,
+        area: 1201,
+        img: "https://static.wixstatic.com/media/e9ba97_9c213f30ac7f4fd1aee4f987357973f3~mv2.jpg",
+        destaque: true,
+        endereco: "Rua Itacolomi, 285 - Portão, Curitiba - PR, 81070-150",
+        link: "/public/terrenos/portao/terreno-portao-9282jf.html",
+        status: "Pronto para uso",
+        garagem: 0,
+        suites: 0
+      },
+
+      // IMÓVEL 19: Sala Comercial Centro, Voluntários da Pátria
+      {
+        id: 11,
+        titulo: "Conjunto Comercial Exclusivo no Centro de Curitiba",
+        tipo: "comercial",
+        finalidade: "venda",
+        preco: 270000,
+        local: "Centro, Curitiba - PR",
+        lat: -25.432816299063767, lng:  -49.27482700184949,
+        localizacao: "centro",
+        quartos: 0,
+        banheiros: 3,
+        area: 122,
+        img: "https://static.wixstatic.com/media/e9ba97_3f17d2bbc0e3472e8de7d26fa8cb9b4d~mv2.jpg",
+        destaque: true,
+        endereco: "R. Voluntários da Pátria, 295 - Centro, Curitiba - PR, 80020-000, Brasil",
+        link: "https://www.chavesnamao.com.br/imovel/ponto-comercial-a-venda-6-salas-pr-curitiba-centro-RS270000/id-30314054/",
+        status: "Pronto para uso comercial",
+        garagem: 0,
+        suites: 0,
+        salas: 6
+      },
+
+      // IMÓVEL 21: Canoas, Pontal do Paraná
+      {
+        id: 14,
+        titulo: "Casa, Canoas, Pontal do Paraná",
+        tipo: "casa",
+        finalidade: "venda",
+        preco: 620000,
+        local: "Canoas, Pontal do Paraná - PR",
+        lat: -25.5680, lng: -48.3510,
+        localizacao: null,
+        quartos: 3,
+        banheiros: 1,
+        area: 280,
+        img: "https://static.wixstatic.com/media/443a8d_f7ece99ceae14d14b34d7ccea379ad2b~mv2.png",
+        destaque: true,
+        endereco: "Pontal do Paraná - PR, 83255-000",
+        link: "https://www.chavesnamao.com.br/imovel/casa-a-venda-3-quartos-com-garagem-pr-pontal-do-parana-canoas-350m2-RS620000/id-30313516/",
+        status: "Pronto para morar",
+        garagem: 8,
+        suites: null,
+      },
+
+      // Terreno 22: Terreno Colombo Fátima
+      {
+        id: 105,
+        titulo: "Terreno Colombo ",
+        tipo: "terreno",
+        finalidade: "venda",
+        preco: 380000,
+        local: "Colombo - PR",
+        lat: -25.2891, lng: -49.2222,
+        localizacao: "Colombo",
+        quartos: 0,
+        banheiros: 0,
+        area: 528,
+        img: "https://static.wixstatic.com/media/443a8d_f1c9ff2bb08d4e63bea3e9bd6f4e0bc2~mv2.png",
+        destaque: true,
+        endereco: "Rua Getúlio Vargas, 1213, Fátima, Colombo - PR",
+        link: "https://www.chavesnamao.com.br/imovel/terreno-a-venda-pr-colombo-fatima-528m2-RS380000/id-30312940/",
+        status: "Terreno plano - ZUD3",
+        garagem: 0,
+        suites: 0
+      },
+
+    ];
+
+    //fim imoveis //
+
+
+    /* ========================================
+       VARIÁVEIS GLOBAIS
+       ======================================== */
+    let imoveisFiltrados = [...imoveis];
+    // Função utilitária: remove acentos e converte para minúsculas
+    function normalizar(str) {
+      return (str || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    let termoBusca = '';
+    let ordenacaoAtual = 'relevancia';
+    let renderTimeout = null;
+
+    let filtrosAtivos = { // Changed from const to let to allow modification in limparFiltros
+      tipos: [],
+      quartos: [],
+      vagas: [],
+      suites: [],
+      areaMin: null,
+      areaMax: null,
+      precoMin: null,
+      precoMax: null,
+      venda: false,
+      aluguel: false,
+      destaque: false
+    };
+
+    /* ========================================
+       FUNÇÃO: Verificar se há filtros ativos
+       Retorna true se qualquer filtro estiver ativo
+       ======================================== */
+    function temFiltrosAtivos() {
+      return termoBusca.trim() !== '' ||
+        filtrosAtivos.tipos.length > 0 ||
+        filtrosAtivos.quartos.length > 0 ||
+        filtrosAtivos.vagas.length > 0 ||
+        filtrosAtivos.suites.length > 0 ||
+        filtrosAtivos.areaMin !== null ||
+        filtrosAtivos.areaMax !== null ||
+        filtrosAtivos.precoMin !== null ||
+        filtrosAtivos.precoMax !== null ||
+        filtrosAtivos.venda ||
+        filtrosAtivos.aluguel ||
+        filtrosAtivos.destaque;
+    }
+
+    /* ========================================
+       FUNÇÃO: Controlar visibilidade do carrossel
+       Esconde o carrossel quando filtros estão ativos
+       ======================================== */
+    function atualizarVisibilidadeCarrossel() {
+      const carouselSection = document.querySelector('.carousel-section');
+      const maisOportunidadesHeading = document.getElementById('mais-oportunidades-heading');
+
+      // console.log('[v0] Updating carousel visibility. Filters active:', temFiltrosAtivos());
+      // console.log('[v0] Search term:', termoBusca);
+      // console.log('[v0] Carousel section found:', !!carouselSection);
+
+      if (temFiltrosAtivos()) {
+        // Esconde o carrossel e o título quando há filtros ativos
+        if (carouselSection) {
+          carouselSection.style.display = 'none';
+          // console.log('[v0] Carousel hidden');
+        }
+        if (maisOportunidadesHeading) {
+          maisOportunidadesHeading.style.display = 'none';
+        }
+      } else {
+        // Mostra o carrossel e o título quando não há filtros ativos
+        if (carouselSection) {
+          carouselSection.style.display = 'block';
+          // console.log('[v0] Carousel shown');
+        }
+        if (maisOportunidadesHeading) {
+          maisOportunidadesHeading.style.display = 'block';
+        }
+      }
+    }
+
+    /* ========================================
+       FUNÇÕES DE CONTROLE DO FILTRO DROPDOWN
+       ======================================== */
+    function toggleFilters() {
+      const btn = document.getElementById('filtersToggleBtn');
+      const dropdown = document.getElementById('filtersDropdown');
+
+      btn.classList.toggle('active');
+      dropdown.classList.toggle('active');
+
+      // Bloquear scroll do body quando o filtro estiver aberto no mobile
+      if (dropdown.classList.contains('active') && window.innerWidth <= 768) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function toggleFilterSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.classList.toggle('active');
+    }
+
+    function toggleNumberFilter(value, filterType, event) {
+      // Obtém o botão clicado
+      const btn = event ? event.target : document.querySelector(`.number-btn[data-value="${value}"][data-type="${filterType}"]`);
+      if (!btn) return;
+
+      btn.classList.toggle('active');
+
+      const index = filtrosAtivos[filterType].indexOf(value);
+      if (index > -1) {
+        filtrosAtivos[filterType].splice(index, 1);
+      } else {
+        filtrosAtivos[filterType].push(value);
+      }
+
+      aplicarFiltros();
+    }
+
+    function toggleSelectAll(group) {
+      const checkbox = document.getElementById(`selectAll${group.charAt(0).toUpperCase() + group.slice(1)}`);
+      const groupElement = document.getElementById(`${group}Group`);
+      const checkboxes = groupElement.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach(cb => {
+        cb.checked = checkbox.checked;
+      });
+
+      aplicarFiltros();
+    }
+
+    function clearSectionFilters(section) {
+      switch (section) {
+        case 'tipo':
+          document.querySelectorAll('input[name="tipo"]').forEach(cb => cb.checked = false);
+          filtrosAtivos.tipos = [];
+          break;
+        case 'caracteristicas':
+          document.querySelectorAll('.number-btn').forEach(btn => btn.classList.remove('active'));
+          filtrosAtivos.quartos = [];
+          filtrosAtivos.vagas = [];
+          filtrosAtivos.suites = [];
+          break;
+        case 'area':
+          document.getElementById('areaMin').value = '';
+          document.getElementById('areaMax').value = '';
+          filtrosAtivos.areaMin = null;
+          filtrosAtivos.areaMax = null;
+          break;
+        case 'valor':
+          document.getElementById('precoMin').value = '';
+          document.getElementById('precoMax').value = '';
+          filtrosAtivos.precoMin = null;
+          filtrosAtivos.precoMax = null;
+          break;
+        case 'outros':
+          document.getElementById('filterVenda').checked = false;
+          document.getElementById('filterAluguel').checked = false;
+          document.getElementById('filterDestaque').checked = false;
+          filtrosAtivos.venda = false;
+          filtrosAtivos.aluguel = false;
+          filtrosAtivos.destaque = false;
+          break;
+      }
+      aplicarFiltros();
+    }
+
+    function aplicarFiltrosEFechar() {
+      aplicarFiltros();
+      toggleFilters();
+    }
+
+    /* ========================================
+       FUNÇÃO: Aplicar Filtros
+       Filtra os imóveis de acordo com os critérios selecionados
+       ======================================== */
+    function aplicarFiltros() {
+
+      // Coleta os filtros ativos
+      const currentFiltrosAtivos = {
+        tipos: [],
+        quartos: [],
+        vagas: [],
+        suites: [],
+        areaMin: null,
+        areaMax: null,
+        precoMin: null,
+        precoMax: null,
+        venda: false,
+        aluguel: false,
+        destaque: false
+      };
+
+      // Coleta tipos selecionados
+      document.querySelectorAll('input[name="tipo"]:checked').forEach(checkbox => {
+        currentFiltrosAtivos.tipos.push(checkbox.value);
+      });
+
+      // Coleta quartos selecionados
+      document.querySelectorAll('.number-btn.active[data-type="quartos"]').forEach(btn => {
+        currentFiltrosAtivos.quartos.push(parseInt(btn.dataset.value));
+      });
+
+      // Coleta vagas selecionadas
+      document.querySelectorAll('.number-btn.active[data-type="vagas"]').forEach(btn => {
+        currentFiltrosAtivos.vagas.push(parseInt(btn.dataset.value));
+      });
+
+      // Coleta suítes selecionadas
+      document.querySelectorAll('.number-btn.active[data-type="suites"]').forEach(btn => {
+        currentFiltrosAtivos.suites.push(parseInt(btn.dataset.value));
+      });
+
+      // Coleta valores de área
+      const areaMinInput = document.getElementById('areaMin');
+      const areaMaxInput = document.getElementById('areaMax');
+      currentFiltrosAtivos.areaMin = areaMinInput?.value && areaMinInput.value.trim() !== '' ? parseInt(areaMinInput.value) : null;
+      currentFiltrosAtivos.areaMax = areaMaxInput?.value && areaMaxInput.value.trim() !== '' ? parseInt(areaMaxInput.value) : null;
+
+      // Coleta valores de pre��o
+      const precoMinInput = document.getElementById('precoMin');
+      const precoMaxInput = document.getElementById('precoMax');
+      currentFiltrosAtivos.precoMin = precoMinInput?.value && precoMinInput.value.trim() !== '' ? parseInt(precoMinInput.value) : null;
+      currentFiltrosAtivos.precoMax = precoMaxInput?.value && precoMaxInput.value.trim() !== '' ? parseInt(precoMaxInput.value) : null;
+
+      // Coleta outros filtros
+      currentFiltrosAtivos.venda = document.getElementById('filterVenda')?.checked || false;
+      currentFiltrosAtivos.aluguel = document.getElementById('filterAluguel')?.checked || false;
+      currentFiltrosAtivos.destaque = document.getElementById('filterDestaque')?.checked || false;
+
+      // Atualiza os filtros ativos globais
+      Object.assign(filtrosAtivos, currentFiltrosAtivos);
+
+      // Filtra os imóveis
+      imoveisFiltrados = imoveis.filter(imovel => {
+        // Filtro por busca de texto
+        let matchBusca = true;
+        if (termoBusca.trim() !== '') {
+          const termo = normalizar(termoBusca);
+          const tituloMatch = normalizar(imovel.titulo).includes(termo);
+          const localMatch = normalizar(imovel.local).includes(termo);
+          const enderecoMatch = normalizar(imovel.endereco).includes(termo);
+          const tipoMatch = normalizar(imovel.tipo).includes(termo);
+
+          // Busca por palavras-chave comuns de tipo
+          const sobradoMatch = termo.includes('sobrado') && imovel.tipo.includes('sobrado');
+          const apartamentoMatch = (termo.includes('apartamento') || termo.includes('apto')) && imovel.tipo.includes('apartamento');
+          const casaMatch = termo.includes('casa') && imovel.tipo.includes('casa');
+          const comercialMatch = termo.includes('comercial') && imovel.tipo.includes('comercial');
+          const terrenoMatch = termo.includes('terreno') && imovel.tipo.includes('terreno');
+          const pousadaMatch = termo.includes('pousada') && imovel.tipo.includes('pousada');
+          const chacaraMatch = (termo.includes('chacara') || termo.includes('sitio')) && imovel.tipo.includes('chacara');
+
+          // Busca por palavras-chave de praia
+          const praiaKeywords = ['praia', 'litoral', 'mar', 'costa'];
+          const isPraiaSearch = praiaKeywords.some(keyword => termo.includes(keyword));
+          const beachLocations = ['canoas', 'pontal do parana', 'pontal', 'caioba'];
+          const isPraiaProperty = beachLocations.some(location =>
+            normalizar(imovel.local).includes(location) ||
+            normalizar(imovel.endereco).includes(location)
+          );
+          const praiaMatch = isPraiaSearch && isPraiaProperty;
+
+          // Busca por cidades específicas
+          const curitibaMatch = (termo.includes('curitiba') || termo === 'cwb') &&
+            (normalizar(imovel.local).includes('curitiba') ||
+              normalizar(imovel.endereco).includes('curitiba'));
+
+          const pontalMatch = (termo.includes('pontal') || termo.includes('pontal do parana')) &&
+            (normalizar(imovel.local).includes('pontal') ||
+              normalizar(imovel.endereco).includes('pontal'));
+
+          const guaraquecabaMatch = termo.includes('guaraquecaba') &&
+            (normalizar(imovel.local).includes('guaraquecaba') ||
+              normalizar(imovel.endereco).includes('guaraquecaba'));
+
+          // Colombo: cidade + lotes — aciona destaque do card premium
+          const colomboMatch = termo.includes('colombo') &&
+            (normalizar(imovel.local).includes('colombo') ||
+              normalizar(imovel.endereco).includes('colombo'));
+
+          const lotesMatch = (termo.includes('lote') || termo.includes('lotes colombo')) &&
+            (normalizar(imovel.tipo).includes('terreno') ||
+              normalizar(imovel.tipo).includes('lote') ||
+              normalizar(imovel.local).includes('colombo') ||
+              normalizar(imovel.endereco).includes('colombo'));
+
+          matchBusca = tituloMatch || localMatch || enderecoMatch || tipoMatch ||
+            sobradoMatch || apartamentoMatch || casaMatch || comercialMatch ||
+            terrenoMatch || pousadaMatch || chacaraMatch || praiaMatch ||
+            curitibaMatch || pontalMatch || guaraquecabaMatch || colomboMatch || lotesMatch;
+        }
+
+        // Filtro por tipo
+        const matchTipo = filtrosAtivos.tipos.length === 0 || filtrosAtivos.tipos.some(tipoFiltro =>
+          imovel.tipo.toLowerCase().includes(tipoFiltro.toLowerCase())
+        );
+
+        const matchQuartos = filtrosAtivos.quartos.length === 0 ||
+          filtrosAtivos.quartos.some(q => {
+            if (q === 5) return imovel.quartos >= 5;
+            return imovel.quartos === q;
+          });
+
+        const matchVagas = filtrosAtivos.vagas.length === 0 ||
+          filtrosAtivos.vagas.some(v => {
+            if (v === 4) return imovel.garagem >= 4;
+            return imovel.garagem === v;
+          });
+
+        const matchSuites = filtrosAtivos.suites.length === 0 ||
+          filtrosAtivos.suites.some(s => {
+            // Corrected condition for suites: it should check against the property's 'suites' value
+            if (s === 4) return imovel.suites >= 4; // Handles "4+" for suites
+            return imovel.suites === s;
+          });
+
+        let matchArea = true;
+        if (filtrosAtivos.areaMin !== null && (typeof imovel.area !== 'number' || imovel.area < filtrosAtivos.areaMin)) {
+          matchArea = false;
+        }
+        if (filtrosAtivos.areaMax !== null && (typeof imovel.area !== 'number' || imovel.area > filtrosAtivos.areaMax)) {
+          matchArea = false;
+        }
+
+        let matchPreco = true;
+        if (filtrosAtivos.precoMin !== null && (typeof imovel.preco !== 'number' || imovel.preco < filtrosAtivos.precoMin)) {
+          matchPreco = false;
+        }
+        if (filtrosAtivos.precoMax !== null && (typeof imovel.preco !== 'number' || imovel.preco > filtrosAtivos.precoMax)) {
+          matchPreco = false;
+        }
+
+        let matchFinalidade = true;
+        if (filtrosAtivos.venda && filtrosAtivos.aluguel) {
+          // If both are selected, accept any purpose
+          matchFinalidade = true;
+        } else if (filtrosAtivos.venda) {
+          matchFinalidade = imovel.finalidade === 'venda';
+        } else if (filtrosAtivos.aluguel) {
+          matchFinalidade = imovel.finalidade === 'aluguel';
+        }
+
+        // Filter by highlight
+        const matchDestaque = !filtrosAtivos.destaque || imovel.destaque === true;
+
+        // Return true only if all filters pass
+        return matchBusca && matchTipo && matchQuartos && matchVagas &&
+          matchSuites && matchArea && matchPreco && matchFinalidade && matchDestaque;
+      });
+
+      // Update carousel visibility
+      atualizarVisibilidadeCarrossel();
+
+      // Apply sorting and render
+      aplicarOrdenacao();
+    }
+
+    /* ========================================
+       BUSCA INTELIGENTE — autocomplete + debounce
+       ======================================== */
+    let searchDebounceTimer = null;
+    let suggestionIndex = -1;
+
+    // Sugestões estáticas com rótulo de grupo e ícone
+    const sugestoesFixes = [
+      { grupo: 'Tipo de imóvel', texto: 'Apartamento', icone: 'building' },
+      { grupo: 'Tipo de imóvel', texto: 'Casa', icone: 'home' },
+      { grupo: 'Tipo de imóvel', texto: 'Sobrado', icone: 'home' },
+      { grupo: 'Tipo de imóvel', texto: 'Terreno', icone: 'map' },
+      { grupo: 'Tipo de imóvel', texto: 'Chácara', icone: 'tree' },
+      { grupo: 'Tipo de imóvel', texto: 'Comercial', icone: 'store' },
+      { grupo: 'Tipo de imóvel', texto: 'Pousada', icone: 'hotel' },
+      { grupo: 'Localização', texto: 'Curitiba', icone: 'pin' },
+      { grupo: 'Localização', texto: 'Pontal do Paraná', icone: 'pin' },
+      { grupo: 'Localização', texto: 'Guaraqueçaba', icone: 'pin' },
+      { grupo: 'Localização', texto: 'Colombo', icone: 'pin' },
+      { grupo: 'Características', 'texto': 'Praia', icone: 'wave' },
+      { grupo: 'Características', 'texto': 'Litoral', icone: 'wave' },
+      { grupo: 'Loteamento', texto: 'Lotes Colombo', icone: 'map' },
+      { grupo: 'Loteamento', texto: 'Lotes', icone: 'map' },
+    ];
+
+    function getIconSvg(type) {
+      const icons = {
+        building: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>',
+        home: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>',
+        map: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>',
+        tree: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m-7-9H4m16 0h-1M6.22 6.22l-.707-.707M18.485 18.485l-.708-.708M6.22 17.78l-.707.707M18.485 5.515l-.708.708M12 8a4 4 0 110 8 4 4 0 010-8z"/></svg>',
+        store: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/></svg>',
+        hotel: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75"/></svg>',
+        pin: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>',
+        wave: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/></svg>',
+      };
+      return icons[type] || icons['pin'];
+    }
+
+    function highlightMatch(texto, query) {
+      if (!query) return texto;
+      const textoNorm = normalizar(texto);
+      const queryNorm = normalizar(query);
+      const idx = textoNorm.indexOf(queryNorm);
+      if (idx === -1) return texto;
+      return texto.slice(0, idx) +
+        '<span class="suggestion-match">' + texto.slice(idx, idx + query.length) + '</span>' +
+        texto.slice(idx + query.length);
+    }
+
+    function buildSugestoesDinamicas(query) {
+      if (!query || query.length < 1) return [];
+      const q = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return sugestoesFixes.filter(s => {
+        const texto = s.texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return texto.includes(q);
+      });
+    }
+
+    function renderSugestoes(query) {
+      const box = document.getElementById('searchSuggestions');
+      const sugestoes = buildSugestoesDinamicas(query);
+
+      if (!sugestoes.length || !query) {
+        box.classList.remove('visible');
+        box.innerHTML = '';
+        return;
+      }
+
+      // Agrupa por grupo
+      const grupos = {};
+      sugestoes.forEach(s => {
+        if (!grupos[s.grupo]) grupos[s.grupo] = [];
+        grupos[s.grupo].push(s);
+      });
+
+      let html = '';
+      Object.keys(grupos).forEach(grupo => {
+        html += `<div class="suggestion-group-label">${grupo}</div>`;
+        grupos[grupo].forEach(s => {
+          html += `<div class="suggestion-item" onclick="selecionarSugestao('${s.texto}')">
+            ${getIconSvg(s.icone)}
+            <span>${highlightMatch(s.texto, query)}</span>
+          </div>`;
+        });
+      });
+
+      box.innerHTML = html;
+      box.classList.add('visible');
+      suggestionIndex = -1;
+    }
+
+    function selecionarSugestao(texto) {
+      const input = document.getElementById('searchInput');
+      input.value = texto;
+      fecharSugestoes();
+      aplicarBusca();
+    }
+
+    function fecharSugestoes() {
+      const box = document.getElementById('searchSuggestions');
+      box.classList.remove('visible');
+      box.innerHTML = '';
+      suggestionIndex = -1;
+    }
+
+    function onSearchInput(e) {
+      const val = e.target.value;
+      clearTimeout(searchDebounceTimer);
+      renderSugestoes(val);
+      searchDebounceTimer = setTimeout(() => {
+        aplicarBusca();
+      }, 280);
+    }
+
+    function onSearchKeyDown(e) {
+      const box = document.getElementById('searchSuggestions');
+      const items = box.querySelectorAll('.suggestion-item');
+      if (!box.classList.contains('visible') || !items.length) {
+        if (e.key === 'Enter') aplicarBusca();
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        suggestionIndex = Math.min(suggestionIndex + 1, items.length - 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        suggestionIndex = Math.max(suggestionIndex - 1, -1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (suggestionIndex >= 0 && items[suggestionIndex]) {
+          items[suggestionIndex].click();
+        } else {
+          fecharSugestoes();
+          aplicarBusca();
+        }
+        return;
+      } else if (e.key === 'Escape') {
+        fecharSugestoes();
+        return;
+      }
+      items.forEach((el, i) => el.classList.toggle('highlighted', i === suggestionIndex));
+      if (suggestionIndex >= 0 && items[suggestionIndex]) {
+        document.getElementById('searchInput').value = items[suggestionIndex].querySelector('span').textContent;
+      }
+    }
+
+    // Fecha sugestões ao clicar fora
+    document.addEventListener('click', function (e) {
+      const wrapper = document.querySelector('.search-wrapper');
+      if (wrapper && !wrapper.contains(e.target)) fecharSugestoes();
+    });
+
+    /* ========================================
+       FUNÇÃO: Aplicar Busca
+       Aplica a busca por texto
+       ======================================== */
+    function aplicarBusca() {
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+
+      termoBusca = searchInput.value;
+
+      // Show/hide clear search button
+      if (termoBusca.trim() !== '') {
+        clearBtn.classList.add('active');
+      } else {
+        clearBtn.classList.remove('active');
+      }
+
+      // Destaque do card premium de lotes ao buscar colombo ou lotes
+      const termo = normalizar(termoBusca);
+      const isLotesBusca = termo.includes('colombo') || termo.includes('lote');
+      atualizarDestaqueLotes(isLotesBusca, false);
+
+      // Se busca contém "lote" + "colombo" ativa o checkbox de lotes no filtro automaticamente
+      if (termo.includes('lote') && termo.includes('colombo')) {
+        const cb = document.getElementById('checkboxLotes');
+        if (cb && !cb.checked) {
+          cb.checked = true;
+        }
+      }
+
+      aplicarFiltros();
+    }
+
+    /* ========================================
+       FUNÇÃO: Limpar Busca
+       Limpa o campo de busca e reaplica os filtros
+       ======================================== */
+    function limparBusca() {
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+
+      searchInput.value = '';
+      termoBusca = '';
+      clearBtn.classList.remove('active');
+      fecharSugestoes();
+
+      // Remove destaque do card de lotes e desmarca o checkbox
+      atualizarDestaqueLotes(false, true);
+      const cb = document.getElementById('checkboxLotes');
+      if (cb) cb.checked = false;
+
+      aplicarFiltros();
+    }
+
+    /* ========================================
+       FUNÇÃO: Aplicar Ordenação
+       Ordena os imóveis filtrados
+       ======================================== */
+    function aplicarOrdenacao() {
+      const sortValue = document.getElementById('sortSelect').value;
+      ordenacaoAtual = sortValue;
+      let listaOrdenada = [...imoveisFiltrados];
+
+      switch (sortValue) {
+        case 'preco-menor':
+          listaOrdenada.sort((a, b) => a.preco - b.preco);
+          break;
+        case 'preco-maior':
+          listaOrdenada.sort((a, b) => b.preco - a.preco);
+          break;
+        case 'area-maior':
+          listaOrdenada.sort((a, b) => b.area - a.area);
+          break;
+        case 'preco-m2-menor':
+          listaOrdenada.sort((a, b) => {
+            const pmA = a.area > 0 ? a.preco / a.area : Infinity;
+            const pmB = b.area > 0 ? b.preco / b.area : Infinity;
+            return pmA - pmB;
+          });
+          break;
+        case 'preco-m2-maior':
+          listaOrdenada.sort((a, b) => {
+            const pmA = a.area > 0 ? a.preco / a.area : 0;
+            const pmB = b.area > 0 ? b.preco / b.area : 0;
+            return pmB - pmA;
+          });
+          break;
+        case 'relevancia':
+        default:
+          listaOrdenada.sort((a, b) => {
+            // First, put highlights before non-highlights
+            if (a.destaque && !b.destaque) return -1;
+            if (!a.destaque && b.destaque) return 1;
+            // If both have highlight or both don't, maintain original order by ID
+            return imoveis.indexOf(a) - imoveis.indexOf(b);
+          });
+      }
+
+      renderImoveis(listaOrdenada);
+    }
+
+    /* ========================================
+       FUNÇÃO: Renderizar Imóveis
+       Renderiza os imóveis filtrados na tela
+       ======================================== */
+    function renderImoveis(lista) {
+      const grid = document.getElementById('propertiesGrid');
+      const grid2 = document.getElementById('propertiesGrid2');
+      const loading = document.getElementById('loading');
+      const emptyState = document.getElementById('emptyState');
+      const resultsCount = document.getElementById('resultsCount');
+
+      if (!grid || !grid2) {
+        console.error('[v0] Grid elements not found!');
+        return;
+      }
+
+      if (renderTimeout) {
+        clearTimeout(renderTimeout);
+        renderTimeout = null;
+      }
+
+    // Show loading
+    loading.style.display = 'block';
+    // Limpa os grids (banner agora está fora dos grids)
+    grid.innerHTML = '';
+    grid2.innerHTML = '';
+      emptyState.style.display = 'none';
+
+      renderTimeout = setTimeout(() => {
+        renderTimeout = null;
+        loading.style.display = 'none';
+
+        if (temFiltrosAtivos()) {
+          resultsCount.style.display = 'block';
+          resultsCount.textContent = `${lista.length} ${lista.length === 1 ? 'imóvel encontrado' : 'imóveis encontrados'}`;
+        } else {
+          resultsCount.style.display = 'none';
+        }
+
+        if (lista.length === 0) {
+          // Check if it's a city search with no results
+          if (termoBusca.trim() !== '') {
+            const termo = termoBusca.toLowerCase();
+            const normoTermo = normalizar(termoBusca);
+            const availableCities = ['curitiba', 'pontal do paraná', 'pontal', 'guaraqueçaba', 'canoas', 'colombo'];
+            const searchedCity = availableCities.find(city => termo.includes(city));
+
+            // Colombo/lotes: sem imóveis no grid mas temos o card premium
+            const isColomboBusca = normoTermo.includes('colombo') || normoTermo.includes('lote');
+
+            // Check if user searched for a city we don't have
+            const commonCities = ['são paulo', 'rio de janeiro', 'belo horizonte', 'porto alegre',
+              'florianópolis', 'brasília', 'salvador', 'fortaleza', 'recife',
+              'manaus', 'belém', 'goiânia', 'campinas', 'são josé', 'santos',
+              'londrina', 'maringá', 'ponta grossa', 'cascavel', 'foz do iguaçu'];
+
+            const isUnavailableCity = commonCities.some(city => termo.includes(city));
+
+            if (isColomboBusca) {
+              // Resultado especial: redireciona atenção para o card premium já visível acima
+              emptyState.innerHTML = `
+                <div style="text-align: center; padding: 2.5rem 1rem;">
+                  <svg style="width: 64px; height: 64px; margin: 0 auto 1rem; color: #38bdf8; opacity: 0.9;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                  <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1f2937;">
+                    Temos lotes disponíveis em Colombo!
+                  </h3>
+                  <p style="color: #6b7280; margin-bottom: 1.5rem; max-width: 400px; margin-left: auto; margin-right: auto;">
+                    Confira nosso loteamento exclusivo na Rua Neonildes Ferreira &mdash; Jardim Primavera, Colombo &mdash; PR. O card de destaque está logo acima.
+                  </p>
+                  <a href="/public/lotes/lote.html" style="display: inline-block; background: #0f172a; color: #38bdf8; padding: 0.75rem 2rem; border: 1.5px solid #38bdf8; border-radius: 0.6rem; font-weight: 700; text-decoration: none; margin-right: 0.5rem;">
+                    Ver lotes disponíveis
+                  </a>
+                  <button onclick="limparBusca()" style="background: transparent; color: #6b7280; padding: 0.75rem 1.5rem; border: 2px solid #e5e7eb; border-radius: 0.6rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem;">
+                    Ver todos os imóveis
+                  </button>
+                </div>
+              `;
+            } else if (isUnavailableCity) {
+              emptyState.innerHTML = `
+                <div style="text-align: center; padding: 3rem 1rem;">
+                  <svg style="width: 80px; height: 80px; margin: 0 auto 1.5rem; opacity: 0.3;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                  <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: #1f2937;">
+                    Infelizmente ainda não temos disponibilidade nesse local
+                  </h3>
+                  <p style="color: #6b7280; margin-bottom: 2rem;">
+                    Atualmente trabalhamos com imóveis em Curitiba, Pontal do Paraná, Guaraqueçaba e lotes em Colombo.
+                  </p>
+                  <button onclick="limparBusca()" style="background: #b8860b; color: white; padding: 0.75rem 2rem; border: none; border-radius: 0.5rem; font-weight: 500; cursor: pointer;">
+                    Ver todos os imóveis disponíveis
+                  </button>
+                </div>
+              `;
+            } else {
+              // Generic no results with suggestions
+              emptyState.innerHTML = `
+                <div style="text-align: center; padding: 3rem 1rem;">
+                  <svg style="width: 80px; height: 80px; margin: 0 auto 1.5rem; opacity: 0.3;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                  <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: #1f2937;">
+                    Nenhum imóvel encontrado
+                  </h3>
+                  <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                    Não encontramos imóveis com "${termoBusca}". Que tal tentar:
+                  </p>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;">
+                    <button onclick="document.getElementById('searchInput').value='curitiba'; aplicarBusca();" style="background: white; border: 2px solid #e5e7eb; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Curitiba</button>
+                    <button onclick="document.getElementById('searchInput').value='pontal'; aplicarBusca();" style="background: white; border: 2px solid #e5e7eb; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Pontal do Paraná</button>
+                    <button onclick="document.getElementById('searchInput').value='colombo'; aplicarBusca();" style="background: white; border: 2px solid #38bdf8; color: #0369a1; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-weight: 600;">Lotes Colombo</button>
+                    <button onclick="document.getElementById('searchInput').value='apartamento'; aplicarBusca();" style="background: white; border: 2px solid #e5e7eb; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Apartamento</button>
+                    <button onclick="document.getElementById('searchInput').value='sobrado'; aplicarBusca();" style="background: white; border: 2px solid #e5e7eb; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Sobrado</button>
+                  </div>
+                  <button onclick="limparBusca()" style="background: #b8860b; color: white; padding: 0.75rem 2rem; border: none; border-radius: 0.5rem; font-weight: 500; cursor: pointer;">
+                    Ver todos os imóveis
+                  </button>
+                </div>
+              `;
+            }
+            emptyState.style.display = 'block';
+          } else {
+            // No filters but no results (shouldn't happen unless imoveis array is empty)
+            emptyState.innerHTML = `
+              <div style="text-align: center; padding: 3rem 1rem;">
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">
+                  Nenhum imóvel disponível no momento
+                </h3>
+                <p style="color: #6b7280;">
+                  Volte mais tarde para ver novos imóveis.
+                </p>
+              </div>
+            `;
+            emptyState.style.display = 'block';
+          }
+        } else {
+          // Render the properties in the grids
+          // O banner agora está fora dos grids, então usamos appendChild diretamente
+          lista.forEach((imovel, index) => {
+            const card = criarCardImovel(imovel, index);
+
+            // Distribute properties between grids
+            // Primeira metade vai no grid1, segunda metade vai no grid2 (após o banner)
+            if (index < Math.ceil(lista.length / 2)) {
+              grid.appendChild(card);
+            } else {
+              grid2.appendChild(card);
+            }
+          });
+        }
+      }, 300); // 300ms delay to simulate loading
+    }
+
+    /* ========================================
+       FUNÇÃO: Criar Card de Imóvel
+       Cria o HTML de um card de imóvel
+       ======================================== */
+    function criarCardImovel(imovel, index) {
+      const card = document.createElement('div');
+      card.className = 'property-card fade-in' + (imoveisComparar.includes(imovel.id) ? ' in-compare' : '');
+      card.dataset.imovelId = imovel.id;
+      card.style.animationDelay = `${index * 0.1}s`;
+
+      // Format price
+      const precoFormatado = imovel.finalidade === 'venda'
+        ? `R$ ${imovel.preco.toLocaleString('pt-BR')}`
+        : `R$ ${imovel.preco.toLocaleString('pt-BR')}`;
+
+      // Set property badge
+      let badgeText = '';
+      if (imovel.tipo === 'sobrado') {
+        badgeText = 'Sobrado';
+      } else if (imovel.tipo === 'comercial') {
+        badgeText = 'Comercial';
+      } else if (imovel.tipo.includes('chacara')) {
+        badgeText = 'Chácara';
+      } else if (imovel.tipo === 'terreno') {
+        badgeText = 'Terreno';
+      } else if (imovel.tipo === 'casa') {
+        badgeText = 'Casa';
+      } else if (imovel.tipo === 'pousada') {
+        badgeText = 'Pousada';
+      } else if (imovel.tipo === 'apartamento') {
+        badgeText = 'Apartamento';
+      } else {
+        badgeText = 'Imóvel';
+      }
+
+      // Assemble property features
+      let features = [];
+      if (imovel.quartos > 0) features.push(`${imovel.quartos} quartos`);
+      if (imovel.suites > 0) features.push(`${imovel.suites} suíte${imovel.suites > 1 ? 's' : ''}`);
+      if (imovel.banheiros > 0) features.push(`${imovel.banheiros} banheiros`);
+      if (imovel.garagem > 0) features.push(`${imovel.garagem} vaga${imovel.garagem > 1 ? 's' : ''}`);
+      if (imovel.area > 0) features.push(`${imovel.area}m²`);
+
+      // Assemble card HTML
+      card.innerHTML = `
+        <button class="share-btn" onclick="abrirCompartilhar(event, ${imovel.id})" aria-label="Compartilhar imóvel">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>
+        </button>
+        <div class="share-popover" id="share-popover-${imovel.id}">
+          <div class="share-popover-title">Compartilhar</div>
+          <button class="share-option" onclick="compartilharWhatsApp(${imovel.id})">
+            <svg viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6.387 3.107 1.068 4.436l-1.1 4.01 4.124-1.08a9.73 9.73 0 004.608 1.164h.004c5.368 0 9.72-4.352 9.72-9.72 0-2.598-1.01-5.04-2.846-6.877A9.664 9.664 0 0012.48 2.54c-5.368 0-9.72 4.352-9.72 9.72z"/></svg>
+            Enviar pelo WhatsApp
+          </button>
+          <button class="share-option" onclick="copiarLink(${imovel.id})">
+            <svg viewBox="0 0 24 24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+            Copiar link
+          </button>
+        </div>
+        ${imovel.img
+          ? `<div class="property-image">
+               <img src="${imovel.img}" alt="${imovel.titulo}" loading="lazy">
+               <div class="property-badge">${badgeText}</div>
+             </div>`
+          : `<div class="property-image-placeholder">
+               <div class="property-badge" style="position: absolute; top: 0.5rem; left: 0.5rem;">${badgeText}</div>
+             </div>`
+        }
+        <div class="property-content">
+          <div class="property-price">${precoFormatado}</div>
+          <h3 class="property-title">${imovel.titulo}</h3>
+          <div class="property-location">${imovel.local}</div>
+          <div class="property-features">
+            ${features.map(feature => `<div class="property-feature">${feature}</div>`).join('')}
+          </div>
+        <div class="property-actions">
+          <div class="property-actions-main">
+            <a href="${imovel.link}" target="_blank" class="btn-view">Ver Detalhes</a>
+            <button class="btn-contact" onclick="entrarContato(${imovel.id})">WhatsApp</button>
+          </div>
+          <div class="card-side-actions">
+            <button class="compare-check-btn${imoveisComparar.includes(imovel.id) ? ' selected' : ''}" onclick="toggleComparar(${imovel.id}, event)" aria-label="Adicionar ao comparador">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </button>
+            <button class="btn-simulador" onclick="abrirSimulador(${imovel.id})" aria-label="Simular custo total">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 10h8M8 14h5"/><circle cx="17" cy="14" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        </div>
+      `;
+
+      const propertyImage = card.querySelector('.property-image');
+      if (propertyImage) {
+        propertyImage.addEventListener('click', function () {
+          window.open(imovel.link, '_blank');
+        });
+      }
+
+      return card;
+    }
+
+    /* ========================================
+       FUNÇÃO: Limpar Filtros
+       Reseta todos os filtros para o estado inicial
+       ======================================== */
+    function limparFiltros() {
+      // Reseta os inputs e checkboxes
+      document.getElementById('filterVenda').checked = false;
+      document.getElementById('filterAluguel').checked = false;
+      document.getElementById('filterDestaque').checked = false;
+      document.getElementById('areaMin').value = '';
+      document.getElementById('areaMax').value = '';
+      document.getElementById('precoMin').value = '';
+      document.getElementById('precoMax').value = '';
+      document.querySelectorAll('input[name="tipo"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.number-btn').forEach(btn => btn.classList.remove('active'));
+
+      filtrosAtivos.tipos = [];
+      filtrosAtivos.quartos = [];
+      filtrosAtivos.vagas = [];
+      filtrosAtivos.suites = [];
+      filtrosAtivos.areaMin = null;
+      filtrosAtivos.areaMax = null;
+      filtrosAtivos.precoMin = null;
+      filtrosAtivos.precoMax = null;
+      filtrosAtivos.venda = false;
+      filtrosAtivos.aluguel = false;
+      filtrosAtivos.destaque = false;
+
+      atualizarVisibilidadeCarrossel();
+
+      // Reapply filters (which are now empty)
+      aplicarFiltros();
+    }
+
+    /* ========================================
+       FUNÇÕES: Compartilhamento de Imóvel
+       ======================================== */
+    function abrirCompartilhar(event, id) {
+      event.stopPropagation();
+
+      // Fecha qualquer popover aberto
+      document.querySelectorAll('.share-popover.visible').forEach(p => {
+        if (p.id !== `share-popover-${id}`) {
+          p.classList.remove('visible');
+          // Devolve para o card de origem se tiver sido movido
+          const origem = document.querySelector(`[data-share-id="${p.id}"]`);
+          if (origem && p.parentNode === document.body) origem.appendChild(p);
+        }
+      });
+
+      const popover = document.getElementById(`share-popover-${id}`);
+      if (!popover) return;
+
+      const isVisible = popover.classList.contains('visible');
+      if (isVisible) {
+        popover.classList.remove('visible');
+        return;
+      }
+
+      // Move o popover para o body para escapar de qualquer transform/overflow do card
+      if (popover.parentNode !== document.body) {
+        document.body.appendChild(popover);
+      }
+
+      const btn = event.currentTarget;
+      const rect = btn.getBoundingClientRect();
+      const popoverWidth = 190;
+      const margin = 8;
+
+      // Posição vertical: abaixo do botão
+      let top = rect.bottom + window.scrollY + margin;
+
+      // Posição horizontal: alinhado à direita do botão
+      let left = rect.right + window.scrollX - popoverWidth;
+
+      // Garante que não saia pela esquerda da tela
+      if (left < margin) left = margin;
+
+      // Garante que não saia pela direita da tela
+      if (left + popoverWidth > window.innerWidth - margin) {
+        left = window.innerWidth - popoverWidth - margin;
+      }
+
+      popover.style.position = 'absolute';
+      popover.style.top = top + 'px';
+      popover.style.left = left + 'px';
+      popover.style.right = 'auto';
+      popover.classList.add('visible');
+    }
+
+    const BASE_URL = 'https://imoveis.daniloempreendimentos.com.br/';
+
+    function resolverLink(link) {
+      if (!link) return window.location.href;
+      // Se já for uma URL absoluta, retorna como está
+      if (link.startsWith('http://') || link.startsWith('https://')) return link;
+      // Caso contrário, adiciona a URL base
+      return BASE_URL + link.replace(/^\//, '');
+    }
+
+    function compartilharWhatsApp(id) {
+      const imovel = imoveis.find(i => i.id === id);
+      if (!imovel) return;
+      const link = resolverLink(imovel.link);
+      const texto = `Olá! Encontrei este imóvel e achei que você poderia se interessar:\n*${imovel.titulo}*\n${link}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+      fecharPopover(id);
+    }
+
+    function copiarLink(id) {
+      const imovel = imoveis.find(i => i.id === id);
+      if (!imovel) return;
+      const link = resolverLink(imovel.link);
+      navigator.clipboard.writeText(link).then(() => {
+        mostrarToast('Link copiado!');
+      }).catch(() => {
+        // Fallback para navegadores mais antigos
+        const el = document.createElement('textarea');
+        el.value = link;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        mostrarToast('Link copiado!');
+      });
+      fecharPopover(id);
+    }
+
+    function fecharPopover(id) {
+      const popover = document.getElementById(`share-popover-${id}`);
+      if (popover) popover.classList.remove('visible');
+    }
+
+    function mostrarToast(mensagem) {
+      let toast = document.getElementById('copyToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'copyToast';
+        toast.className = 'copy-toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = mensagem;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // Fecha popovers ao clicar fora
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.share-btn') && !e.target.closest('.share-popover')) {
+        document.querySelectorAll('.share-popover.visible').forEach(p => p.classList.remove('visible'));
+      }
+    });
+
+    /* ========================================
+       FUNÇÃO: Entrar em Contato
+       Abre o WhatsApp com mensagem pré-formatada
+       ======================================== */
+    function entrarContato(id) {
+      const imovel = imoveis.find(i => i.id === id);
+
+      if (!imovel) {
+        console.error('Imóvel não encontrado:', id);
+        return;
+      }
+
+      const precoFormatado = imovel.finalidade === 'venda'
+        ? `R$ ${imovel.preco.toLocaleString('pt-BR')}`
+        : `R$ ${imovel.preco.toLocaleString('pt-BR')}`;
+
+      const mensagem = `Olá! Tenho interesse no imóvel:\n\n${imovel.titulo}\nValor: ${precoFormatado}\nLocalização: ${imovel.endereco}\nÁrea: ${imovel.area}m²\n\nGostaria de mais informações e agendar uma visita.`;
+
+      const whatsapp = `https://wa.me/554191057438?text=${encodeURIComponent(mensagem)}`;
+      window.open(whatsapp, '_blank');
+    }
+
+    /* ========================================
+       INICIALIZAÇÃO
+       Carrega os imóveis quando a página é carregada
+       ======================================== */
+    document.addEventListener('DOMContentLoaded', function () {
+      // Apply initial filters
+      aplicarFiltros();
+
+      // Close dropdown when clicking outside of it
+      document.addEventListener('click', function (event) {
+        const filtersWrapper = document.querySelector('.filters-wrapper');
+        const filtersDropdown = document.getElementById('filtersDropdown');
+
+        // Check if the click was not inside the filters wrapper AND if the dropdown is active
+        if (!filtersWrapper.contains(event.target) && filtersDropdown.classList.contains('active')) {
+          toggleFilters();
+        }
+      });
+
+    });
+
+
+    /* ========================================
+       FUNÇÃO: Limpar Todos os Filtros
+       Reseta todos os filtros para o estado inicial
+       ======================================== */
+    function limparTodosFiltros() {
+      // Clear search
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (searchInput) {
+        searchInput.value = '';
+        termoBusca = '';
+        clearBtn.classList.remove('active');
+      }
+
+      // Clear type checkboxes
+      document.querySelectorAll('input[name="tipo"]').forEach(cb => cb.checked = false);
+
+      // Clear area and price inputs
+      document.getElementById('areaMin').value = '';
+      document.getElementById('areaMax').value = '';
+      document.getElementById('precoMin').value = '';
+      document.getElementById('precoMax').value = '';
+
+      // Clear other filters
+      document.getElementById('filterVenda').checked = false;
+      document.getElementById('filterAluguel').checked = false;
+      document.getElementById('filterDestaque').checked = false;
+
+      // Clear number buttons
+      document.querySelectorAll('.number-btn').forEach(btn => btn.classList.remove('active'));
+
+      // Reset filtrosAtivos variables
+      filtrosAtivos = {
+        tipos: [],
+        quartos: [],
+        vagas: [],
+        suites: [],
+        areaMin: null,
+        areaMax: null,
+        precoMin: null,
+        precoMax: null,
+        venda: false,
+        aluguel: false,
+        destaque: false
+      };
+
+      atualizarVisibilidadeCarrossel();
+
+      // Reapply filters (which are now empty)
+      aplicarFiltros();
+    }
+
+    // Fechar modal comparador com Escape
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        fecharModalComparador();
+      }
+    });
+
+    /* ========================================
+       MODO DE VISUALIZAÇÃO (GRID / LISTA)
+       ======================================== */
+    let viewMode = 'grid';
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      const grid1 = document.getElementById('propertiesGrid');
+      const grid2 = document.getElementById('propertiesGrid2');
+      const btnGrid = document.getElementById('viewGridBtn');
+      const btnList = document.getElementById('viewListBtn');
+
+      if (mode === 'list') {
+        grid1.classList.add('list-view');
+        grid2.classList.add('list-view');
+        btnList.classList.add('active');
+        btnGrid.classList.remove('active');
+        btnList.setAttribute('aria-pressed', 'true');
+        btnGrid.setAttribute('aria-pressed', 'false');
+      } else {
+        grid1.classList.remove('list-view');
+        grid2.classList.remove('list-view');
+        btnGrid.classList.add('active');
+        btnList.classList.remove('active');
+        btnGrid.setAttribute('aria-pressed', 'true');
+        btnList.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    /* ========================================
+       ORDENAÇÃO "MAIS RECENTES"
+       Usa o campo id: IDs maiores = mais recentes
+       ======================================== */
+    // Patch em aplicarOrdenacao para suportar "recentes"
+    const _aplicarOrdenacaoOriginal = aplicarOrdenacao;
+    aplicarOrdenacao = function () {
+      const sortValue = document.getElementById('sortSelect').value;
+      if (sortValue === 'recentes') {
+        ordenacaoAtual = sortValue;
+        const listaOrdenada = [...imoveisFiltrados].sort((a, b) => b.id - a.id);
+        renderImoveis(listaOrdenada);
+      } else {
+        _aplicarOrdenacaoOriginal();
+      }
+    };
+
+    /* ========================================
+       CHIPS DE FILTROS ATIVOS
+       ======================================== */
+    function gerarChips() {
+      const bar = document.getElementById('activeFiltersBar');
+      const container = document.getElementById('activeFilterChips');
+      const chips = [];
+
+      // Busca textual
+      if (termoBusca.trim() !== '') {
+        chips.push({ label: `"${termoBusca}"`, acao: () => { limparBusca(); } });
+      }
+
+      // Tipos
+      filtrosAtivos.tipos.forEach(tipo => {
+        const label = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+        chips.push({
+          label,
+          acao: () => {
+            const cb = document.querySelector(`input[name="tipo"][value="${tipo}"]`);
+            if (cb) cb.checked = false;
+            filtrosAtivos.tipos = filtrosAtivos.tipos.filter(t => t !== tipo);
+            aplicarFiltros();
+          }
+        });
+      });
+
+      // Quartos
+      filtrosAtivos.quartos.forEach(q => {
+        chips.push({
+          label: `${q === 5 ? '5+' : q} quartos`,
+          acao: () => {
+            const btn = document.querySelector(`.number-btn[data-value="${q}"][data-type="quartos"]`);
+            if (btn) btn.classList.remove('active');
+            filtrosAtivos.quartos = filtrosAtivos.quartos.filter(x => x !== q);
+            aplicarFiltros();
+          }
+        });
+      });
+
+      // Vagas
+      filtrosAtivos.vagas.forEach(v => {
+        chips.push({
+          label: `${v === 4 ? '4+' : v} vaga${v !== 1 ? 's' : ''}`,
+          acao: () => {
+            const btn = document.querySelector(`.number-btn[data-value="${v}"][data-type="vagas"]`);
+            if (btn) btn.classList.remove('active');
+            filtrosAtivos.vagas = filtrosAtivos.vagas.filter(x => x !== v);
+            aplicarFiltros();
+          }
+        });
+      });
+
+      // Suítes
+      filtrosAtivos.suites.forEach(s => {
+        chips.push({
+          label: `${s === 4 ? '4+' : s} suíte${s !== 1 ? 's' : ''}`,
+          acao: () => {
+            const btn = document.querySelector(`.number-btn[data-value="${s}"][data-type="suites"]`);
+            if (btn) btn.classList.remove('active');
+            filtrosAtivos.suites = filtrosAtivos.suites.filter(x => x !== s);
+            aplicarFiltros();
+          }
+        });
+      });
+
+      // Área mínima
+      if (filtrosAtivos.areaMin !== null) {
+        chips.push({
+          label: `Área min. ${filtrosAtivos.areaMin}m²`,
+          acao: () => {
+            document.getElementById('areaMin').value = '';
+            filtrosAtivos.areaMin = null;
+            aplicarFiltros();
+          }
+        });
+      }
+
+      // Área máxima
+      if (filtrosAtivos.areaMax !== null) {
+        chips.push({
+          label: `Área máx. ${filtrosAtivos.areaMax}m²`,
+          acao: () => {
+            document.getElementById('areaMax').value = '';
+            filtrosAtivos.areaMax = null;
+            aplicarFiltros();
+          }
+        });
+      }
+
+      // Preço mínimo
+      if (filtrosAtivos.precoMin !== null) {
+        chips.push({
+          label: `R$ ${filtrosAtivos.precoMin.toLocaleString('pt-BR')} mín.`,
+          acao: () => {
+            document.getElementById('precoMin').value = '';
+            filtrosAtivos.precoMin = null;
+            aplicarFiltros();
+          }
+        });
+      }
+
+      // Preço máximo
+      if (filtrosAtivos.precoMax !== null) {
+        chips.push({
+          label: `R$ ${filtrosAtivos.precoMax.toLocaleString('pt-BR')} máx.`,
+          acao: () => {
+            document.getElementById('precoMax').value = '';
+            filtrosAtivos.precoMax = null;
+            aplicarFiltros();
+          }
+        });
+      }
+
+      // Venda/Aluguel/Destaque
+      if (filtrosAtivos.venda) {
+        chips.push({ label: 'Venda', acao: () => { document.getElementById('filterVenda').checked = false; filtrosAtivos.venda = false; aplicarFiltros(); } });
+      }
+      if (filtrosAtivos.aluguel) {
+        chips.push({ label: 'Aluguel', acao: () => { document.getElementById('filterAluguel').checked = false; filtrosAtivos.aluguel = false; aplicarFiltros(); } });
+      }
+      if (filtrosAtivos.destaque) {
+        chips.push({ label: 'Destaques', acao: () => { document.getElementById('filterDestaque').checked = false; filtrosAtivos.destaque = false; aplicarFiltros(); } });
+      }
+
+      // Renderiza chips
+      container.innerHTML = '';
+      chips.forEach((chip, i) => {
+        const el = document.createElement('span');
+        el.className = 'filter-chip';
+        el.innerHTML = `${chip.label}<button class="filter-chip-remove" aria-label="Remover filtro ${chip.label}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>`;
+        el.querySelector('.filter-chip-remove').addEventListener('click', chip.acao);
+        container.appendChild(el);
+      });
+
+      // Atualiza badge no botão de filtros
+      const badge = document.getElementById('filtersBadge');
+      const filtroBtnCount = chips.filter(c => !c.label.startsWith('"')).length +
+        (termoBusca.trim() !== '' ? 1 : 0);
+      const nonSearchChips = chips.length - (termoBusca.trim() !== '' ? 1 : 0);
+      if (badge) {
+        if (nonSearchChips > 0) {
+          badge.textContent = nonSearchChips;
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+
+      // Mostra ou oculta a barra
+      if (chips.length > 0) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+
+    // Intercepta aplicarFiltros para gerar chips após filtrar
+    const _aplicarFiltrosOriginal = aplicarFiltros;
+    aplicarFiltros = function () {
+      _aplicarFiltrosOriginal();
+      gerarChips();
+    };
+
+    /* ========================================
+       COMPARADOR DE IMÓVEIS
+       ======================================== */
+    let imoveisComparar = [];
+    const MAX_COMPARAR = 3;
+
+    function toggleComparar(id, event) {
+      event.stopPropagation();
+
+      if (imoveisComparar.includes(id)) {
+        imoveisComparar = imoveisComparar.filter(x => x !== id);
+      } else {
+        if (imoveisComparar.length >= MAX_COMPARAR) {
+          mostrarToast(`Máximo de ${MAX_COMPARAR} imóveis para comparar.`);
+          return;
+        }
+        imoveisComparar.push(id);
+      }
+
+      // Atualiza visual do card
+      const card = document.querySelector(`.property-card[data-imovel-id="${id}"]`);
+      if (card) {
+        card.classList.toggle('in-compare', imoveisComparar.includes(id));
+        const btn = card.querySelector('.compare-check-btn');
+        if (btn) btn.classList.toggle('selected', imoveisComparar.includes(id));
+      }
+
+      atualizarBarraComparador();
+    }
+
+    function atualizarBarraComparador() {
+      const bar = document.getElementById('compareBar');
+      const slotsContainer = document.getElementById('compareBarSlots');
+
+      slotsContainer.innerHTML = '';
+
+      for (let i = 0; i < MAX_COMPARAR; i++) {
+        const slot = document.createElement('div');
+        slot.className = 'compare-slot';
+
+        if (imoveisComparar[i] !== undefined) {
+          const imovel = imoveis.find(im => im.id === imoveisComparar[i]);
+          slot.classList.add('filled');
+          slot.innerHTML = `
+            ${imovel && imovel.img ? `<img src="${imovel.img}" alt="${imovel.titulo}">` : '<span style="font-size:0.7rem;color:rgba(255,255,255,0.7);padding:0.2rem;">Sem foto</span>'}
+            <button class="compare-slot-remove" onclick="toggleComparar(${imoveisComparar[i]}, event)" aria-label="Remover do comparador">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          `;
+        } else {
+          slot.innerHTML = `<span>+ imóvel</span>`;
+        }
+
+        slotsContainer.appendChild(slot);
+      }
+
+      if (imoveisComparar.length > 0) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+
+    function limparComparador() {
+      imoveisComparar = [];
+      document.querySelectorAll('.property-card.in-compare').forEach(card => {
+        card.classList.remove('in-compare');
+        const btn = card.querySelector('.compare-check-btn');
+        if (btn) btn.classList.remove('selected');
+      });
+      atualizarBarraComparador();
+    }
+
+    function abrirModalComparador() {
+      if (imoveisComparar.length < 2) {
+        mostrarToast('Selecione ao menos 2 imóveis para comparar.');
+        return;
+      }
+
+      const lista = imoveisComparar.map(id => imoveis.find(im => im.id === id)).filter(Boolean);
+      const table = document.getElementById('compareTable');
+      const cols = lista.length;
+
+      const camposLabel = {
+        foto: 'Foto',
+        preco: 'Preço',
+        tipo: 'Tipo',
+        area: 'Área',
+        quartos: 'Quartos',
+        suites: 'Suítes',
+        banheiros: 'Banheiros',
+        garagem: 'Vagas',
+        local: 'Localização',
+        status: 'Status',
+        acao: 'Ver imóvel',
+      };
+
+      // Monta header
+      let headerRow = '<thead><tr><th>Critério</th>';
+      lista.forEach(im => { headerRow += `<th>${im.titulo}</th>`; });
+      headerRow += '</tr></thead>';
+
+      // Monta corpo
+      let tbody = '<tbody>';
+
+      // Foto
+      tbody += '<tr><td>Foto</td>';
+      lista.forEach(im => {
+        tbody += `<td>${im.img ? `<img class="compare-img-cell" src="${im.img}" alt="${im.titulo}">` : '—'}</td>`;
+      });
+      tbody += '</tr>';
+
+      // Preço — destaca o menor
+      const precos = lista.map(im => im.preco);
+      const menorPreco = Math.min(...precos);
+      tbody += '<tr><td>Preço</td>';
+      lista.forEach(im => {
+        const isMin = im.preco === menorPreco && cols > 1;
+        tbody += `<td class="${isMin ? 'price-cell highlight-cell' : 'price-cell'}">R$ ${im.preco.toLocaleString('pt-BR')}${isMin ? ' ✓' : ''}</td>`;
+      });
+      tbody += '</tr>';
+
+      // Tipo
+      tbody += '<tr><td>Tipo</td>';
+      lista.forEach(im => { tbody += `<td>${im.tipo}</td>`; });
+      tbody += '</tr>';
+
+      // Área — destaca a maior
+      const areas = lista.map(im => im.area);
+      const maiorArea = Math.max(...areas);
+      tbody += '<tr><td>Área</td>';
+      lista.forEach(im => {
+        const isMax = im.area === maiorArea && cols > 1;
+        tbody += `<td class="${isMax ? 'highlight-cell' : ''}">${im.area}m²${isMax ? ' ✓' : ''}</td>`;
+      });
+      tbody += '</tr>';
+
+      // Quartos
+      tbody += '<tr><td>Quartos</td>';
+      lista.forEach(im => { tbody += `<td>${im.quartos > 0 ? im.quartos : '—'}</td>`; });
+      tbody += '</tr>';
+
+      // Suítes
+      tbody += '<tr><td>Suítes</td>';
+      lista.forEach(im => { tbody += `<td>${im.suites > 0 ? im.suites : '—'}</td>`; });
+      tbody += '</tr>';
+
+      // Vagas
+      tbody += '<tr><td>Vagas</td>';
+      lista.forEach(im => { tbody += `<td>${im.garagem > 0 ? im.garagem : '—'}</td>`; });
+      tbody += '</tr>';
+
+      // Localização
+      tbody += '<tr><td>Localização</td>';
+      lista.forEach(im => { tbody += `<td>${im.local}</td>`; });
+      tbody += '</tr>';
+
+      // Status
+      tbody += '<tr><td>Status</td>';
+      lista.forEach(im => { tbody += `<td>${im.status || '—'}</td>`; });
+      tbody += '</tr>';
+
+      // Ação
+      tbody += '<tr><td>Ver imóvel</td>';
+      lista.forEach(im => {
+        tbody += `<td><a href="${im.link}" target="_blank" rel="noopener noreferrer" class="compare-link-btn">Ver detalhes</a></td>`;
+      });
+      tbody += '</tr>';
+
+      tbody += '</tbody>';
+
+      table.innerHTML = headerRow + tbody;
+      document.getElementById('compareModalOverlay').classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharModalComparador(event) {
+      if (event && event.target !== document.getElementById('compareModalOverlay')) return;
+      document.getElementById('compareModalOverlay').classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    /* ========================================
+       LOTES COLOMBO — destaque card premium e integração filtro
+       ======================================== */
+
+    // Controla destaque visual do card premium de lotes
+    function atualizarDestaqueLotes(ativo, resetCheckbox) {
+      const card = document.querySelector('.lotes-premium-card');
+      if (!card) return;
+
+      if (ativo) {
+        card.classList.add('lotes-premium-card--highlight');
+        // Rola suavemente até o card para que o usuário o veja
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        card.classList.remove('lotes-premium-card--highlight');
+      }
+
+      if (resetCheckbox) {
+        const cb = document.getElementById('checkboxLotes');
+        if (cb) cb.checked = false;
+      }
+    }
+
+    // Ao marcar o checkbox "Lotes - Colombo", destaca o card e adiciona pin no mapa
+    document.getElementById('checkboxLotes').addEventListener('change', function () {
+      const ativo = this.checked;
+      atualizarDestaqueLotes(ativo, false);
+
+      // Adiciona marcador de Colombo no mapa se estiver aberto
+      if (mapaAtivo && document.getElementById('mapPanel').classList.contains('visible')) {
+        setTimeout(adicionarPinColombosNoMapa, 100);
+      }
+    });
+
+    // Sobrescreve fecharModalComparador sem parâmetro para o botão X
+    const _fecharModalComparadorOriginal = fecharModalComparador;
+    fecharModalComparador = function (event) {
+      if (event === undefined || event.target === document.getElementById('compareModalOverlay')) {
+        document.getElementById('compareModalOverlay').classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+    };
+  </script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+
+  <script>
+    /* ========================================
+       MAPA DE LOCALIZAÇÃO (LEAFLET.JS)
+       ======================================== */
+    let mapaAtivo = null;
+    let markersGroup = null;
+
+    function toggleMapPanel() {
+      const panel = document.getElementById('mapPanel');
+      const btn = document.getElementById('mapToggleBtn');
+      const isVisible = panel.classList.contains('visible');
+
+      if (isVisible) {
+        fecharMapPanel();
+      } else {
+        abrirMapPanel();
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function abrirMapPanel() {
+      const panel = document.getElementById('mapPanel');
+      panel.classList.add('visible');
+
+      // Delay para garantir que o container está visível antes de inicializar
+      setTimeout(() => {
+        if (!mapaAtivo) {
+          inicializarMapa();
+        } else {
+          atualizarMapa();
+        }
+      }, 150);
+    }
+
+    function fecharMapPanel() {
+      const panel = document.getElementById('mapPanel');
+      const btn = document.getElementById('mapToggleBtn');
+      panel.classList.remove('visible');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function inicializarMapa() {
+      // Centro inicial: Curitiba
+      mapaAtivo = L.map('mapContainer', {
+        zoomControl: true,
+        scrollWheelZoom: true,
+        attributionControl: false
+      }).setView([-25.4284, -49.2733], 11);
+
+      // Tile layer do OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+      }).addTo(mapaAtivo);
+
+      // Atribuição mínima obrigatória pela licença ODbL — sem logo do Leaflet
+      L.control.attribution({ prefix: false })
+        .addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors')
+        .addTo(mapaAtivo);
+
+      markersGroup = L.layerGroup().addTo(mapaAtivo);
+      atualizarMapa();
+    }
+
+    function atualizarMapa() {
+      if (!mapaAtivo || !markersGroup) return;
+
+      // Limpa pins antigos
+      markersGroup.clearLayers();
+
+      // Filtra imóveis com coordenadas
+      const imoveisComCoordenadas = imoveisFiltrados.filter(im => im.lat && im.lng);
+
+      // Atualiza contador
+      const countEl = document.getElementById('mapResultsCount');
+      if (countEl) {
+        countEl.textContent = `(${imoveisComCoordenadas.length} ${imoveisComCoordenadas.length === 1 ? 'imóvel' : 'imóveis'})`;
+      }
+
+      if (imoveisComCoordenadas.length === 0) {
+        mostrarToast('Nenhum imóvel com localização disponível.');
+        return;
+      }
+
+      // Cria marcadores
+      const bounds = [];
+      imoveisComCoordenadas.forEach(imovel => {
+        const lat = imovel.lat;
+        const lng = imovel.lng;
+        bounds.push([lat, lng]);
+
+        // Ícone personalizado
+        const iconeHtml = `<div style="background: #9A6700; width: 28px; height: 28px; border: 3px solid #fff; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><div style="transform: rotate(45deg); color: #fff; font-size: 14px; font-weight: 700;">R$</div></div>`;
+
+        const customIcon = L.divIcon({
+          html: iconeHtml,
+          iconSize: [28, 28],
+          iconAnchor: [14, 28],
+          popupAnchor: [0, -28],
+          className: ''
+        });
+
+        // Popup content
+        const tipoLabel = imovel.tipo.split(',')[0].trim();
+        const popupHTML = `
+          <div class="map-popup">
+            ${imovel.img ? `<img src="${imovel.img}" alt="${imovel.titulo}" class="map-popup-img">` : ''}
+            <div class="map-popup-tipo">${tipoLabel}</div>
+            <div class="map-popup-titulo">${imovel.titulo}</div>
+            <div class="map-popup-local">${imovel.local}</div>
+            <div class="map-popup-preco">R$ ${imovel.preco.toLocaleString('pt-BR')}</div>
+            <a href="${imovel.link}" target="_blank" rel="noopener noreferrer" class="map-popup-link">Ver detalhes</a>
+          </div>
+        `;
+
+        const marker = L.marker([lat, lng], { icon: customIcon }).addTo(markersGroup);
+        marker.bindPopup(popupHTML, { maxWidth: 250 });
+      });
+
+      // Ajusta zoom para mostrar todos os marcadores
+      if (bounds.length > 0) {
+        mapaAtivo.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+      }
+
+      // Força invalidateSize após ajuste
+      setTimeout(() => {
+        if (mapaAtivo) mapaAtivo.invalidateSize();
+      }, 200);
+    }
+
+    /* Pin especial para o loteamento de Colombo */
+    let pinColomboLayer = null;
+
+    function adicionarPinColombosNoMapa() {
+      if (!mapaAtivo) return;
+
+      // Remove pin anterior se existir
+      if (pinColomboLayer) {
+        mapaAtivo.removeLayer(pinColomboLayer);
+        pinColomboLayer = null;
+      }
+
+      const cbLotes = document.getElementById('checkboxLotes');
+      const termNorm = normalizar(termoBusca);
+      const deveExibir = (cbLotes && cbLotes.checked) ||
+        termNorm.includes('colombo') || termNorm.includes('lote');
+
+      if (!deveExibir) return;
+
+      // Coordenadas do loteamento em Colombo
+      const lat = -25.2916;
+      const lng = -49.2242;
+
+      const iconeHtml = `
+        <div style="background:#38bdf8;width:34px;height:34px;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 12px rgba(56,189,248,0.5);display:flex;align-items:center;justify-content:center;">
+          <div style="transform:rotate(45deg);color:#0f172a;font-size:10px;font-weight:900;line-height:1;">LOT</div>
+        </div>`;
+
+      const customIcon = L.divIcon({
+        html: iconeHtml,
+        iconSize: [34, 34],
+        iconAnchor: [17, 34],
+        popupAnchor: [0, -36],
+        className: ''
+      });
+
+      const popupHTML = `
+        <div class="map-popup">
+          <img src="https://static.wixstatic.com/media/690653_0baa779d6eb84bb0ba59c428fb31b6f0~mv2.jpg" alt="Loteamento Colombo" class="map-popup-img">
+          <div class="map-popup-tipo" style="color:#38bdf8;">LOTES</div>
+          <div class="map-popup-titulo">Loteamento Rua Neonildes Ferreira</div>
+          <div class="map-popup-local">Jardim Primavera, Colombo &mdash; PR</div>
+          <div class="map-popup-preco" style="color:#0369a1;">A partir de R$ 189.000</div>
+          <a href="/public/lotes/lote.html" target="_blank" rel="noopener noreferrer" class="map-popup-link">Ver lotes disponíveis</a>
+        </div>
+      `;
+
+      pinColomboLayer = L.marker([lat, lng], { icon: customIcon }).addTo(mapaAtivo);
+      pinColomboLayer.bindPopup(popupHTML, { maxWidth: 260 });
+      mapaAtivo.setView([lat, lng], 14, { animate: true });
+    }
+
+    // Atualiza mapa quando filtros mudam
+    const _aplicarFiltrosOriginalMapa = aplicarFiltros;
+    aplicarFiltros = function () {
+      _aplicarFiltrosOriginalMapa();
+      if (mapaAtivo && document.getElementById('mapPanel').classList.contains('visible')) {
+        atualizarMapa();
+        adicionarPinColombosNoMapa();
+      }
+    };
+
+    // Ao abrir o mapa, verifica se deve mostrar pin de Colombo
+    const _abrirMapPanelOriginal = abrirMapPanel;
+    abrirMapPanel = function () {
+      _abrirMapPanelOriginal();
+      setTimeout(adicionarPinColombosNoMapa, 350);
+    };
+  </script>
+
+  <!-- ========================================
+       MODAL: SIMULADOR DE CUSTO TOTAL
+       ======================================== -->
+  <div class="simulador-overlay" id="simuladorOverlay" role="dialog" aria-modal="true"
+    aria-label="Simulador de custo total" onclick="fecharSimulador(event)">
+    <div class="simulador-modal" id="simuladorModal">
+      <div class="simulador-header">
+        <div class="simulador-header-info">
+          <span class="simulador-title">Simulador de Custo Total</span>
+          <span class="simulador-subtitle" id="simSubtitulo">Estimativa completa de aquisição</span>
+        </div>
+        <button class="simulador-close" onclick="fecharSimulador()" aria-label="Fechar simulador">
+          <svg viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="simulador-body">
+
+        <div>
+          <div class="sim-section-title">Ajustes (opcional)</div>
+          <div class="sim-inputs">
+            <div class="sim-field">
+              <label for="simEntrada">Entrada (%)</label>
+              <input type="number" id="simEntrada" value="20" min="0" max="100" oninput="recalcularSimulador()">
+              <span class="sim-hint">% do valor do imóvel</span>
+            </div>
+            <div class="sim-field">
+              <label for="simPrazo">Prazo (anos)</label>
+              <input type="number" id="simPrazo" value="30" min="1" max="35" oninput="recalcularSimulador()">
+              <span class="sim-hint">Financiamento bancário</span>
+            </div>
+            <div class="sim-field">
+              <label for="simReforma">Reforma (R$)</label>
+              <input type="number" id="simReforma" value="0" min="0" oninput="recalcularSimulador()">
+              <span class="sim-hint">Estimativa de reforma</span>
+            </div>
+            <div class="sim-field">
+              <label for="simCondominio">Condomínio/mês (R$)</label>
+              <input type="number" id="simCondominio" value="0" min="0" oninput="recalcularSimulador()">
+              <span class="sim-hint">Se aplicável</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-results" id="simResultados">
+          <!-- Preenchido via JS -->
+        </div>
+
+        <p class="sim-disclaimer">
+          * Valores estimados com base em alíquotas médias. ITBI: 2% sobre o valor venal. Escritura + Registro: ~1,5%.
+          Financiamento calculado pelo sistema Price com taxa de 10,5% a.a. Consulte um especialista para valores
+          exatos.
+        </p>
+
+        <div class="sim-cta">
+          <button class="sim-cta-btn" id="simWhatsBtn">Falar com Corretor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================
+       SCORE DE CUSTO-BENEFÍCIO
+       ======================================== */
+    function calcularScore(imovel, todosImoveis) {
+      // Filtra imóveis do mesmo tipo e finalidade para comparação
+      const grupo = todosImoveis.filter(i =>
+        i.finalidade === imovel.finalidade &&
+        i.area > 0 && i.preco > 0
+      );
+      if (grupo.length < 2) return { nota: 7, cor: 'score-green', detalhes: 'Imóvel único na categoria.' };
+
+      const precosPorM2 = grupo.map(i => i.preco / i.area);
+      const mediaPm2 = precosPorM2.reduce((a, b) => a + b, 0) / precosPorM2.length;
+      const maxPm2 = Math.max(...precosPorM2);
+      const minPm2 = Math.min(...precosPorM2);
+
+      const meuPm2 = imovel.preco / imovel.area;
+
+      // Pontuação base: quanto mais barato por m² em relação à média, maior a nota
+      let notaPreco;
+      if (maxPm2 === minPm2) {
+        notaPreco = 5;
+      } else {
+        // Inverte: menor preço/m² = nota maior
+        notaPreco = 10 - ((meuPm2 - minPm2) / (maxPm2 - minPm2)) * 9;
+      }
+
+      // Bônus por comodidades
+      let bonus = 0;
+      if (imovel.suites > 0) bonus += 0.3;
+      if (imovel.garagem > 1) bonus += 0.2;
+      if (imovel.destaque) bonus += 0.2;
+
+      const notaFinal = Math.min(10, Math.max(1, +(notaPreco + bonus).toFixed(1)));
+
+      let cor = 'score-green';
+      if (notaFinal < 5) cor = 'score-red';
+      else if (notaFinal < 7) cor = 'score-yellow';
+
+      const variacaoTexto = meuPm2 < mediaPm2
+        ? `${Math.round((1 - meuPm2 / mediaPm2) * 100)}% abaixo da média do portfólio`
+        : `${Math.round((meuPm2 / mediaPm2 - 1) * 100)}% acima da média do portfólio`;
+
+      return {
+        nota: notaFinal,
+        cor,
+        detalhes: `R$ ${Math.round(meuPm2).toLocaleString('pt-BR')}/m² — ${variacaoTexto}.`
+      };
+    }
+
+    /* ========================================
+       SIMULADOR DE CUSTO TOTAL — LÓGICA
+       ======================================== */
+    let _simImovelAtual = null;
+
+    function abrirSimulador(id) {
+      const imovel = imoveis.find(i => i.id === id);
+      if (!imovel) return;
+      _simImovelAtual = imovel;
+
+      document.getElementById('simSubtitulo').textContent = imovel.titulo;
+      document.getElementById('simEntrada').value = 20;
+      document.getElementById('simPrazo').value = 30;
+      document.getElementById('simReforma').value = 0;
+      document.getElementById('simCondominio').value = 0;
+
+      // WhatsApp CTA
+      document.getElementById('simWhatsBtn').onclick = () => {
+        const texto = `Olá! Tenho interesse no imóvel *${imovel.titulo}* e gostaria de mais informações.`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+      };
+
+      recalcularSimulador();
+      document.getElementById('simuladorOverlay').classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharSimulador(e) {
+      if (e && e.target !== document.getElementById('simuladorOverlay')) return;
+      document.getElementById('simuladorOverlay').classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    function recalcularSimulador() {
+      if (!_simImovelAtual) return;
+      const preco = _simImovelAtual.preco;
+      const entradaPct = Math.min(100, Math.max(0, parseFloat(document.getElementById('simEntrada').value) || 20));
+      const prazoAnos = Math.min(35, Math.max(1, parseFloat(document.getElementById('simPrazo').value) || 30));
+      const reforma = parseFloat(document.getElementById('simReforma').value) || 0;
+      const condominioMensal = parseFloat(document.getElementById('simCondominio').value) || 0;
+
+      const entrada = preco * (entradaPct / 100);
+      const financiado = preco - entrada;
+
+      // ITBI: 2% sobre valor do imóvel
+      const itbi = preco * 0.02;
+      // Escritura + Registro: 1.5%
+      const cartorio = preco * 0.015;
+
+      // Parcela Price (taxa 10.5% a.a. = 0.105/12 ao mês)
+      const taxaMensal = 0.105 / 12;
+      const n = prazoAnos * 12;
+      let parcela = 0;
+      if (financiado > 0 && n > 0) {
+        parcela = financiado * (taxaMensal * Math.pow(1 + taxaMensal, n)) / (Math.pow(1 + taxaMensal, n) - 1);
+      }
+
+      // Condomínio anual
+      const condominioAnual = condominioMensal * 12;
+
+      // Custo total real no 1º ano
+      const custoTotal1Ano = entrada + itbi + cartorio + reforma + (parcela * 12) + condominioAnual;
+
+      const fmt = v => 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+
+      const rows = [
+        { label: 'Valor do imóvel', value: fmt(preco) },
+        { label: `Entrada (${entradaPct}%)`, value: fmt(entrada) },
+        { label: 'Valor financiado', value: fmt(financiado), sub: true },
+        { label: 'ITBI (2%)', value: fmt(itbi) },
+        { label: 'Escritura + Registro (~1,5%)', value: fmt(cartorio) },
+        reforma > 0 ? { label: 'Reforma estimada', value: fmt(reforma) } : null,
+        financiado > 0 ? { label: `Parcela estimada (${prazoAnos} anos)`, value: fmt(parcela) + '/mês' } : null,
+        condominioMensal > 0 ? { label: 'Condomínio anual', value: fmt(condominioAnual) } : null,
+        { label: 'Custo total no 1º ano', value: fmt(custoTotal1Ano), total: true },
+      ].filter(Boolean);
+
+      const container = document.getElementById('simResultados');
+      container.innerHTML = rows.map(r => `
+        <div class="sim-row${r.total ? ' sim-total' : ''}">
+          <span class="sim-row-label">${r.label}</span>
+          <span class="sim-row-value">${r.value}</span>
+        </div>
+      `).join('');
+    }
+
+    // Mini formulário de busca personalizada no banner
+    function enviarBuscaWhatsApp(event) {
+      event.preventDefault();
+      var bairro = document.getElementById('searchBairro').value.trim();
+      var tipo = document.getElementById('searchTipo').value.trim();
+      var valor = document.getElementById('searchValor').value.trim();
+
+      var partes = ['Olá! Gostaria de uma indicação personalizada de imóvel.'];
+      if (tipo) partes.push('Tipo: ' + tipo);
+      if (bairro) partes.push('Bairro: ' + bairro);
+      if (valor) partes.push('Valor máximo: ' + valor);
+
+      var mensagem = encodeURIComponent(partes.join('\n'));
+      window.open('https://wa.me/554191057438?text=' + mensagem, '_blank', 'noopener,noreferrer');
+    }
+
+    /* ======================================== */
+
+
+    function abrirImagemCompleta(src, index, total) {
+      const lightbox = document.getElementById('imageLightbox');
+      const lightboxImg = document.getElementById('lightboxImage');
+      const counter = document.getElementById('lightboxCounter');
+      
+      lightboxImg.src = src;
+      counter.textContent = `${index + 1} / ${total}`;
+      lightbox.classList.add('active');
+      
+      window.currentLightboxIndex = index;
+    }
+
+    function fecharLightbox() {
+      const lightbox = document.getElementById('imageLightbox');
+      lightbox.classList.remove('active');
+    }
+
+    function navegarLightbox(direcao) {
+      if (!window.currentGalleryImages) return;
+      
+      const total = window.currentGalleryImages.length;
+      window.currentLightboxIndex = (window.currentLightboxIndex + direcao + total) % total;
+      
+      const img = window.currentGalleryImages[window.currentLightboxIndex];
+      const lightboxImg = document.getElementById('lightboxImage');
+      const counter = document.getElementById('lightboxCounter');
+      
+      lightboxImg.src = img.src;
+      counter.textContent = `${window.currentLightboxIndex + 1} / ${total}`;
+    }
+
+    // Fechar modal ao clicar fora
+    document.addEventListener('click', function(event) {
+      const galleryModal = document.getElementById('galleryModal');
+      const lightbox = document.getElementById('imageLightbox');
+      
+      if (event.target === galleryModal) {
+        fecharGaleria();
+      }
+      if (event.target === lightbox) {
+        fecharLightbox();
+      }
+    });
+
+    // Navegação por teclado no lightbox
+    document.addEventListener('keydown', function(event) {
+      const lightbox = document.getElementById('imageLightbox');
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (event.key === 'ArrowLeft') {
+        navegarLightbox(-1);
+      } else if (event.key === 'ArrowRight') {
+        navegarLightbox(1);
+      } else if (event.key === 'Escape') {
+        fecharLightbox();
+      }
+    });
+  </script>
+
+  <script>
+    // Navbar scroll shadow
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 10);
+      });
+    }
+
+    // Side menu toggle
+    function toggleSideMenu() {
+      const menu = document.getElementById('sideMenuImoveis');
+      const overlay = document.getElementById('sideOverlayImoveis');
+      const hamburger = document.getElementById('hamburger');
+      const isOpen = menu.classList.toggle('active');
+      overlay.classList.toggle('active', isOpen);
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      menu.setAttribute('aria-hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    // Fechar com tecla Esc
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('sideMenuImoveis');
+        if (menu && menu.classList.contains('active')) toggleSideMenu();
+      }
+    });
+  </script>
+
+
+</body>
+
+<!-- Carregamento do footer -->
+<div id="site-footer"></div>
+  <script>
+    fetch('/components/footer/footer.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => { document.getElementById('site-footer').innerHTML = html; })
+      .catch(() => { /* footer não encontrado — modo de desenvolvimento */ } );
+  </script>
+  <!-- PHP: <?php include $_SERVER['DOCUMENT_ROOT'] . '/components/footer.php'; ?> -->
+
+</html>

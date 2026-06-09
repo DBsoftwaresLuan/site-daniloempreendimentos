@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danilo Empreendimentos - Imóveis</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ========================================
+       VARIÁVEIS CSS (DESIGN TOKENS)
+       ======================================== */
+
+.header-lote-wrapper {--primary: #9A6700;
+      --primary-hover: #8a5a00;
+      --background: #FFFFFF;
+      --foreground: #294069;
+      --muted: #F5F5F0;
+      --muted-foreground: #6B7280;
+      --border: #E5E5E0;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --font-body: "Inter", -apple-system, sans-serif;
+      --radius: 12px;
+      --navbar-height: 80px;
+      --navbar-height-mobile: 64px;}
+
+/* ========================================
+       RESET E BASE
+       ======================================== */
+
+.header-lote-wrapper *,
+    .header-lote-wrapper *::before,
+    .header-lote-wrapper *::after {margin: 0;
+      padding: 0;
+      box-sizing: border-box;}
+
+.header-lote-wrapper {font-family: var(--font-body);
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;}
+
+/* ========================================
+       NAVBAR - DESKTOP
+       ======================================== */
+
+.header-lote-wrapper .navbar {position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background: var(--background);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;}
+
+.header-lote-wrapper .navbar.scrolled {box-shadow: var(--shadow-md);}
+
+.header-lote-wrapper .navbar__container {max-width: 1400px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;}
+
+/* Logo */
+
+.header-lote-wrapper .navbar__logo {display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s ease;
+      cursor: pointer;}
+
+.header-lote-wrapper .navbar__logo:hover {opacity: 0.9;}
+
+.header-lote-wrapper .navbar__logo-img {height: 60px;
+      width: auto;
+      object-fit: contain;}
+
+/* Menu Desktop */
+
+.header-lote-wrapper .navbar__menu {display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;}
+
+.header-lote-wrapper .navbar__menu-item {position: relative;}
+
+.header-lote-wrapper .navbar__menu-link {display: flex;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--foreground);
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      position: relative;}
+
+.header-lote-wrapper .navbar__menu-link::after {content: "";
+      position: absolute;
+      bottom: 0.5rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;}
+
+.header-lote-wrapper .navbar__menu-link:hover {color: var(--primary);
+      background: rgba(154, 103, 0, 0.05);}
+
+.header-lote-wrapper .navbar__menu-link:hover::after {transform: scaleX(1);}
+
+.header-lote-wrapper .navbar__menu-link--active {color: var(--primary);}
+
+.header-lote-wrapper .navbar__menu-link--active::after {transform: scaleX(1);}
+
+/* Botão CTA no menu */
+
+.header-lote-wrapper .navbar__menu-cta {display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      background: #25d366;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      white-space: nowrap;}
+
+.header-lote-wrapper .navbar__menu-cta:hover {background: #20c05d;
+      transform: translateY(-1px);}
+
+.header-lote-wrapper .navbar__menu-cta svg {width: 16px;
+      height: 16px;
+      flex-shrink: 0;}
+
+/* Submenu dropdown */
+
+.header-lote-wrapper .navbar__submenu-wrapper {position: relative;}
+
+.header-lote-wrapper .navbar__submenu-trigger {display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--foreground);
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;}
+
+.header-lote-wrapper .navbar__submenu-trigger:hover {color: var(--primary);
+      background: rgba(154, 103, 0, 0.05);}
+
+.header-lote-wrapper .navbar__submenu-trigger svg {width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;}
+
+.header-lote-wrapper .navbar__submenu-wrapper:hover .navbar__submenu-trigger svg {transform: rotate(180deg);}
+
+.header-lote-wrapper .navbar__submenu {position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 280px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 0.75rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+      z-index: 1003;}
+
+.header-lote-wrapper .navbar__submenu-wrapper:hover .navbar__submenu {opacity: 1;
+      visibility: visible;
+      transform: translateY(0);}
+
+.header-lote-wrapper .navbar__submenu-item {display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--foreground);
+      text-decoration: none;
+      border-radius: calc(var(--radius) - 4px);
+      transition: all 0.2s ease;}
+
+.header-lote-wrapper .navbar__submenu-item:hover {background: var(--muted);
+      color: var(--primary);}
+
+.header-lote-wrapper .navbar__submenu-item svg {width: 20px;
+      height: 20px;
+      stroke: var(--primary);
+      flex-shrink: 0;}
+
+.header-lote-wrapper .navbar__submenu-item span {display: flex;
+      flex-direction: column;}
+
+.header-lote-wrapper .navbar__submenu-item-label {font-weight: 500;}
+
+.header-lote-wrapper .navbar__submenu-item-value {font-size: 0.8rem;
+      color: var(--muted-foreground);}
+
+/* ========================================
+       HAMBURGER BUTTON
+       ======================================== */
+
+.header-lote-wrapper .navbar__hamburger {display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4.5px;
+      width: 42px;
+      height: 42px;
+      background: rgba(41, 64, 105, 0.06);
+      border: 1px solid rgba(41, 64, 105, 0.12);
+      border-radius: 11px;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1002;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);}
+
+.header-lote-wrapper .navbar__hamburger:hover {background: rgba(41, 64, 105, 0.1);
+      border-color: rgba(41, 64, 105, 0.2);}
+
+.header-lote-wrapper .navbar__hamburger-line {display: block;
+      width: 18px;
+      height: 1.5px;
+      background: #294069;
+      border-radius: 2px;
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);}
+
+.header-lote-wrapper .navbar__hamburger-line:nth-child(2) {width: 13px;
+      align-self: flex-start;
+      margin-left: 12px;}
+
+.header-lote-wrapper .navbar__hamburger.active .navbar__hamburger-line:nth-child(1) {transform: rotate(45deg) translateY(6.5px) translateX(0.5px);
+      width: 18px;}
+
+.header-lote-wrapper .navbar__hamburger.active .navbar__hamburger-line:nth-child(2) {opacity: 0;
+      transform: scaleX(0);}
+
+.header-lote-wrapper .navbar__hamburger.active .navbar__hamburger-line:nth-child(3) {transform: rotate(-45deg) translateY(-6.5px) translateX(0.5px);
+      width: 18px;
+      align-self: unset;}
+
+/* ========================================
+       SIDE MENU (menu lateral deslizante)
+       ======================================== */
+
+.header-lote-wrapper .navbar__mobile-menu {position: fixed;
+      top: 0;
+      left: -340px;
+      width: 310px;
+      height: 100%;
+      height: 100dvh;
+      background: #ffffff;
+      z-index: 1001;
+      box-shadow: 4px 0 40px rgba(0, 0, 0, 0.16);
+      transition: left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;}
+
+.header-lote-wrapper .navbar__mobile-menu.active {left: 0;}
+
+.header-lote-wrapper .navbar__mobile-overlay {position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);}
+
+.header-lote-wrapper .navbar__mobile-overlay.active {opacity: 1;
+      visibility: visible;}
+
+/* Cabeçalho do menu lateral */
+
+.header-lote-wrapper .side-head {padding: 20px 20px 16px;
+      border-bottom: 1px solid rgba(41, 64, 105, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;}
+
+.header-lote-wrapper .side-head-logo img {height: 44px;
+      width: auto;
+      object-fit: contain;
+      text-decoration: none;}
+
+.header-lote-wrapper .side-close-btn {width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(41, 64, 105, 0.06);
+      border: 1px solid rgba(41, 64, 105, 0.1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #294069;
+      transition: all 0.2s;}
+
+.header-lote-wrapper .side-close-btn:hover {background: rgba(154, 103, 0, 0.1);
+      color: #9A6700;
+      border-color: rgba(154, 103, 0, 0.2);}
+
+/* Corpo do menu */
+
+.header-lote-wrapper .side-body {flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 12px 12px 0;}
+
+/* Rótulo de seção */
+
+.header-lote-wrapper .side-section-label {font-size: 10px;
+      font-weight: 700;
+      color: rgba(41, 64, 105, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 10px 6px;}
+
+.header-lote-wrapper .side-nav {display: flex;
+      flex-direction: column;
+      gap: 1px;}
+
+.header-lote-wrapper .side-link {display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: rgba(41, 64, 105, 0.75);
+      text-decoration: none;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);}
+
+.header-lote-wrapper .side-link:hover {background: rgba(41, 64, 105, 0.05);
+      color: #294069;}
+
+.header-lote-wrapper .side-link--lotes {background: rgba(56, 189, 248, 0.07);
+      border: 1px solid rgba(56, 189, 248, 0.2);}
+
+.header-lote-wrapper .side-link--lotes:hover {background: rgba(56, 189, 248, 0.13);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #0369a1;}
+
+.header-lote-wrapper .side-link-icon {width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(41, 64, 105, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.22s;
+      color: rgba(41, 64, 105, 0.45);}
+
+.header-lote-wrapper .side-link--lotes .side-link-icon {background: rgba(56, 189, 248, 0.12);
+      color: #0284c7;}
+
+.header-lote-wrapper .side-link:hover .side-link-icon {background: rgba(41, 64, 105, 0.08);
+      color: #294069;}
+
+.header-lote-wrapper .side-link--lotes:hover .side-link-icon {background: rgba(56, 189, 248, 0.2);
+      color: #0369a1;}
+
+.header-lote-wrapper .side-link-icon svg {width: 17px;
+      height: 17px;}
+
+.header-lote-wrapper .side-link-text {flex: 1;
+      line-height: 1.3;}
+
+.header-lote-wrapper .side-link-sub {display: block;
+      font-size: 11px;
+      color: rgba(41, 64, 105, 0.35);
+      font-weight: 400;
+      margin-top: 1px;}
+
+.header-lote-wrapper .side-link--lotes .side-link-sub {color: rgba(3, 105, 161, 0.6);}
+
+.header-lote-wrapper .side-link-badge {display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-size: 10px;
+      font-weight: 800;
+      border-radius: 50px;}
+
+.header-lote-wrapper .side-separator {height: 1px;
+      background: rgba(41, 64, 105, 0.07);
+      margin: 10px 0;}
+
+/* Card da empresa */
+
+.header-lote-wrapper .side-empresa-card {background: linear-gradient(135deg, #0f1f35 0%, #1a2e4a 100%);
+      border-radius: 12px;
+      padding: 14px 14px 12px;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;}
+
+.header-lote-wrapper .side-empresa-card::before {content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(154, 103, 0, 0.15);}
+
+.header-lote-wrapper .side-empresa-label {font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 5px;}
+
+.header-lote-wrapper .side-empresa-name {font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;}
+
+.header-lote-wrapper .side-empresa-feats {display: flex;
+      flex-direction: column;
+      gap: 4px;}
+
+.header-lote-wrapper .side-empresa-feat {display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.7);}
+
+.header-lote-wrapper .side-empresa-feat-dot {width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #9A6700;
+      flex-shrink: 0;}
+
+/* Stats grid */
+
+.header-lote-wrapper .side-stats-grid {display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 0 0 4px;}
+
+.header-lote-wrapper .side-stat-card {background: rgba(41, 64, 105, 0.04);
+      border: 1px solid rgba(41, 64, 105, 0.07);
+      border-radius: 10px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;}
+
+.header-lote-wrapper .side-stat-value {font-size: 22px;
+      font-weight: 900;
+      color: #0f1f35;
+      letter-spacing: -1px;
+      line-height: 1;}
+
+.header-lote-wrapper .side-stat-value span {color: #9A6700;}
+
+.header-lote-wrapper .side-stat-label {font-size: 10px;
+      font-weight: 600;
+      color: rgba(41, 64, 105, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 2px;}
+
+/* Rodapé do menu lateral */
+
+.header-lote-wrapper .side-footer {padding: 16px 12px 20px;
+      border-top: 1px solid rgba(41, 64, 105, 0.07);
+      flex-shrink: 0;}
+
+.header-lote-wrapper .side-cta-group {display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;}
+
+.header-lote-wrapper .side-btn-wa {width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25d366;
+      color: #fff;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: filter 0.2s, transform 0.2s;}
+
+.header-lote-wrapper .side-btn-wa:hover {filter: brightness(1.08);
+      transform: translateY(-1px);}
+
+.header-lote-wrapper .side-btn-wa svg {width: 16px;
+      height: 16px;
+      flex-shrink: 0;}
+
+.header-lote-wrapper .side-btn-lotes {width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #0f172a;
+      color: #38bdf8;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1.5px solid rgba(56, 189, 248, 0.3);
+      transition: background 0.2s, border-color 0.2s;}
+
+.header-lote-wrapper .side-btn-lotes:hover {background: #1e293b;
+      border-color: rgba(56, 189, 248, 0.55);}
+
+.header-lote-wrapper .side-btn-lotes svg {width: 15px;
+      height: 15px;
+      flex-shrink: 0;}
+
+.header-lote-wrapper .side-contact-info {display: flex;
+      flex-direction: column;
+      gap: 6px;}
+
+.header-lote-wrapper .side-contact-row {display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(41, 64, 105, 0.45);
+      padding: 2px 4px;}
+
+.header-lote-wrapper .side-contact-row svg {width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      color: rgba(41, 64, 105, 0.3);}
+
+.header-lote-wrapper .side-contact-row a {color: var(--primary);
+      text-decoration: none;}
+
+/* ========================================
+       RESPONSIVE
+       ======================================== */
+
+@media (max-width: 968px) {
+.header-lote-wrapper .navbar {height: var(--navbar-height-mobile);}
+
+.header-lote-wrapper .navbar__container {padding: 0 1rem;}
+
+.header-lote-wrapper .navbar__menu {display: none;}
+
+.header-lote-wrapper .navbar__hamburger {display: flex;}
+
+.header-lote-wrapper .navbar__logo {position: absolute;
+        left: 50%;
+        transform: translateX(-50%);}
+
+.header-lote-wrapper .navbar__logo-img {height: 48px;
+        width: auto;}
+}
+
+@media (max-width: 480px) {
+.header-lote-wrapper .navbar__container {padding: 0 0.75rem;}
+
+.header-lote-wrapper .navbar__mobile-menu {width: 290px;}
+}
+</style>
+</head>
+<body>
+<div class="header-lote-wrapper">
+<!-- NAVBAR -->
+<nav aria-label="Menu principal" class="navbar" id="navbar" role="navigation">
+<div class="navbar__container">
+<!-- Logo -->
+<a class="navbar__logo" href="https://www.daniloempreendimentos.com.br/" title="Danilo Empreendimentos">
+<img alt="Danilo Empreendimentos" class="navbar__logo-img" src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"/>
+</a>
+<!-- Menu Desktop -->
+<ul class="navbar__menu">
+<li class="navbar__menu-item">
+<a class="navbar__menu-link" href="https://www.daniloempreendimentos.com.br/">
+            Início
+          </a>
+</li>
+<li class="navbar__menu-item">
+<a class="navbar__menu-link" href="https://imoveis.daniloempreendimentos.com.br/">
+            Imóveis
+          </a>
+</li>
+<li class="navbar__menu-item">
+<a class="navbar__menu-link" href="https://www.daniloempreendimentos.com.br/perito" rel="noopener noreferrer" target="_blank">
+            Perito
+          </a>
+</li>
+<li class="navbar__menu-item">
+<a class="navbar__menu-link navbar__menu-link--active" href="/public/lotes/lote.html">
+            Lotes — Colombo
+          </a>
+</li>
+<li class="navbar__menu-item navbar__submenu-wrapper">
+<button class="navbar__submenu-trigger">
+            Contato
+            <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</button>
+<div class="navbar__submenu">
+<a class="navbar__submenu-item" href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+</path>
+</svg>
+<span>
+<span class="navbar__submenu-item-label">WhatsApp</span>
+<span class="navbar__submenu-item-value">+55 41 9105-7438</span>
+</span>
+</a>
+<a class="navbar__submenu-item" href="mailto:Danilo@daniloempreendimentos.com.br">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+<span>
+<span class="navbar__submenu-item-label">E-mail</span>
+<span class="navbar__submenu-item-value">Danilo@daniloempreendimentos.com.br</span>
+</span>
+</a>
+</div>
+</li>
+<li class="navbar__menu-item">
+<a class="navbar__menu-cta" href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20lotes%20em%20Colombo" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"></path>
+</svg>
+            Falar com Consultor
+          </a>
+</li>
+</ul>
+<!-- Hamburger Mobile -->
+<button aria-controls="sideMenuImoveis" aria-expanded="false" aria-label="Abrir menu" class="navbar__hamburger" id="hamburger" onclick="toggleSideMenu()">
+<span class="navbar__hamburger-line"></span>
+<span class="navbar__hamburger-line"></span>
+<span class="navbar__hamburger-line"></span>
+</button>
+</div>
+</nav>
+<!-- Overlay -->
+<div class="navbar__mobile-overlay" id="sideOverlayImoveis" onclick="toggleSideMenu()" role="presentation"></div>
+<!-- Menu lateral deslizante -->
+<nav aria-hidden="true" aria-label="Menu de navegação" class="navbar__mobile-menu" id="sideMenuImoveis">
+<!-- Cabeçalho -->
+<div class="side-head">
+<a class="side-head-logo" href="https://www.daniloempreendimentos.com.br/">
+<img alt="Danilo Empreendimentos" src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"/>
+</a>
+<button aria-label="Fechar menu" class="side-close-btn" onclick="toggleSideMenu()">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
+<line x1="18" x2="6" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="6" y2="18"></line>
+</svg>
+</button>
+</div>
+<!-- Corpo -->
+<div class="side-body">
+<!-- Card da empresa -->
+<div style="padding: 12px 12px 0;">
+<div class="side-empresa-card">
+<p class="side-empresa-label">Portfólio exclusivo</p>
+<p class="side-empresa-name">Imóveis Premium</p>
+<div class="side-empresa-feats">
+<div class="side-empresa-feat">
+<span class="side-empresa-feat-dot"></span>
+              Casas, apartamentos e terrenos no Paraná
+            </div>
+<div class="side-empresa-feat">
+<span class="side-empresa-feat-dot"></span>
+              Loteadora em Colombo — PR
+            </div>
+<div class="side-empresa-feat">
+<span class="side-empresa-feat-dot"></span>
+              Perito avaliador de imóveis
+            </div>
+<div class="side-empresa-feat">
+<span class="side-empresa-feat-dot"></span>
+              Negociação facilitada
+            </div>
+</div>
+</div>
+</div>
+<div class="side-separator" style="margin: 12px 0;"></div>
+<!-- Navegação principal -->
+<p class="side-section-label">Navegação</p>
+<div class="side-nav" role="list">
+<a class="side-link" href="https://www.daniloempreendimentos.com.br/" role="listitem">
+<div class="side-link-icon">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+</div>
+<div class="side-link-text">
+            Início
+            <span class="side-link-sub">Página principal</span>
+</div>
+</a>
+<a class="side-link" href="#imoveis" onclick="toggleSideMenu()" role="listitem">
+<div class="side-link-icon">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="8"></circle>
+<path d="m21 21-4.35-4.35"></path>
+</svg>
+</div>
+<div class="side-link-text">
+            Buscar Imóveis
+            <span class="side-link-sub">Curitiba, Pontal, Guaraqueçaba</span>
+</div>
+</a>
+<a class="side-link" href="https://www.daniloempreendimentos.com.br/perito" rel="noopener noreferrer" role="listitem" target="_blank">
+<div class="side-link-icon">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 11l3 3L22 4"></path>
+<path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+</svg>
+</div>
+<div class="side-link-text">
+            Perito
+            <span class="side-link-sub">Avaliação de imóveis</span>
+</div>
+</a>
+<!-- Botão em destaque: Lotes -->
+<a class="side-link side-link--lotes" href="/public/lotes/lote.html" onclick="toggleSideMenu()" role="listitem">
+<div class="side-link-icon">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+</svg>
+</div>
+<div class="side-link-text">
+            Lotes — Colombo
+            <span class="side-link-sub">14 lotes disponíveis a partir de R$ 189k</span>
+</div>
+<span class="side-link-badge">14</span>
+</a>
+</div>
+<div class="side-separator"></div>
+<!-- Contato -->
+<p class="side-section-label">Contato direto</p>
+<div class="side-nav" role="list">
+<a class="side-link" href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" rel="noopener noreferrer" role="listitem" target="_blank">
+<div class="side-link-icon">
+<svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"></path>
+</svg>
+</div>
+<div class="side-link-text">
+            WhatsApp
+            <span class="side-link-sub">+55 41 9105-7438</span>
+</div>
+</a>
+<a class="side-link" href="mailto:Danilo@daniloempreendimentos.com.br" role="listitem">
+<div class="side-link-icon">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</div>
+<div class="side-link-text">
+            E-mail
+            <span class="side-link-sub">Danilo@daniloempreendimentos.com.br</span>
+</div>
+</a>
+</div>
+<div style="height: 12px;"></div>
+</div>
+<!-- Rodapé -->
+<div class="side-footer">
+<div class="side-cta-group">
+<a class="side-btn-wa" href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"></path>
+</svg>
+          Falar no WhatsApp
+        </a>
+<a class="side-btn-lotes" href="/public/lotes/lote.html">
+          Ver lotes em Colombo
+        </a>
+</div>
+<div class="side-contact-info">
+<div class="side-contact-row">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
+          Curitiba, Pontal do Paraná e Colombo — PR
+        </div>
+<div class="side-contact-row">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 013 1.05h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+</svg>
+          (41) 9105-7438
+        </div>
+<div class="side-contact-row">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+          Danilo@daniloempreendimentos.com.br
+        </div>
+</div>
+</div>
+</nav>
+</div>
+</body>
+</html>

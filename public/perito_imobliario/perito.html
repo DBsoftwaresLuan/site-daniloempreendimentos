@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perito Imobiliário com IA | Danilo Empreendimentos</title>
+  <meta name="description" content="Perícia imobiliária com inteligência artificial. Laudos, avaliações e pareceres técnicos realizados com tecnologia de IA pela Danilo Empreendimentos." />
+
+  <!-- Fonte Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- CSS do site principal (header, footer, reset global) -->
+  <link rel="stylesheet" href="/styles/CSS/index.css" />
+
+  <!-- CSS exclusivo desta página -->
+  <link rel="stylesheet" href="/styles/CSS/perito_imobiliario/perito.css" />
+</head>
+
+<body>
+
+  <!-- =============================================
+       HEADER — componente já existente no seu site
+       O trecho abaixo inclui o arquivo de header
+       usando JavaScript. Substitua pelo seu método
+       de inclusão (PHP include, SSI, etc.) conforme
+       a tecnologia do seu servidor.
+  ============================================== -->
+  <div id="site-header"></div>
+  <script>
+    fetch('/header/header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => { document.getElementById('site-header').innerHTML = html; })
+      .catch(() => { /* header não encontrado — modo de desenvolvimento */ });
+  </script>
+  <!-- Se o seu site usa PHP, substitua as linhas acima por:
+       <?php include $_SERVER['DOCUMENT_ROOT'] . '/components/header.php'; ?>
+       Se usa SSI: <!--#include virtual="/components/header.html" - - >
+  -->
+
+  <!-- =============================================
+       CONTEÚDO PRINCIPAL DA PÁGINA PERITO
+  ============================================== -->
+  <main class="perito-page">
+
+    <!-- ── HERO ─────────────────────────────── -->
+    <section class="perito-hero">
+      <div class="perito-hero-overlay"></div>
+
+      <div class="container perito-hero-content">
+
+        <div class="hero-text">
+          <span class="hero-badge">Danilo Empreendimentos</span>
+          <h1>Perito Imobiliário<br /><span>com Inteligência Artificial</span></h1>
+          <p>
+            Laudos, avaliações e pareceres técnicos conduzidos com precisão,
+            imparcialidade e o apoio da tecnologia mais avançada do setor imobiliário.
+          </p>
+          <div class="hero-buttons">
+            <a href="#ia-section" class="btn btn-gold">Conheça a tecnologia</a>
+            <a href="#contato-perito" class="btn btn-outline">Solicitar atendimento</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <h3>Atuação técnica especializada</h3>
+            <ul>
+              <li>Laudos imobiliários</li>
+              <li>Pareceres técnicos</li>
+              <li>Vistorias e constatações</li>
+              <li>Avaliação judicial e extrajudicial</li>
+              <li>Análise documental</li>
+              <li>Suporte consultivo especializado</li>
+            </ul>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-value">+15 anos</span>
+              <span class="hero-stat-label">de mercado</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-value">IA</span>
+              <span class="hero-stat-label">integrada</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-value">100%</span>
+              <span class="hero-stat-label">fundamentado</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── INTRO ─────────────────────────────── -->
+    <section class="section section-light" id="informacoes">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">Sobre o serviço</span>
+          <h2>Na Danilo Empreendimentos</h2>
+          <p>
+            Acreditamos que a excelência na prestação de serviços imobiliários nasce da
+            combinação entre conhecimento técnico, visão estratégica e uso inteligente
+            da tecnologia.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="icon">01</div>
+            <h3>Laudos e pareceres</h3>
+            <p>
+              Elaboração de documentos técnicos claros, organizados e fundamentados
+              para apoiar processos judiciais, negociações, regularizações e tomadas de decisão.
+            </p>
+          </article>
+          <article class="info-card">
+            <div class="icon">02</div>
+            <h3>Vistorias imobiliárias</h3>
+            <p>
+              Inspeções presenciais para constatação do estado do imóvel, registro técnico
+              das condições físicas e levantamento de informações relevantes.
+            </p>
+          </article>
+          <article class="info-card">
+            <div class="icon">03</div>
+            <h3>Avaliação técnica</h3>
+            <p>
+              Análise de valor de mercado com metodologia adequada, observando contexto,
+              localização, características do bem e objetivo da avaliação.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DESTAQUE COM IMAGEM ────────────────── -->
+    <section class="section section-blue">
+      <div class="container split-layout">
+        <div class="split-image">
+          <img
+            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80"
+            alt="Profissional analisando documentos imobiliários" />
+        </div>
+
+        <div class="split-content">
+          <span class="section-tag light">Perito</span>
+          <h2>Perícia com método, imparcialidade e organização</h2>
+          <p>
+            O Perito é a plataforma que nos permite atuar com precisão, agilidade e
+            transparência em todas as etapas das negociações imobiliárias. Ele integra dados,
+            automatiza processos e oferece uma visão estratégica sobre imóveis, contratos,
+            riscos e oportunidades — tudo em um único ambiente digital.
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Clareza documental</strong>
+              <p>Informações organizadas, objetivas e bem estruturadas.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Precisão técnica</strong>
+              <p>Levantamento criterioso com foco em consistência e credibilidade.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Atendimento profissional</strong>
+              <p>Condução séria, transparente e alinhada à necessidade de cada caso.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IA EM AÇÃO — seção nova ────────────── -->
+    <section class="section ia-section" id="ia-section">
+      <div class="container">
+        <div class="section-header center ia-intro">
+          <span class="section-tag blue">Inteligência Artificial</span>
+          <h2>Como a IA transforma a perícia imobiliária</h2>
+          <p>
+            O Perito combina a expertise humana com algoritmos de inteligência artificial
+            para entregar análises mais rápidas, precisas e fundamentadas do que qualquer
+            processo manual conseguiria.
+          </p>
+        </div>
+
+        <div class="ia-grid">
+          <div class="ia-card">
+            <div class="ia-card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
+              </svg>
+            </div>
+            <div class="ia-card-body">
+              <h3>Análise de documentos automatizada</h3>
+              <p>
+                A IA lê e processa certidões, matrículas, contratos e registros em segundos,
+                identificando inconsistências, riscos e pontos críticos antes mesmo da vistoria.
+              </p>
+            </div>
+          </div>
+
+          <div class="ia-card">
+            <div class="ia-card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3v18h18M18 9l-5 5-4-4-3 3"/>
+              </svg>
+            </div>
+            <div class="ia-card-body">
+              <h3>Precificação baseada em dados reais</h3>
+              <p>
+                Modelos preditivos analisam comparativos de mercado, histórico de transações
+                e indicadores macroeconômicos para embasar avaliações com alta precisão.
+              </p>
+            </div>
+          </div>
+
+          <div class="ia-card">
+            <div class="ia-card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
+              </svg>
+            </div>
+            <div class="ia-card-body">
+              <h3>Identificação de riscos jurídicos</h3>
+              <p>
+                Cruzamento inteligente de dados públicos para mapear ônus, ações judiciais,
+                dívidas e restrições que possam comprometer a segurança da operação.
+              </p>
+            </div>
+          </div>
+
+          <div class="ia-card">
+            <div class="ia-card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <div class="ia-card-body">
+              <h3>Geração de laudos estruturados</h3>
+              <p>
+                A plataforma organiza automaticamente todas as informações coletadas e
+                gera documentos técnicos padronizados, prontos para uso judicial ou extrajudicial.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ia-highlight">
+          <div class="ia-highlight-text">
+            <h3>Tecnologia que amplifica a capacidade do perito humano</h3>
+            <p>
+              A inteligência artificial não substitui o olhar técnico especializado — ela o
+              potencializa. Cada análise gerada pelo Perito passa pela revisão e validação do
+              nosso time de especialistas, garantindo precisão e responsabilidade técnica
+              em cada entrega.
+            </p>
+          </div>
+          <div class="ia-highlight-cta">
+            <a href="#contato-perito" class="btn btn-gold">Solicitar avaliação</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVIÇOS ───────────────────────────── -->
+    <section class="section section-light" id="servicos">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">Serviços</span>
+          <h2>Soluções completas em perícia imobiliária</h2>
+          <p>
+            Atendemos desde compra, venda e locação até perícia técnica, regularização documental
+            e apoio estratégico para imóveis em leilão.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <h3>Avaliação Judicial</h3>
+            <p>
+              Produção de análise técnica para processos que envolvem partilha, inventário,
+              revisão de valores, disputas patrimoniais e outros contextos judiciais.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Avaliação Extrajudicial</h3>
+            <p>
+              Apoio técnico para compra, venda, regularização, garantias, planejamento
+              patrimonial e negociações estratégicas.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Vistorias e Constatações</h3>
+            <p>
+              Levantamento técnico das condições do imóvel, com observação de elementos
+              construtivos, conservação e características relevantes.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Parecer Técnico</h3>
+            <p>
+              Documento objetivo e fundamentado para auxiliar decisões com base em
+              análise técnica especializada do perito.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Análise Documental</h3>
+            <p>
+              Verificação de documentos, registros, certidões e informações relevantes
+              para maior segurança em operações imobiliárias.
+            </p>
+          </article>
+          <article class="service-card">
+            <h3>Suporte Consultivo</h3>
+            <p>
+              Orientação técnica para proprietários, investidores, advogados e empresas
+              que precisam de apoio especializado em imóveis.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ETAPAS ─────────────────────────────── -->
+    <section class="section section-gold-soft" id="processo">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-tag">Processo</span>
+          <h2>Como funciona o atendimento</h2>
+          <p>Da demanda inicial à entrega do material, cada etapa é conduzida com rigor técnico e transparência.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <span>1</span>
+            <div>
+              <h3>Entendimento da demanda</h3>
+              <p>Primeiro contato para compreender o objetivo, o imóvel e a necessidade técnica específica do seu caso.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span>2</span>
+            <div>
+              <h3>Análise inicial com IA</h3>
+              <p>A plataforma realiza o levantamento automatizado de dados, documentos e contexto do imóvel antes mesmo da vistoria.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span>3</span>
+            <div>
+              <h3>Vistoria e avaliação presencial</h3>
+              <p>Inspeção do imóvel e desenvolvimento da análise técnica adequada, com suporte dos dados gerados pela IA.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span>4</span>
+            <div>
+              <h3>Entrega do material técnico</h3>
+              <p>Apresentação do laudo, parecer ou relatório com clareza, organização e total fundamentação técnica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA FINAL ──────────────────────────── -->
+    <section class="section cta-section" id="contato-perito">
+      <div class="container cta-box">
+        <div>
+          <span class="section-tag light">Contato</span>
+          <h2>Precisa de apoio técnico em perícia imobiliária?</h2>
+          <p>
+            Entre em contato para apresentar sua demanda e receber um atendimento
+            profissional, estratégico e alinhado à sua necessidade.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="https://wa.me/5541999999999" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
+            Falar no WhatsApp
+          </a>
+          <a href="mailto:contato@daniloempreendimentos.com.br" class="btn btn-outline-white">
+            Enviar e-mail
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER — componente já existente no seu site
+       Mesmo padrão de inclusão do header acima.
+  ============================================== -->
+  <div id="site-footer"></div>
+  <script>
+    fetch('/rodape/footer.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => { document.getElementById('site-footer').innerHTML = html; })
+      .catch(() => { /* footer não encontrado — modo de desenvolvimento */ });
+  </script>
+  <!-- PHP: <?php include $_SERVER['DOCUMENT_ROOT'] . '/components/footer.php'; ?> -->
+
+  <!-- JS da página -->
+  <script src="/styles/js/perito.js"></script>
+
+</body>
+</html>

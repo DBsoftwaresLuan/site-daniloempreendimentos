@@ -1,0 +1,3025 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Lotes à Venda | Danilo Empreendimentos</title>
+  <meta name="description"
+    content="Lotes de terreno à venda com localização privilegiada, infraestrutura completa e condições facilitadas. Danilo Empreendimentos – seu investimento começa aqui." />
+  <meta name="keywords"
+    content="lotes à venda, terrenos, loteamento, comprar lote, investimento imobiliário, Danilo Empreendimentos" />
+  <meta name="author" content="Danilo Empreendimentos" />
+  <link rel="icon" href="https://static.wixstatic.com/media/e9ba97_f317477360304fc2bfa590e76e693c77~mv2.png"
+    type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/CSS/lotes/lote.css">
+  <!-- Pré-carrega a imagem do hero para evitar layout shift e flash de fundo branco -->
+  <link rel="preload" as="image"
+    href="https://static.wixstatic.com/media/690653_0baa779d6eb84bb0ba59c428fb31b6f0~mv2.jpg" fetchpriority="high" />
+</head>
+
+
+<body>
+  <!-- ═══ HEADER (carregado via fetch) ════════════════════════════ -->
+  <div id="header-placeholder"></div>
+
+  <!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+  <header class="hero" role="banner">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">
+        <span class="pulse-dot"></span>
+        Lotes à venda agora
+      </div>
+      <h1 class="reveal reveal-delay-1">
+        Seu terreno ideal em uma <em>localização privilegiada</em>
+      </h1>
+      <p class="hero-lead reveal reveal-delay-2">
+        Seu terreno ideal em uma localização privilegiada
+Lotes com infraestrutura completa, documentação regularizada e condições atrativas para você construir, morar ou desenvolver projetos com alto potencial de valorização
+      </p>
+      <div class="hero-btns reveal reveal-delay-3">
+        <a href="#lotes" class="btn btn-gold">
+          Ver lotes disponíveis
+        </a>
+        <a href="https://wa.me/554191057438?text=Olá! Gostaria de mais informações sobre os lotes."
+          class="btn btn-outline-white" target="_blank" rel="noopener noreferrer">
+          Falar com consultor
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+
+  <!-- ═══ LOTES DISPONÍVEIS ═════════════════════════════════════════ -->
+  <section class="lotes-section" id="lotes" aria-labelledby="lotes-heading">
+    <div class="lotes-header">
+      <div class="lotes-header-left reveal">
+        <span class="section-label">Estoque disponível</span>
+        <h2 class="section-title" id="lotes-heading">
+          Lotes disponíveis<br />para compra
+        </h2>
+        <p class="section-lead">
+          Escolha seu lote ideal. Temos opções para moradia, renda ou
+          investimento.
+        </p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="lotes-counter">
+          <span class="dot"></span>
+          14 lotes disponíveis agora
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-outer">
+      <div class="carousel-track-wrap" id="carouselWrap">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Os cards são gerados dinamicamente pelo LOTES_DATA no script abaixo -->
+        </div>
+      </div>
+
+      <div class="carousel-footer">
+        <div class="carousel-progress-wrap" aria-hidden="true">
+          <div class="carousel-progress-bar" id="carouselProgress"></div>
+        </div>
+        <span class="carousel-page-info" id="carouselPageInfo" aria-live="polite">1 / 5</span>
+        <div class="carousel-arrows">
+          <button class="carousel-btn" id="carouselPrev" aria-label="Lote anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button class="carousel-btn" id="carouselNext" aria-label="Próximo lote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALERIA ════════════════════════════════════════════════════ -->
+  <section class="gallery-section" id="galeria" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Galeria</span>
+        <h2 class="section-title" id="gallery-heading">
+          Conheça o empreendimento
+        </h2>
+        <p class="section-lead">
+          Veja a infraestrutura, os lotes e a região que fazem deste lugar o
+          investimento certo.
+        </p>
+      </div>
+      <div class="gallery-tabs reveal reveal-delay-1">
+        <button class="gallery-tab active" onclick="filterGallery('all', this)">
+          Fotos
+        </button>
+        <button class="gallery-tab" onclick="filterGallery('video', this)">
+          Vídeos
+        </button>
+
+        <!-- Dropdown Lotes -->
+        <div class="gallery-tab-dropdown" id="lotesDropdownWrap">
+          <button class="gallery-tab gallery-tab-dropdown-btn" id="lotesDropdownBtn"
+            onclick="toggleLotesDropdown(event)" aria-haspopup="true" aria-expanded="false">
+            Lotes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"
+              style="margin-left:4px;transition:transform 0.2s;">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="gallery-tab-dropdown-menu" id="lotesDropdownMenu" role="menu">
+            <!-- Os botões são gerados dinamicamente pelo LOTES_DATA no script abaixo -->
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- IMAGEM 0-->
+      <div class="gallery-grid reveal reveal-delay-2" id="galleryGrid">
+
+        <div class="gallery-item gi-1" data-cat="all" data-index="5">
+          <img src="https://static.wixstatic.com/media/690653_fdf5e20eef2946b9b4706db36aca761b~mv2.jpg"
+            alt="Vista da região" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+
+        <!-- IMAGEM 1-->
+
+        <div class="gallery-item gi-2" data-cat="all" data-index="0">
+          <img src="https://static.wixstatic.com/media/690653_19af2d77328a42b5b2ec69bd047872f5~mv2.jpg"
+            alt="Vista geral dos lotes" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+        <!-- IMAGEM 2-->
+        <div class="gallery-item gi-3" data-cat="all" data-index="1">
+          <img src="https://static.wixstatic.com/media/690653_8ee98a7f3fd54d189d2b38cf57682e6b~mv2.jpg"
+            alt="Ruas asfaltadas" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+        <!-- IMAGEM 3-->
+        <div class="gallery-item gi-4" data-cat="all" data-index="2">
+          <img src="https://static.wixstatic.com/media/690653_22ce2249cad74a899028c5135cc92e74~mv2.jpg"
+            alt="Entorno e região" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+        <!-- IMAGEM 4-->
+        <div class="gallery-item gi-5" data-cat="all" data-index="3">
+          <img src="https://static.wixstatic.com/media/690653_893ccc27a1314eba89eb40e1917023cd~mv2.jpg"
+            alt="Lote demarcado" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+        <!-- IMAGEM 6-->
+        <div class="gallery-item gi-7" data-cat="all" data-index="5">
+          <img src="https://static.wixstatic.com/media/443a8d_c3cd12ec2598425482e3d1a4fde5ac0b~mv2.webp"
+            alt="Lote demarcado" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+
+
+        <!-- IMAGEM 7-->
+        <div class="gallery-item gi-8" data-cat="all" data-index="6">
+          <img src="https://static.wixstatic.com/media/443a8d_d55e0cc8bbaa4a528040897c8ad07eb2~mv2.webp"
+            alt="Lote demarcado" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+
+        <!-- IMAGEM 8-->
+        <div class="gallery-item gi-9" data-cat="all" data-index="7">
+          <img src="https://static.wixstatic.com/media/443a8d_1880ba864bce4a738f3d5fd96c073b05~mv2.jpg"
+            alt="Lote demarcado" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </div>
+            <span class="gallery-overlay-label">Ver foto</span>
+          </div>
+        </div>
+
+
+
+        <!-- As imagens de lotes individuais são geradas dinamicamente pelo LOTES_DATA no script abaixo -->
+
+      </div>
+
+      <!-- Seção de Vídeos (oculta por padrão, exibida ao clicar em "Vídeos") -->
+      <div class="video-gallery reveal reveal-delay-2" id="videoGallery" style="display:none">
+        <h3 class="video-gallery-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Vídeos do Empreendimento
+        </h3>
+        <div class="video-grid">
+          <!-- Vídeo 1 - Principal (maior) -->
+          <div class="video-card video-card-featured" data-cat="video">
+            <div class="video-wrapper">
+              <!-- COLOQUE O LINK DO VÍDEO 1 AQUI (YouTube embed) -->
+              <iframe src="https://video.wixstatic.com/video/443a8d_6250af1c9231439cb4a01461200a978e/1080p/mp4/file.mp4"
+                title="Tour pelo empreendimento" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+              <span class="video-tag">Destaque</span>
+              <h4>Tour Completo pelo Empreendimento</h4>
+              <p>Conheça cada detalhe do loteamento em um tour exclusivo.</p>
+            </div>
+          </div>
+
+          <!-- Vídeo 2 -->
+          <div class="video-card" data-cat="video">
+            <div class="video-wrapper">
+              <!-- COLOQUE O LINK DO VÍDEO 2 AQUI (YouTube embed) -->
+              <iframe src="https://video.wixstatic.com/video/443a8d_e7ab42eb7f434e0eac79f5b42d6d9f2f/1080p/mp4/file.mp4"
+                title="Infraestrutura do loteamento" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+              <h4>Infraestrutura Completa</h4>
+              <p>Veja a infraestrutura já instalada.</p>
+            </div>
+          </div>
+
+          <!-- Vídeo 3 -->
+          <div class="video-card" data-cat="video">
+            <div class="video-wrapper">
+              <!-- COLOQUE O LINK DO VÍDEO 3 AQUI (YouTube embed) -->
+              <iframe src="https://video.wixstatic.com/video/443a8d_7a69eb6eacc94aba81d59c9130a7172f/1080p/mp4/file.mp4"
+                title="Localização privilegiada" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+              <h4>Localização Privilegiada</h4>
+              <p>Descubra os arredores do empreendimento.</p>
+            </div>
+          </div>
+
+          <!-- Vídeo 4 -->
+          <div class="video-card" data-cat="video">
+            <div class="video-wrapper">
+              <!-- COLOQUE O LINK DO VÍDEO 4 AQUI (YouTube embed) -->
+              <iframe src="https://video.wixstatic.com/video/443a8d_439cd6a7c02f4f4fa6a8b936a7e4f879/1080p/mp4/file.mp4"
+                title="Depoimentos de clientes" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+              <h4>Lote completo</h4>
+              <p>invista conosco.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-more reveal">
+        <a href="https://wa.me/554191057438?text=Quero ver mais fotos dos lotes!" class="btn btn-dark" target="_blank"
+          rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          Solicitar mais fotos e vídeos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══��� SOBRE O EMPREENDIMENTO ═══════════════════���═════════════════ -->
+  <section class="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="split">
+        <div class="split-img-wrap reveal-left">
+          <img src="https://static.wixstatic.com/media/690653_19af2d77328a42b5b2ec69bd047872f5~mv2.jpg"
+            alt="Vista aérea do loteamento" loading="lazy" />
+          <div class="split-badge">
+            <span>A partir de</span>
+            <strong>R$ 189.000</strong>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <span class="section-label">Sobre o empreendimento</span>
+          <h2 class="section-title" id="about-heading">
+            Um investimento sólido, um futuro construído por você
+          </h2>
+          <p class="section-lead">
+            Nossos lotes foram pensados para quem quer construir com
+            liberdade, segurança jurídica e valorização garantida.
+          </p>
+          <ul class="about-list">
+            <li>
+              <div class="check-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              Lotes com metragens variadas de 1.000m² a 3.000m², para todos os
+              perfis de compradores
+            </li>
+            <li>
+              <div class="check-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              Documentação 100% regularizada junto aos órgãos competentes
+            </li>
+            <li>
+              <div class="check-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              Condições especiais: entrada + parcelas sem juros para os
+              primeiros compradores
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DIFERENCIAIS ══════════════════════════════════════════════ -->
+  <section class="diff-section" id="diferenciais" aria-labelledby="diff-heading">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-label">Por que escolher</span>
+        <h2 class="section-title" id="diff-heading">
+          Detalhes que transformam resultados
+        </h2>
+        <p class="section-lead">
+          De um simples terreno a um investimento estratégico: veja o que
+          torna este empreendimento único.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <article class="diff-card reveal reveal-delay-1">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <h3>Localização Privilegiada</h3>
+          <p>
+            Próximo a escolas, comércio, hospitais e vias de acesso rápido.
+            Uma região em plena expansão e valorização.
+          </p>
+        </article>
+        <article class="diff-card reveal reveal-delay-2">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+          </div>
+          <h3>Alta Liquidez</h3>
+          <p>
+            Oportunidade de alta liquidez no Novo MCMV. Gleba estratégica para projetos na Faixa 3, atendendo famílias com renda até R$ 8 mil. Projetos elegíveis para financiamento de até 80% pela Caixa, garantindo velocidade de vendas, repasse ágil e segurança total para o fluxo de caixa do incorporador.
+
+          </p>
+        </article>
+        <article class="diff-card reveal reveal-delay-3">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3>Segurança Jurídica</h3>
+          <p>
+            Documentação completa, escritura pública e registro em cartório.
+            Seu investimento 100% protegido.
+          </p>
+        </article>
+        <article class="diff-card reveal reveal-delay-1">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+            </svg>
+          </div>
+          <h3>Condições Flexíveis</h3>
+          <p>
+            Parcelamento direto com o proprietário, entrada facilitada e
+            parcelas que cabem no seu bolso.
+          </p>
+        </article>
+        <article class="diff-card reveal reveal-delay-2">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+          </div>
+          <h3>Alta Valorização</h3>
+          <p>
+            Investimento com alta valorização em eixo econômico de grande demanda. Layout planejado para maximizar a densidade habitacional e o VGV, garantindo margens competitivas dentro do teto do programa. Ideal para investidores que buscam escala através de subsídios federais e das taxas de juros reduzidas da Caixa.
+          </p>
+        </article>
+        <article class="diff-card reveal reveal-delay-3">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 00-3-3.87" />
+              <path d="M16 3.13a4 4 0 010 7.75" />
+            </svg>
+          </div>
+          <h3>Atendimento Personalizado</h3>
+          <p>
+            Consultores especializados disponíveis para visitas, dúvidas e
+            todo o processo de compra.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ LOCALIZAÇÃO ════════════════════════════════════════���══════ -->
+  <section class="location-section" id="localizacao" aria-labelledby="loc-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Onde fica</span>
+        <h2 class="section-title" id="loc-heading">
+          Localização estratégica
+        </h2>
+        <p class="section-lead">
+          Bem posicionado, com fácil acesso e cercado pelos serviços que a sua
+          família precisa.
+        </p>
+      </div>
+      <div class="location-grid">
+        <div class="reveal-left">
+          <div class="location-points">
+            <div class="location-point">
+              <div class="location-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <div>
+                <h4>Escolas e Colégios</h4>
+                <p>Diversas instituições a menos de 5 minutos</p>
+              </div>
+            </div>
+            <div class="location-point">
+              <div class="location-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <path d="M16 10a4 4 0 01-8 0" />
+                </svg>
+              </div>
+              <div>
+                <h4>Supermercados e Comércio</h4>
+                <p>Ampla rede de serviços a poucos minutos</p>
+              </div>
+            </div>
+            <div class="location-point">
+              <div class="location-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+              </div>
+              <div>
+                <h4>Hospitais e Clínicas</h4>
+                <p>Rede de saúde completa nas proximidades</p>
+              </div>
+            </div>
+            <div class="location-point">
+              <div class="location-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+              </div>
+              <div>
+                <h4>Vias de Acesso</h4>
+                <p>Acesso rápido às principais avenidas e rodovias</p>
+              </div>
+            </div>
+            <div class="location-point">
+              <div class="location-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <h4>Lazer e Natureza</h4>
+                <p>Parques, praças e áreas verdes nas redondezas</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 24px">
+            <a href="https://maps.app.goo.gl/7sMwFhbXq7rEKkX7A" target="_blank" rel="noopener noreferrer"
+              class="btn btn-dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Ver no Google Maps
+            </a>
+          </div>
+        </div>
+        <div class="map-container reveal-right">
+          <iframe
+            src="https://maps.google.com/maps?q=R.+da+Tul%C3%ADpa,+Colombo,+PR,+83411-680,+Brasil&output=embed&hl=pt-BR"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Localização do empreendimento">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ═══ CTA BAND ══════════════════════════════════════════════════ -->
+  <div class="cta-band">
+    <div class="cta-band-inner">
+      <h2 class="reveal">Pronto para garantir<br />o seu lote?</h2>
+      <p class="reveal reveal-delay-1">
+        Fale agora com um consultor e receba uma proposta personalizada sem
+        compromisso.
+      </p>
+      <div class="cta-btns reveal reveal-delay-2">
+        <a href="https://wa.me/554191057438?text=Quero garantir meu lote!" class="btn btn-gold" target="_blank"
+          rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+          </svg>
+          Falar no WhatsApp agora
+        </a>
+        <a href="#contato" class="btn btn-white">Enviar mensagem</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CONTATO ═══════════��════════════════════════════════════════ -->
+  <section class="contact-section" id="contato" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <span class="section-label">Entre em contato</span>
+          <h2 class="section-title" id="contact-heading">
+            Fale com um consultor agora
+          </h2>
+          <p class="section-lead">
+            Estamos prontos para responder suas dúvidas, agendar visitas e
+            montar a proposta ideal para você.
+          </p>
+          <div class="contact-channels">
+            <a href="https://wa.me/554191057438?text=Olá! Tenho interesse em lotes à venda." class="channel-card"
+              target="_blank" rel="noopener noreferrer">
+              <div class="channel-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+                </svg>
+              </div>
+              <div class="channel-text">
+                <strong>WhatsApp</strong>
+                <span>(41) 9105-7438 — Resposta rápida</span>
+              </div>
+              <span class="channel-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </a>
+            <a href="https://www.instagram.com/daniloempreendimentos_/" class="channel-card" target="_blank"
+              rel="noopener noreferrer">
+              <div class="channel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </div>
+              <div class="channel-text">
+                <strong>Instagram</strong>
+                <span>@daniloempreendimentos_</span>
+              </div>
+              <span class="channel-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </a>
+            <a href="https://www.daniloempreendimentos.com.br/" class="channel-card" target="_blank"
+              rel="noopener noreferrer">
+              <div class="channel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                </svg>
+              </div>
+              <div class="channel-text">
+                <strong>Site oficial</strong>
+                <span>daniloempreendimentos.com.br</span>
+              </div>
+              <span class="channel-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </a>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Seu nome</label>
+                <input type="text" id="nome" name="nome" placeholder="João Silva" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone / WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(41) 9 9999-9999" required
+                  autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="voce@email.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="interesse">Interesse</label>
+              <select id="interesse" name="interesse">
+                <option value="">Selecione uma opção</option>
+                <option value="residencial">Construção residencial</option>
+                <option value="investimento">
+                  Investimento / valorização
+                </option>
+                <option value="comercial">Uso comercial</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem (opcional)</label>
+              <textarea id="mensagem" name="mensagem"
+                placeholder="Conte-nos mais sobre o que você procura..."></textarea>
+            </div>
+            <div class="form-success" id="formSuccess" role="alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              Mensagem enviada! Entraremos em contato em breve.
+            </div>
+            <div class="form-error" id="formError" role="alert" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              Ocorreu um erro. Tente novamente ou entre em contato pelo WhatsApp.
+            </div>
+            <button type="submit" class="form-submit" id="formSubmitBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Enviar mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER (carregado via fetch) ════════════════════════════ -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ══���� LIGHTBOX ══════════════════════════════════════════════════════ -->
+  <!-- ═══ MODAL DE DETALHES DO LOTE ════════════════════════════════════ -->
+  <div id="loteModal" class="lm-backdrop" role="dialog" aria-modal="true" aria-label="Detalhes do lote"
+    style="display:none;">
+    <div class="lm-panel" role="document">
+
+      <!-- Barra superior mobile: só aparece em telas pequenas via CSS -->
+      <div class="lm-mobile-bar" aria-hidden="true">
+        <div class="lm-mobile-drag"></div>
+        <button class="lm-mobile-close-btn" onclick="closeLoteModal()" aria-label="Fechar detalhes do lote">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+          Fechar
+        </button>
+      </div>
+
+      <!-- Fechar (desktop) -->
+      <button class="lm-close" onclick="closeLoteModal()" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Layout split -->
+      <div class="lm-body">
+
+        <!-- COL ESQUERDA: galeria -->
+        <div class="lm-gallery-col">
+          <div class="lm-main-img-wrap">
+            <img id="lmMainImg" src="" alt="" class="lm-main-img lm-main-img-clickable" onclick="lmOpenFullscreen()"
+              title="Clique para ampliar" />
+            <!-- Hint de clique -->
+            <div class="lm-click-hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M16 21h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" />
+              </svg>
+              Ampliar
+            </div>
+            <button class="lm-gal-arrow lm-gal-prev" onclick="lmGalStep(-1)" aria-label="Foto anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button class="lm-gal-arrow lm-gal-next" onclick="lmGalStep(1)" aria-label="Próxima foto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+            <div class="lm-img-counter" id="lmImgCounter">1 / 2</div>
+          </div>
+          <div class="lm-thumbnails" id="lmThumbs"></div>
+        </div>
+
+        <!-- COL DIREITA: infos + contato -->
+        <div class="lm-info-col">
+          <div class="lm-info-scroll">
+
+            <!-- Cabeçalho do lote -->
+            <div class="lm-header">
+              <div class="lm-badge-row">
+                <span class="lm-tag" id="lmTag">Disponível</span>
+                <span class="lm-area" id="lmArea">— m²</span>
+              </div>
+              <h2 class="lm-title" id="lmTitle">Lote</h2>
+              <div class="lm-loc" id="lmLoc">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span id="lmLocText">—</span>
+              </div>
+            </div>
+
+            <!-- Chips de características -->
+            <div class="lm-chips" id="lmChips"></div>
+
+            <!-- Divisor -->
+            <div class="lm-divider"></div>
+
+            <!-- Descrição do lote -->
+            <div class="lm-desc-block" id="lmDescBlock">
+              <div class="lm-desc-text" id="lmDescText"></div>
+              <button class="lm-desc-toggle" id="lmDescToggle" onclick="lmToggleDesc()" aria-expanded="false">
+                <span id="lmDescToggleLabel">Ver descrição completa</span>
+                <svg id="lmDescToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  width="14" height="14">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Divisor -->
+            <div class="lm-divider"></div>
+
+            <!-- Preço -->
+            <div class="lm-price-block">
+              <p class="lm-price-label">Valor</p>
+              <p class="lm-price" id="lmPrice">—</p>
+              <p class="lm-price-cond" id="lmPriceCond"></p>
+            </div>
+
+            <!-- Divisor -->
+            <div class="lm-divider"></div>
+
+            <!-- Botões de contato -->
+            <p class="lm-contact-label">Entre em contato</p>
+            <div class="lm-contact-btns">
+              <a id="lmWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="lm-btn lm-btn-wa">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+                </svg>
+                WhatsApp
+              </a>
+              <a href="tel:+554191057438" class="lm-btn lm-btn-phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                  <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.45-.45a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                Telefone
+              </a>
+              <a id="lmEmailBtn" href="#" class="lm-btn lm-btn-email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                E-mail
+              </a>
+            </div>
+
+            <!-- Divisor -->
+            <div class="lm-divider"></div>
+
+            <!-- Formulário de lead -->
+            <div class="lm-form-block">
+              <p class="lm-form-title">Deixe seus dados e entraremos em contato</p>
+              <form id="lmLeadForm" class="lm-form" onsubmit="submitLmLead(event)" novalidate>
+                <!-- Campo oculto para o Formspree saber de qual lote é o lead -->
+                <input type="hidden" name="_subject" id="lmSubject" value="Novo lead — Lote" />
+                <input type="hidden" name="lote" id="lmLoteField" value="" />
+                <input type="hidden" name="_replyto" value="luan.amorim@dbsoftwares.com.br" />
+
+                <div class="lm-form-row">
+                  <div class="lm-form-group">
+                    <label for="lmNome">Nome *</label>
+                    <input type="text" id="lmNome" name="nome" placeholder="Seu nome completo" required
+                      autocomplete="name" />
+                  </div>
+                  <div class="lm-form-group">
+                    <label for="lmTelefone">WhatsApp *</label>
+                    <input type="tel" id="lmTelefone" name="telefone" placeholder="(41) 9 9999-9999" required
+                      autocomplete="tel" />
+                  </div>
+                </div>
+                <div class="lm-form-group">
+                  <label for="lmEmail">E-mail</label>
+                  <input type="email" id="lmEmail" name="email" placeholder="voce@email.com" autocomplete="email" />
+                </div>
+                <div class="lm-form-group">
+                  <label for="lmMensagem">Mensagem (opcional)</label>
+                  <textarea id="lmMensagem" name="mensagem" placeholder="Conte-nos o que você procura..."></textarea>
+                </div>
+                <div class="lm-form-success" id="lmFormSuccess" role="alert" style="display:none;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  Mensagem enviada! Em breve entraremos em contato.
+                </div>
+                <div class="lm-form-error" id="lmFormError" role="alert" style="display:none;">
+                  Ocorreu um erro. Por favor, tente novamente.
+                </div>
+                <button type="submit" class="lm-form-submit" id="lmSubmitBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                  Enviar mensagem
+                </button>
+              </form>
+            </div>
+
+          </div><!-- /lm-info-scroll -->
+        </div><!-- /lm-info-col -->
+
+      </div><!-- /lm-body -->
+    </div><!-- /lm-panel -->
+  </div><!-- /loteModal -->
+
+  <!-- ═══ LIGHTBOX FULLSCREEN DO MODAL ══════════════════════���═════════════ -->
+  <div id="lmFullscreenLb" class="lmfs-backdrop" role="dialog" aria-modal="true" aria-label="Imagem em tela cheia"
+    style="display:none;">
+    <!-- Botão fechar -->
+    <button class="lmfs-close" onclick="lmCloseFullscreen()" aria-label="Fechar tela cheia">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <!-- Seta esquerda -->
+    <button class="lmfs-arrow lmfs-prev" onclick="lmFsStep(-1)" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <!-- Imagem -->
+    <div class="lmfs-img-wrap" onclick="lmCloseFullscreen()">
+      <img id="lmfsImg" src="" alt="" class="lmfs-img" onclick="event.stopPropagation()" />
+    </div>
+    <!-- Seta direita -->
+    <button class="lmfs-arrow lmfs-next" onclick="lmFsStep(1)" aria-label="Próxima foto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+    <!-- Contador e thumbnails -->
+    <div class="lmfs-footer">
+      <div class="lmfs-counter" id="lmfsCounter">1 / 2</div>
+      <div class="lmfs-dots" id="lmfsDots"></div>
+    </div>
+  </div>
+
+  <!-- ═══ LIGHTBOX DA GALERIA ═══════════════════════════════════════════ -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar foto"
+    style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;flex-direction:column;">
+    <button onclick="closeLightbox()" aria-label="Fechar"
+      style="position:absolute;top:1.25rem;right:1.25rem;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="22" height="22">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <button onclick="changeLb(-1)" aria-label="Anterior"
+      style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;border-radius:50%;width:48px;height:48px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="22" height="22">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <img id="lbImg" src="" alt=""
+      style="max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 8px 48px rgba(0,0,0,.6);" />
+    <span id="lbCounter" style="color:#fff;margin-top:.75rem;font-size:.9rem;opacity:.8;"></span>
+    <button onclick="changeLb(1)" aria-label="Próxima"
+      style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;border-radius:50%;width:48px;height:48px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="22" height="22">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ═══ CARD LIGHTBOX (clique na imagem do card) ══════��═══════════════ -->
+  <div id="cardLightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem do lote"
+    style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.94);align-items:center;justify-content:center;flex-direction:column;gap:0;">
+
+    <!-- Botão fechar -->
+    <button onclick="closeCardLightbox()" aria-label="Fechar" class="clb-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" width="22" height="22">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+
+    <!-- Imagem ampliada -->
+    <div class="clb-img-wrap">
+      <img id="clbImg" src="" alt="" class="clb-img" />
+    </div>
+
+    <!-- Rodapé: label + botão -->
+    <div class="clb-footer">
+      <div class="clb-info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+          style="color:rgba(255,255,255,0.5);flex-shrink:0;">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span id="clbLabel" class="clb-label"></span>
+        <span class="clb-hint">Clique fora para fechar</span>
+      </div>
+      <button id="clbDetailBtn" class="clb-detail-btn" onclick="goToGalleryLote()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        Ver Mais Detalhes
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ── SCROLL REVEAL (otimizado)
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        // Processa em batch usando requestAnimationFrame para não bloquear o scroll
+        requestAnimationFrame(() => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              revealObserver.unobserve(e.target);
+            }
+          });
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
+    );
+
+    // Observa elementos com delay mínimo para não bloquear carregamento
+    requestAnimationFrame(() => {
+      document
+        .querySelectorAll(".reveal, .reveal-left, .reveal-right")
+        .forEach((el) => {
+          revealObserver.observe(el);
+        });
+    });
+
+    // ── COUNT UP (trust bar)
+    function countUp(el, target, suffix = "") {
+      let start = 0;
+      const duration = 1600;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const val = Math.floor(progress * target);
+        el.textContent = val + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(step);
+    }
+    const countObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const el = e.target;
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || "";
+            countUp(el, target, suffix);
+            countObserver.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    document
+      .querySelectorAll(".count-up")
+      .forEach((el) => countObserver.observe(el));
+
+    // ── INFRAESTRUTURA CHECK ANIMATION
+    const infraObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const items = document.querySelectorAll(".infra-item");
+            items.forEach((item, i) => {
+              setTimeout(() => item.classList.add("checked"), i * 120 + 300);
+            });
+            infraObserver.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+    const infraGrid = document.getElementById("infraGrid");
+    if (infraGrid) infraObserver.observe(infraGrid);
+
+    // ── CAROUSEL (inicializado após buildCarousel() gerar os cards)
+    function initCarousel() {
+      const track = document.getElementById("carouselTrack");
+      const wrap = document.getElementById("carouselWrap");
+      const prevBtn = document.getElementById("carouselPrev");
+      const nextBtn = document.getElementById("carouselNext");
+      const pageInfo = document.getElementById("carouselPageInfo");
+      const progressBar = document.getElementById("carouselProgress");
+      const cards = Array.from(track.querySelectorAll(".lote-card"));
+      let current = 0;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartTranslate = 0;
+      let currentTranslate = 0;
+
+      function getVisible() {
+        const w = wrap.offsetWidth;
+        if (w < 520) return 1;
+        if (w < 900) return 2;
+        return 3;
+      }
+
+      function getGap() {
+        const w = wrap.offsetWidth;
+        if (w < 480) return 12;
+        if (w < 768) return 16;
+        return 20;
+      }
+
+      function getCardWidth() {
+        return cards[0].offsetWidth + getGap();
+      }
+
+      function maxIndex() {
+        return Math.max(0, cards.length - getVisible());
+      }
+
+      function goTo(idx) {
+        current = Math.max(0, Math.min(idx, maxIndex()));
+        currentTranslate = -(current * getCardWidth());
+        track.classList.remove("is-dragging");
+        track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIndex();
+        const total = maxIndex() + 1;
+        pageInfo.textContent = `${current + 1} / ${total}`;
+        progressBar.style.width = `${((current + 1) / total) * 100}%`;
+      }
+
+      prevBtn.addEventListener("click", () => goTo(current - 1));
+      nextBtn.addEventListener("click", () => goTo(current + 1));
+
+      // Touch
+      let touchStartX = 0;
+      track.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.touches[0].clientX;
+        },
+        { passive: true },
+      );
+      track.addEventListener("touchend", (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 44) goTo(diff > 0 ? current + 1 : current - 1);
+      });
+
+      // Mouse drag (otimizado)
+      wrap.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartTranslate = currentTranslate;
+        track.classList.add("is-dragging");
+        wrap.style.cursor = "grabbing";
+      });
+      let rafId = null;
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        if (rafId) return;
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          const diff = e.clientX - dragStartX;
+          track.style.transform = `translate3d(${dragStartTranslate + diff}px, 0, 0)`;
+        });
+      }, { passive: true });
+      window.addEventListener("mouseup", (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        track.classList.remove("is-dragging");
+        wrap.style.cursor = "grab";
+        const diff = e.clientX - dragStartX;
+        if (Math.abs(diff) > 50) goTo(diff < 0 ? current + 1 : current - 1);
+        else goTo(current);
+      });
+
+      // Keyboard
+      wrap.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(current - 1);
+        if (e.key === "ArrowRight") goTo(current + 1);
+      });
+
+      let resizeTimer;
+      window.addEventListener(
+        "resize",
+        () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(
+            () => goTo(Math.min(current, maxIndex())),
+            120,
+          );
+        },
+        { passive: true },
+      );
+
+      goTo(0);
+    }
+
+    // ── GALLERY INIT: oculta imagens de lotes individuais no carregamento
+    document.querySelectorAll(".gallery-item").forEach((item) => {
+      if (item.dataset.cat !== "all") item.style.display = "none";
+    });
+
+    // ── GALLERY FILTER
+    function clearAllTabs() {
+      document.querySelectorAll(".gallery-tab").forEach((t) => t.classList.remove("active"));
+      document.querySelectorAll(".gallery-tab-dropdown-item").forEach((t) => t.classList.remove("active"));
+      const btn = document.getElementById("lotesDropdownBtn");
+      if (btn) btn.classList.remove("active");
+      closeLotesDropdown();
+    }
+
+    function filterGallery(cat, btn) {
+      clearAllTabs();
+      btn.classList.add("active");
+
+      const galleryGrid = document.getElementById("galleryGrid");
+      const videoGallery = document.getElementById("videoGallery");
+
+      if (cat === "video") {
+        galleryGrid.style.display = "none";
+        videoGallery.style.display = "block";
+      } else {
+        galleryGrid.style.display = "grid";
+        videoGallery.style.display = "none";
+        document.querySelectorAll(".gallery-item").forEach((item) => {
+          const show = item.dataset.cat === "all";
+          item.style.display = show ? "" : "none";
+        });
+      }
+    }
+
+    function filterGalleryLote(lote, itemBtn) {
+      clearAllTabs();
+      const dropBtn = document.getElementById("lotesDropdownBtn");
+      dropBtn.classList.add("active");
+      itemBtn.classList.add("active");
+
+      // Atualiza label do botão com o lote selecionado
+      const label = itemBtn.textContent.trim();
+      dropBtn.childNodes[0].textContent = label + " ";
+
+      const galleryGrid = document.getElementById("galleryGrid");
+      const videoGallery = document.getElementById("videoGallery");
+      galleryGrid.style.display = "grid";
+      videoGallery.style.display = "none";
+
+      document.querySelectorAll(".gallery-item").forEach((item) => {
+        item.style.display = item.dataset.cat === lote ? "" : "none";
+      });
+
+      closeLotesDropdown();
+    }
+
+    // Move o menu para o <body> ao iniciar (portal pattern), escapando de qualquer transform ancestral
+    (function () {
+      const menu = document.getElementById("lotesDropdownMenu");
+      if (menu) document.body.appendChild(menu);
+    })();
+
+    function positionLotesDropdown() {
+      const menu = document.getElementById("lotesDropdownMenu");
+      const btn = document.getElementById("lotesDropdownBtn");
+      if (!menu || !btn) return;
+      const rect = btn.getBoundingClientRect();
+      menu.style.top = (rect.bottom + window.scrollY + 8) + "px";
+      menu.style.left = (rect.left + window.scrollX) + "px";
+    }
+
+    function toggleLotesDropdown(e) {
+      e.stopPropagation();
+      const menu = document.getElementById("lotesDropdownMenu");
+      const btn = document.getElementById("lotesDropdownBtn");
+      const arrow = btn.querySelector("svg");
+      const isOpen = menu.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen);
+      if (arrow) arrow.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
+      if (isOpen) positionLotesDropdown();
+    }
+
+    function closeLotesDropdown() {
+      const menu = document.getElementById("lotesDropdownMenu");
+      const btn = document.getElementById("lotesDropdownBtn");
+      const arrow = btn ? btn.querySelector("svg") : null;
+      if (menu) menu.classList.remove("open");
+      if (btn) btn.setAttribute("aria-expanded", false);
+      if (arrow) arrow.style.transform = "rotate(0deg)";
+    }
+
+    document.addEventListener("click", (e) => {
+      const wrap = document.getElementById("lotesDropdownWrap");
+      const menu = document.getElementById("lotesDropdownMenu");
+      if (wrap && !wrap.contains(e.target) && menu && !menu.contains(e.target)) closeLotesDropdown();
+    });
+
+    window.addEventListener("scroll", closeLotesDropdown, { passive: true });
+
+    // ── LIGHTBOX
+    let lbIndex = 0;
+
+    function getVisibleItems() {
+      return Array.from(document.querySelectorAll(".gallery-item")).filter(
+        (item) => item.style.display !== "none",
+      );
+    }
+
+    // Registra clique em cada item usando índice relativo aos visíveis
+    document.querySelectorAll(".gallery-item").forEach((item) => {
+      item.setAttribute("tabindex", "0");
+      item.setAttribute("role", "button");
+      item.addEventListener("click", () => {
+        const visibleItems = getVisibleItems();
+        const idx = visibleItems.indexOf(item);
+        if (idx !== -1) openLb(idx);
+      });
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const visibleItems = getVisibleItems();
+          const idx = visibleItems.indexOf(item);
+          if (idx !== -1) openLb(idx);
+        }
+      });
+    });
+
+    function openLb(idx) {
+      lbIndex = idx;
+      updateLb();
+      const lb = document.getElementById("lightbox");
+      lb.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox() {
+      const lb = document.getElementById("lightbox");
+      lb.style.display = "none";
+      document.body.style.overflow = "";
+    }
+    function updateLb() {
+      const items = getVisibleItems();
+      const n = Math.max(0, Math.min(lbIndex, items.length - 1));
+      document.getElementById("lbImg").src =
+        items[n]?.querySelector("img").src || "";
+      document.getElementById("lbImg").alt =
+        items[n]?.querySelector("img").alt || "";
+      document.getElementById("lbCounter").textContent =
+        `${n + 1} / ${items.length}`;
+    }
+    function changeLb(dir) {
+      const items = getVisibleItems();
+      lbIndex = (lbIndex + dir + items.length) % items.length;
+      updateLb();
+    }
+    document.getElementById("lightbox").addEventListener("click", (e) => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (document.getElementById("lightbox").style.display !== "flex") return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") changeLb(-1);
+      if (e.key === "ArrowRight") changeLb(1);
+    });
+
+
+    // ── FAVORITO
+    function toggleFav(btn) {
+      btn.classList.toggle("active");
+      const svg = btn.querySelector("svg");
+      if (svg) svg.style.fill = btn.classList.contains("active") ? "currentColor" : "none";
+    }
+
+    // ── CARD LIGHTBOX (imagem dos cards do carrossel)
+    // Listeners de cards são inicializados em initCardListeners(), chamado após buildCarousel()
+
+    let _clbLote = "";
+
+    function openCardLightbox(imgWrap) {
+      const lote = imgWrap.dataset.lote;
+      _clbLote = lote;
+      openLoteModal(lote);
+    }
+
+    function closeCardLightbox() {
+      document.getElementById("cardLightbox").style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    function goToGalleryLote() {
+      closeCardLightbox();
+      const items = document.querySelectorAll(".gallery-tab-dropdown-item");
+      let matched = null;
+      items.forEach(item => {
+        const fnText = item.getAttribute("onclick") || "";
+        if (fnText.includes("'" + _clbLote + "'")) matched = item;
+      });
+      if (matched) filterGalleryLote(_clbLote, matched);
+      const galeria = document.getElementById("galeria");
+      if (galeria) {
+        setTimeout(() => galeria.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+      }
+    }
+
+    document.getElementById("cardLightbox").addEventListener("click", function (e) {
+      if (e.target === this) closeCardLightbox();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.getElementById("cardLightbox").style.display === "flex") {
+        closeCardLightbox();
+      }
+    });
+
+    // ══════════════════════════════════════════════════════════════════════
+    // ── MODAL DE DETALHES DO LOTE ────────────────────────────────────────
+    // ══════════════════════════════════════════════════════════════════════
+
+    // ══════════════════════════════════════════════════════════════════════
+    // ── FONTE ÚNICA DE DADOS DOS LOTES ───────────────────────────────────
+    // Edite aqui para atualizar cards, galeria e modal ao mesmo tempo.
+    // ══════════════════════════════════════════════════════════════════════
+
+    const LOTES_DATA = {
+      "lote-2b": {
+        label: "Lote-2B", tag: "Disponível", area: "1.900,00 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Esquina", "Frente Norte", "Plano"],
+        price: "R$ 228.064,80", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑B | 1.900,54 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 1.900,54 m² 
+Identificação: Lote 2‑B
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.
+ `,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_4e72a200fa96494cb327ceee9e6674a6~mv2.jpg", alt: "Lote-2B – vista frontal" },
+          { src: "https://static.wixstatic.com/media/690653_c376d67dbf0d4e5a974b4bd9fc88b35a~mv2.jpg", alt: "Lote-2B – lote-2b-3d" },
+          { src: "https://static.wixstatic.com/media/443a8d_7e8ac06e46334920b54f4704f84a67f2~mv2.jpeg", alt: "Lote-2B – entorno" }
+        ]
+      },
+
+      "lote-2c": {
+        label: "Lote-2C", tag: "Disponível", area: "1.931,00 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Leste", "Amplo"],
+        price: "R$ 231.826,80", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑C | 1.931,89 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 1.931,89 m² 
+Identificação: Lote 2‑C
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.
+ `,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_99fcf1574a0c4165904e4f6c45e0b797~mv2.jpg", alt: "Lote-2C – vista frontal" },
+          { src: "https://static.wixstatic.com/media/690653_7d70fb73f73a44f5b46c852e7be4d53c~mv2.jpg", alt: "Lote-2C – 3d" },
+          { src: "https://static.wixstatic.com/media/443a8d_45d5f9226a0645c1ae50de7e41e1e7df~mv2.jpeg", alt: "Lote-2C – infraestrutura" }
+        ]
+      },
+      "lote-2d": {
+        label: "Lote-2D", tag: "Disponível", area: "2.129,00 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Esquina dupla", "Vista panorâmica", "Alto padrão"],
+        price: "R$ 255.478,80", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑D | 2.128,99 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 2.128,99 m² 
+Identificação: Lote 2‑D
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_c1c70a7535e0423188a67baf1112827d~mv2.jpg", alt: "Lote-2D – vista frontal" },
+          { src: "https://static.wixstatic.com/media/690653_80dfc85e4d0d41658eb6c3ab099a5b53~mv2.jpg", alt: "Lote-2D – 3d" },
+          { src: "https://static.wixstatic.com/media/443a8d_0916ca4d5a65464a9b5812dc41709620~mv2.jpeg", alt: "Lote-2D – inf" }
+        ]
+      },
+      "lote-2e": {
+        label: "Lote-2E", tag: "Disponível", area: "3.860,30 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Sul", "Residencial"],
+        price: "R$ 463.236,00", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑E | 3.860,30 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características favoráveis ao desenvolvimento de projetos residenciais padronizados, permitindo excelente aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 3.860,30 m² 
+Identificação: Lote 2‑E
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis, com maior flexibilidade de layout em função da área do lote
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Excelente relação entre área do terreno e potencial construtivo
+Maior flexibilidade para implantação e setorização do empreendimento
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_92af16f23e9e4cc7b4ecb4875606588d~mv2.jpg", alt: "Lote-2E – vista frontal" },
+          { src: "https://static.wixstatic.com/media/690653_99838272308c46f295c494219b283844~mv2.jpg", alt: "Lote-2E – área" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2E – 3d" }
+        ]
+      },
+      "lote-2g": {
+        label: "Lote-2G", tag: "Disponível", area: "2.755,31 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Amplo", "Frente Oeste", "Oportunidade"],
+        price: "R$ 330.637,20", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑G | 2.755,31 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 2.755,31 m² 
+Identificação: Lote 2‑G
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_0f6356c982144f56b16d5c1b1aaa0145~mv2.jpg", alt: "Lote-2G – vista frontal" },
+          { src: "https://static.wixstatic.com/media/690653_6235bb62a5b740a69126c6fa1cbcb629~mv2.jpg", alt: "Lote-2G – demarcação" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2G – 3d" }
+        ]
+      },
+      "lote-2h": {
+        label: "Lote-2H", tag: "Disponível", area: "3.064,18 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Norte", "Residencial"],
+        price: "R$ 367.701,60", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑H | 3.064,18 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo excelente aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 3.064,18 m²
+Identificação: Lote 2‑H
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Excelente relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.
+ `,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_4849b331df82431f909201cfe50eaf2f~mv2.jpg", alt: "Lote-2H – vista frontal" },
+          { src: "https://static.wixstatic.com/media/690653_286c913d8a9b41aa9146012e9b7a6387~mv2.jpg", alt: "Lote-2H – infraestrutura" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2H – 3d" }
+        ]
+      },
+      "lote-2i": {
+        label: "Lote-2I", tag: "Disponível", area: "3.279,19 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Esquina", "Vista panorâmica", "Alto padrão"],
+        price: "R$ 393.502,80", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑I | 3.279,19 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo excelente aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 3.279,19 m² 
+Identificação: Lote 2‑I
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Excelente relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_82f5b17e08014bfaa6e10190d0968925~mv2.jpg", alt: "Lote-2I – vista" },
+          { src: "https://static.wixstatic.com/media/690653_1c3c5e7028ce4e879a827189a1db090e~mv2.jpg", alt: "Lote-2I – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2I – 3d" }
+        ]
+      },
+      "lote-2k": {
+        label: "Lote-2K", tag: "Disponível", area: "3.649,79 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Leste", "Arborizado"],
+        price: "R$ 437.974,80", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑K | 3.649,79 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo excelente aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 3.649,79 m²
+Identificação: Lote 2‑K
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Excelente relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_40a5fddf1a8a4af2bfe3138c29acd4fd~mv2.jpg", alt: "Lote-2K – vista" },
+          { src: "https://static.wixstatic.com/media/690653_2f677f0d222841ac988572fa8b3f902a~mv2.jpg", alt: "Lote-2K – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2K – 3d" }
+        ]
+      },
+      "lote-2l": {
+        label: "Lote-2L", tag: "Disponível", area: "2.907,25 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Amplo", "Frente Sul", "Financiado"],
+        price: "R$ 348.870,00", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑L | 2.907,25 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo excelente aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 2.907,25 m²
+Identificação: Lote 2‑L
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Excelente relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.
+ `,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_12354af6517b4f48b0067394e7eae55e~mv2.jpg", alt: "Lote-2L – vista" },
+          { src: "https://static.wixstatic.com/media/690653_0eba42481a6547c294ba51f4062fbfc0~mv2.jpg", alt: "Lote-2L – entorno" },
+          { src: "https://static.wixstatic.com/media/690653_28a22b7e5c2f4832bc0c8965cd677fd3~mv2.jpg", alt: "Lote-2L – entorno 3d" }
+        ]
+      },
+      "lote-2n": {
+        label: "Lote-2N", tag: "Disponível", area: "2.828,00 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Esquina dupla", "Amplo", "Alto padrão"],
+        price: "R$ 339.360,00", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑N | 2.828,00 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 2.828,00 m²
+Identificação: Lote 2‑N
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_696e19fa4a804c2abc089019135ef9cd~mv2.jpg", alt: "Lote-2N – vista" },
+          { src: "https://static.wixstatic.com/media/690653_4b490cc326c24284a19a5088fe305283~mv2.jpg", alt: "Lote-2N – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2N – 3d" }
+        ]
+      },
+      "lote-2o": {
+        label: "Lote-2O", tag: "Disponível", area: "1.938,52 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Norte", "Comercial"],
+        price: "R$ 232.622,40", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑O | 1.938,52 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 1.938,52 m² 
+Identificação: Lote 2‑O
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_696e19fa4a804c2abc089019135ef9cd~mv2.jpg", alt: "Lote-2O – vista" },
+          { src: "https://static.wixstatic.com/media/690653_663bae6a92cf4b67b9b37684957c4ad6~mv2.jpg", alt: "Lote-2O – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2O – 3d" }
+        ]
+      },
+      "lote-2p": {
+        label: "Lote-2P", tag: "Disponível", area: "1.785,15 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Sul", "Residencial"],
+        price: "R$ 214.218,00", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑P | 1.785,15 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 1.785,15 m² 
+Identificação: Lote 2‑P
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_73082c7e3adf41b29d8e003ff5535871~mv2.jpg", alt: "Lote-2P – vista" },
+          { src: "https://static.wixstatic.com/media/690653_591cf447609e4f21b13069d65ff40eed~mv2.jpg", alt: "Lote-2P – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2P – 3d" }
+        ]
+      },
+      "lote-2q": {
+        label: "Lote-2Q", tag: "Disponível", area: "1.631,04 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Esquina", "Frente Oeste", "Oportunidade"],
+        price: "R$ 195.724,80", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑Q | 1.631,04 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 1.631,04 m²
+Identificação: Lote 2‑Q
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantly residential
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.
+ 
+
+ 
+
+ `,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_f40eb1bfa38b4bb8b9045c87cd1d80a6~mv2.jpg", alt: "Lote-2Q – vista" },
+          { src: "https://static.wixstatic.com/media/690653_b048979db07147e59291b5b291dfa405~mv2.jpg", alt: "Lote-2Q – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2Q – 3d" }
+        ]
+      },
+      "lote-2r": {
+        label: "Lote-2R", tag: "Disponível", area: "1.662,23 m²",
+        loc: "Colombo - Paraná",
+        chips: ["Plano", "Frente Leste", "Residencial"],
+        price: "R$ 199.467,60", priceCond: "Negociação facilitada",
+        desc: `Lote 2‑R | 1.662,23 m²
+
+Lote com potencial construtivo para desenvolvimento residencial, viável para implantação de condomínio de casas, localizado em região com demanda habitacional consolidada no município de Colombo/PR.
+
+A área apresenta dimensões, formato e características adequadas ao desenvolvimento de projetos residenciais padronizados, permitindo bom aproveitamento do terreno, racionalização construtiva e viabilidade econômica do empreendimento.
+
+ 
+
+📐 Características do Lote
+
+Área total: 1.662,23 m² (conforme matrícula nº 69.728)
+Identificação: Lote 2‑R
+Formato: regular
+Topografia: favorável ao aproveitamento construtivo
+Uso indicado: residencial
+Configuração urbanística: compatível com condomínio de casas
+ 
+
+🏘️ Potencial de Desenvolvimento
+
+Indicado para condomínio horizontal de casas
+Possibilidade de implantação de conjunto de unidades residenciais padronizadas*
+Adequado para casas térreas ou sobrados, conforme o projeto arquitetônico
+Projeto compatível com soluções construtivas racionais e escaláveis
+* Estimativa de unidades sujeita à aprovação do projeto junto aos órgãos competentes e à legislação urbanística aplicável.
+
+ 
+
+📍 Localização
+
+Município de Colombo/PR
+Região urbana em desenvolvimento contínuo
+Entorno predominantemente residencial
+Acesso facilitado às principais vias do município
+ 
+
+✅ Diferenciais
+
+Área adequada para desenvolvimento residencial estruturado
+Boa relação entre área do terreno e potencial construtivo
+Possibilidade de redução de custo por unidade em projetos padronizados
+Flexibilidade para concepção arquitetônica conforme legislação local
+ 
+
+📞 Informações e Viabilidade
+
+Entre em contato para:
+
+valores e condições comerciais;
+parâmetros urbanísticos aplicáveis ao lote;
+estudo de viabilidade construtiva;
+análise de aproveitamento conforme o tipo de empreendimento pretendido.`,
+        images: [
+          { src: "https://static.wixstatic.com/media/690653_cfb7d4c607a34d0d88683919f57ffe74~mv2.jpg", alt: "Lote-2R – vista" },
+          { src: "https://static.wixstatic.com/media/690653_6df6f0c68f964ed882b3070347613b15~mv2.jpg", alt: "Lote-2R – entorno" },
+          { src: "https://static.wixstatic.com/media/443a8d_4a83320dd50e48b8a14577eb5a1e354d~mv2.jpeg", alt: "Lote-2R – demarcação" }
+        ]
+      }
+    };
+
+    // ── SVGs reutilizados ──────────────────────────────────────────────
+    const SVG_HEART = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`;
+    const SVG_PIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const SVG_WA = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"/></svg>`;
+    const SVG_EXPAND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>`;
+
+    // ── Gera os cards do carrossel ─────────────────────────────────────
+    (function buildCarousel() {
+      const track = document.getElementById("carouselTrack");
+      Object.entries(LOTES_DATA).forEach(([key, d]) => {
+        const tagClass = d.tag === "Premium" ? "lote-tag premium"
+          : d.tag === "Última unidade" ? "lote-tag last"
+            : "lote-tag";
+        // TODO: chips temporariamente desativados até que as informações reais sejam definidas
+        const chips = ""; // d.chips.map(c => `<span class="lote-chip">${c}</span>`).join("");
+        const waMsg = encodeURIComponent(`Tenho interesse no ${d.label}!`);
+        track.insertAdjacentHTML("beforeend", `
+          <article class="lote-card">
+            <div class="lote-img lote-img-clickable" data-lote="${key}" data-lote-label="${d.label}" onclick="openCardLightbox(this)">
+              <img src="${d.images[0].src}" alt="${d.label}" loading="lazy" />
+              <div class="lote-img-overlay"></div>
+              <span class="${tagClass}">${d.tag}</span>
+              <button class="lote-fav" aria-label="Salvar lote nos favoritos" onclick="toggleFav(this)">${SVG_HEART}</button>
+              <span class="lote-area-badge">${d.area}</span>
+            </div>
+            <div class="lote-body">
+              <h3>${d.label}</h3>
+              <div class="lote-loc">${SVG_PIN} ${d.loc}</div>
+              <div class="lote-chips">${chips}</div>
+              <div class="lote-price-row">
+                <div class="lote-price">${d.price}<small>${d.priceCond}</small></div>
+                <div class="lote-cta-btns">
+                  <a href="https://wa.me/554191057438?text=${waMsg}" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
+                    ${SVG_WA} Falar no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>`);
+      });
+    })();
+
+    // ── Gera os botões do dropdown da galeria ──────────────────────────
+    (function buildGalleryDropdown() {
+      const menu = document.getElementById("lotesDropdownMenu");
+      Object.entries(LOTES_DATA).forEach(([key, d]) => {
+        const btn = document.createElement("button");
+        btn.className = "gallery-tab-dropdown-item";
+        btn.setAttribute("role", "menuitem");
+        btn.textContent = d.label;
+        btn.addEventListener("click", function () { filterGalleryLote(key, this); });
+        menu.appendChild(btn);
+      });
+    })();
+
+    // ── Gera as imagens da galeria por lote ───────────────────────────
+    (function buildGalleryItems() {
+      const grid = document.getElementById("galleryGrid");
+      const giClasses = ["gi-1", "gi-2", "gi-3", "gi-4", "gi-5", "gi-6"];
+      Object.entries(LOTES_DATA).forEach(([key, d]) => {
+        d.images.forEach((img, i) => {
+          const giClass = giClasses[i % giClasses.length];
+          grid.insertAdjacentHTML("beforeend", `
+            <div class="gallery-item ${giClass}" data-cat="${key}" style="display:none;">
+              <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+              <div class="gallery-overlay">
+                <div class="gallery-overlay-icon">${SVG_EXPAND}</div>
+                <span class="gallery-overlay-label">Ver foto</span>
+              </div>
+            </div>`);
+        });
+      });
+    })();
+
+    // Inicia o carrossel agora que os cards foram gerados
+    initCarousel();
+
+    // Inicializa listeners que dependem dos cards gerados dinamicamente
+    (function initCardListeners() {
+      // Hint de zoom em cada card
+      document.querySelectorAll(".lote-img-clickable").forEach(wrap => {
+        const hint = document.createElement("span");
+        hint.className = "lote-zoom-hint";
+        hint.textContent = "Ver detalhes";
+        wrap.appendChild(hint);
+      });
+      // Favorito: impede propagação
+      document.querySelectorAll(".lote-fav").forEach(btn => {
+        btn.addEventListener("click", e => e.stopPropagation());
+      });
+      // Card inteiro clicável para modal
+      document.querySelectorAll(".lote-card").forEach(card => {
+        card.style.cursor = "pointer";
+        card.addEventListener("click", function (e) {
+          if (
+            e.target.closest("a") ||
+            e.target.closest(".lote-fav") ||
+            e.target.closest(".btn-card-form") ||
+            e.target.closest(".card-lead-form-wrap")
+          ) return;
+          const imgWrap = card.querySelector(".lote-img-clickable");
+          if (imgWrap) openLoteModal(imgWrap.dataset.lote);
+        });
+      });
+    })();
+
+    let _lmGalIdx = 0;
+    let _lmImages = [];
+    let _lmCurrentLote = "";
+
+    function openLoteModal(loteKey) {
+      const data = LOTES_DATA[loteKey];
+      if (!data) return;
+
+      _lmCurrentLote = loteKey;
+      _lmImages = data.images;
+      _lmGalIdx = 0;
+
+      // Preencher infos
+      const tagEl = document.getElementById("lmTag");
+      tagEl.textContent = data.tag;
+      tagEl.className = "lm-tag";
+      if (data.tag === "Premium") tagEl.classList.add("lm-tag-premium");
+      if (data.tag === "Última unidade") tagEl.classList.add("lm-tag-last");
+
+      document.getElementById("lmArea").textContent = data.area;
+      document.getElementById("lmTitle").textContent = data.label;
+      document.getElementById("lmLocText").textContent = data.loc;
+      document.getElementById("lmPrice").textContent = data.price;
+      document.getElementById("lmPriceCond").textContent = data.priceCond;
+
+      // TODO: chips temporariamente desativados até que as informações reais sejam definidas
+      const chipsEl = document.getElementById("lmChips");
+      chipsEl.innerHTML = ""; // data.chips.map(c => `<span class="lm-chip">${c}</span>`).join("");
+
+      // Descrição — dividida em sentenças, mostra só as 3 primeiras colapsada
+      const desc = data.desc || "";
+      const sentences = desc.match(/[^.!?]+[.!?]+/g) || [desc];
+      const previewCount = 3;
+      const previewText = sentences.slice(0, previewCount).join(" ").trim();
+      const restText = sentences.slice(previewCount).join(" ").trim();
+      const descEl = document.getElementById("lmDescText");
+      descEl.innerHTML = `<span class="lm-desc-preview">${previewText}</span>${restText ? `<span class="lm-desc-rest" style="display:none;"> ${restText}</span>` : ""}`;
+      // Reset toggle
+      const toggle = document.getElementById("lmDescToggle");
+      const toggleLabel = document.getElementById("lmDescToggleLabel");
+      const toggleIcon = document.getElementById("lmDescToggleIcon");
+      const descBlock = document.getElementById("lmDescBlock");
+      toggle.setAttribute("aria-expanded", "false");
+      toggleLabel.textContent = "Ver descrição completa";
+      toggleIcon.style.transform = "rotate(0deg)";
+      descBlock.style.display = restText ? "" : "none";
+
+      // Botões de contato
+      const waTxt = encodeURIComponent(`Tenho interesse no ${data.label}!`);
+      document.getElementById("lmWaBtn").href = `https://wa.me/554191057438?text=${waTxt}`;
+      const emailSubj = encodeURIComponent(`Interesse no ${data.label} — Danilo Empreendimentos`);
+      document.getElementById("lmEmailBtn").href = `mailto:daniloempreendimentos@gmail.com?subject=${emailSubj}`;
+
+      // Formulário
+      document.getElementById("lmSubject").value = `Novo lead — ${data.label}`;
+      document.getElementById("lmLoteField").value = data.label;
+      document.getElementById("lmLeadForm").reset();
+      document.getElementById("lmFormSuccess").style.display = "none";
+      document.getElementById("lmFormError").style.display = "none";
+      document.getElementById("lmSubmitBtn").disabled = false;
+      document.getElementById("lmSubmitBtn").textContent = "";
+      document.getElementById("lmSubmitBtn").innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar mensagem';
+
+      // Galeria
+      lmRenderGallery();
+
+      // Abre modal
+      const modal = document.getElementById("loteModal");
+      modal.style.display = "flex";
+      requestAnimationFrame(() => modal.classList.add("lm-open"));
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLoteModal() {
+      const modal = document.getElementById("loteModal");
+      modal.classList.remove("lm-open");
+      setTimeout(() => { modal.style.display = "none"; }, 300);
+      document.body.style.overflow = "";
+    }
+
+    function lmToggleDesc() {
+      const rest = document.querySelector(".lm-desc-rest");
+      const toggle = document.getElementById("lmDescToggle");
+      const label = document.getElementById("lmDescToggleLabel");
+      const icon = document.getElementById("lmDescToggleIcon");
+      if (!rest) return;
+      const isOpen = rest.style.display !== "none";
+      if (isOpen) {
+        rest.style.display = "none";
+        toggle.setAttribute("aria-expanded", "false");
+        label.textContent = "Ver descrição completa";
+        icon.style.transform = "rotate(0deg)";
+      } else {
+        rest.style.display = "inline";
+        toggle.setAttribute("aria-expanded", "true");
+        label.textContent = "Recolher descrição";
+        icon.style.transform = "rotate(180deg)";
+      }
+    }
+
+    function lmRenderGallery() {
+      const mainImg = document.getElementById("lmMainImg");
+      const counter = document.getElementById("lmImgCounter");
+      const thumbsEl = document.getElementById("lmThumbs");
+
+      mainImg.src = _lmImages[_lmGalIdx].src;
+      mainImg.alt = _lmImages[_lmGalIdx].alt;
+      counter.textContent = `${_lmGalIdx + 1} / ${_lmImages.length}`;
+
+      // Setas
+      document.querySelector(".lm-gal-prev").style.display = _lmImages.length > 1 ? "flex" : "none";
+      document.querySelector(".lm-gal-next").style.display = _lmImages.length > 1 ? "flex" : "none";
+
+      // Thumbnails
+      thumbsEl.innerHTML = _lmImages.map((img, i) =>
+        `<button class="lm-thumb ${i === _lmGalIdx ? "lm-thumb-active" : ""}" onclick="lmGalGoTo(${i})" aria-label="Ver foto ${i + 1}">
+          <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+        </button>`
+      ).join("");
+    }
+
+    function lmGalStep(dir) {
+      _lmGalIdx = (_lmGalIdx + dir + _lmImages.length) % _lmImages.length;
+      lmRenderGallery();
+    }
+
+    function lmGalGoTo(idx) {
+      _lmGalIdx = idx;
+      lmRenderGallery();
+    }
+
+    // Fechar ao clicar no backdrop
+    document.getElementById("loteModal").addEventListener("click", function (e) {
+      if (e.target === this) closeLoteModal();
+    });
+
+    // ── FULLSCREEN LIGHTBOX DO MODAL ────────────────────────────────────
+    let _lmFsIdx = 0;
+
+    function lmOpenFullscreen() {
+      _lmFsIdx = _lmGalIdx;
+      const lb = document.getElementById("lmFullscreenLb");
+      lb.style.display = "flex";
+      requestAnimationFrame(() => lb.classList.add("lmfs-open"));
+      lmFsRender();
+      // scroll já está travado pelo modal pai
+    }
+
+    function lmCloseFullscreen() {
+      const lb = document.getElementById("lmFullscreenLb");
+      lb.classList.remove("lmfs-open");
+      setTimeout(() => { lb.style.display = "none"; }, 280);
+    }
+
+    function lmFsRender() {
+      const img = document.getElementById("lmfsImg");
+      const counter = document.getElementById("lmfsCounter");
+      const dotsEl = document.getElementById("lmfsDots");
+
+      img.src = _lmImages[_lmFsIdx].src;
+      img.alt = _lmImages[_lmFsIdx].alt;
+      counter.textContent = `${_lmFsIdx + 1} / ${_lmImages.length}`;
+
+      // Dots de navegação
+      dotsEl.innerHTML = _lmImages.map((_, i) =>
+        `<button class="lmfs-dot ${i === _lmFsIdx ? 'lmfs-dot-active' : ''}"
+          onclick="lmFsGoTo(${i})" aria-label="Foto ${i + 1}"></button>`
+      ).join("");
+
+      // Setas visíveis apenas com mais de 1 imagem
+      const showArrows = _lmImages.length > 1;
+      document.querySelector(".lmfs-prev").style.display = showArrows ? "flex" : "none";
+      document.querySelector(".lmfs-next").style.display = showArrows ? "flex" : "none";
+    }
+
+    function lmFsStep(dir) {
+      _lmFsIdx = (_lmFsIdx + dir + _lmImages.length) % _lmImages.length;
+      lmFsRender();
+    }
+
+    function lmFsGoTo(idx) {
+      _lmFsIdx = idx;
+      lmFsRender();
+    }
+
+    // Fechar com ESC — verifica fullscreen primeiro, depois modal
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        const fs = document.getElementById("lmFullscreenLb");
+        if (fs && fs.classList.contains("lmfs-open")) {
+          lmCloseFullscreen();
+        } else if (document.getElementById("loteModal").classList.contains("lm-open")) {
+          closeLoteModal();
+        }
+      }
+      // Setas de teclado no fullscreen
+      if (document.getElementById("lmFullscreenLb").classList.contains("lmfs-open")) {
+        if (e.key === "ArrowLeft") lmFsStep(-1);
+        if (e.key === "ArrowRight") lmFsStep(1);
+      }
+    });
+
+    // Envio do formulário via Formspree
+    async function submitLmLead(e) {
+      e.preventDefault();
+      const nome = document.getElementById("lmNome").value.trim();
+      const telefone = document.getElementById("lmTelefone").value.trim();
+      if (!nome || !telefone) return;
+
+      const submitBtn = document.getElementById("lmSubmitBtn");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="animation:lm-spin .8s linear infinite"><path d="M12 2a10 10 0 0110 10"/></svg> Enviando...';
+
+      const form = document.getElementById("lmLeadForm");
+      const data = new FormData(form);
+
+      try {
+        /* ATENÇÃO: substitua "SEU_ID_FORMSPREE" pelo ID gerado em formspree.io após criar o formulário para luan.amorim@dbsoftwares.com.br */
+        const res = await fetch("https://formspree.io/f/mzdoekyk", {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          document.getElementById("lmFormSuccess").style.display = "flex";
+          document.getElementById("lmFormError").style.display = "none";
+          form.reset();
+          submitBtn.style.display = "none";
+        } else {
+          throw new Error("Erro no envio");
+        }
+      } catch (err) {
+        document.getElementById("lmFormError").style.display = "flex";
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar mensagem';
+      }
+    }
+
+    // ── FORM SUBMIT
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      if (!nome || !telefone) return;
+
+      const submitBtn = document.getElementById("formSubmitBtn");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="animation:lm-spin .8s linear infinite"><path d="M12 2a10 10 0 0110 10"/></svg> Enviando...';
+
+      const form = document.getElementById("contactForm");
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch("https://formspree.io/f/mzdoekyk", {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          document.getElementById("formSuccess").classList.add("show");
+          document.getElementById("formError").style.display = "none";
+          form.reset();
+          submitBtn.style.display = "none";
+        } else {
+          throw new Error("Erro no envio");
+        }
+      } catch (err) {
+        document.getElementById("formError").style.display = "flex";
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar mensagem';
+      }
+    }
+
+    // ── FORM LIVE VALIDATION
+    ["nome", "telefone"].forEach((id) => {
+      const el = document.getElementById(id);
+      el.addEventListener("blur", () => {
+        if (el.value.trim().length > 1) el.classList.add("valid");
+        else el.classList.add("error");
+      });
+      el.addEventListener("input", () => {
+        el.classList.remove("error");
+        if (el.value.trim().length > 1) el.classList.add("valid");
+        else el.classList.remove("valid");
+      });
+    });
+  </script>
+
+  <!-- ═══ BOTÕES DE CAPTAÇÃO NOS CARDS ═══════════════════════════════ -->
+  <script>
+    // Injeta botão de email e formulário colapsável em todos os lote-cards
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".lote-card").forEach(function (card) {
+        // Pega o nome do lote a partir do h3
+        const loteLabel = card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "Lote";
+
+        // Adiciona botão de e-mail ao lado do WhatsApp
+        const ctaBtns = card.querySelector(".lote-cta-btns");
+        if (ctaBtns) {
+          const emailSubj = encodeURIComponent("Interesse no " + loteLabel + " \u2014 Danilo Empreendimentos");
+          const emailBtn = document.createElement("a");
+          emailBtn.href = "mailto:daniloempreendimentos@gmail.com?subject=" + emailSubj;
+          emailBtn.className = "btn btn-outline-dark";
+          emailBtn.title = "Enviar e-mail";
+          emailBtn.setAttribute("aria-label", "Enviar e-mail sobre " + loteLabel);
+          emailBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> E-mail';
+          ctaBtns.appendChild(emailBtn);
+
+          // Botão "Deixe seus dados"
+          const formToggleBtn = document.createElement("button");
+          formToggleBtn.type = "button";
+          formToggleBtn.className = "btn btn-card-form";
+          formToggleBtn.setAttribute("aria-expanded", "false");
+          formToggleBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Receber contato';
+          ctaBtns.appendChild(formToggleBtn);
+
+          // Cria o formulário colapsável
+          const formWrap = document.createElement("div");
+          formWrap.className = "card-lead-form-wrap";
+          const formId = "cardForm_" + loteLabel.replace(/[^a-zA-Z0-9]/g, "");
+          formWrap.innerHTML =
+            '<div class="card-lead-form">' +
+            '<p class="card-lead-form-title">Receba mais informa\u00e7\u00f5es</p>' +
+            '<div class="card-form-row">' +
+            '<div class="card-field"><input type="text" placeholder="Seu nome" class="cf-nome" required /></div>' +
+            '<div class="card-field"><input type="tel" placeholder="WhatsApp" class="cf-tel" required /></div>' +
+            '</div>' +
+            '<div class="card-field"><input type="email" placeholder="E-mail (opcional)" class="cf-email" /></div>' +
+            '<button type="button" class="btn btn-gold card-submit-btn">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>' +
+            ' Enviar dados' +
+            '</button>' +
+            '<div class="card-form-success">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>' +
+            ' Dados enviados! Entraremos em contato em breve.' +
+            '</div>' +
+            '</div>';
+
+          // Insere o formulário após o .lote-body
+          const loteBody = card.querySelector(".lote-body");
+          if (loteBody) {
+            loteBody.appendChild(formWrap);
+          }
+
+          // Toggle do formulário
+          formToggleBtn.addEventListener("click", function () {
+            const isOpen = formWrap.classList.toggle("open");
+            formToggleBtn.classList.toggle("active", isOpen);
+            formToggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+
+          // Envio do formulário via Formspree
+          const submitBtn = formWrap.querySelector(".card-submit-btn");
+          const successEl = formWrap.querySelector(".card-form-success");
+          submitBtn.addEventListener("click", async function () {
+            const nomeEl = formWrap.querySelector(".cf-nome");
+            const telEl = formWrap.querySelector(".cf-tel");
+            const emailEl = formWrap.querySelector(".cf-email");
+            const nome = nomeEl.value.trim();
+            const tel = telEl.value.trim();
+            if (!nome || !tel) {
+              nomeEl.style.borderColor = nome ? "" : "#ef4444";
+              telEl.style.borderColor = tel ? "" : "#ef4444";
+              return;
+            }
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="animation:lm-spin .8s linear infinite"><path d="M12 2a10 10 0 0110 10"/></svg> Enviando...';
+            const formData = new FormData();
+            formData.append("nome", nome);
+            formData.append("telefone", tel);
+            formData.append("email", emailEl.value.trim());
+            formData.append("lote", loteLabel);
+            formData.append("_subject", "Novo lead \u2014 " + loteLabel);
+            try {
+              const res = await fetch("https://formspree.io/f/mzdoekyk", {
+                method: "POST",
+                body: formData,
+                headers: { Accept: "application/json" }
+              });
+              if (res.ok) {
+                submitBtn.style.display = "none";
+                successEl.classList.add("show");
+              } else {
+                throw new Error();
+              }
+            } catch (e) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar dados';
+              alert("Erro ao enviar. Tente novamente.");
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+  <!-- ═══ CARREGAMENTO DO HEADER E FOOTER ═══════════════════════════ -->
+  <script>
+    async function loadPartial(url, placeholderId) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Falha ao carregar " + url);
+        const html = await res.text();
+        const placeholder = document.getElementById(placeholderId);
+
+        // Usa innerHTML num wrapper temporário para preservar o elemento pai
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = html;
+
+        // Move todos os nós filhos para antes do placeholder
+        while (wrapper.firstChild) {
+          placeholder.parentNode.insertBefore(wrapper.firstChild, placeholder);
+        }
+        placeholder.remove();
+
+        // Re-executa os scripts inseridos dinamicamente
+        document.querySelectorAll(
+          "script[data-partial='" + placeholderId + "']"
+        ).forEach((s) => {
+          const newScript = document.createElement("script");
+          newScript.textContent = s.textContent;
+          document.body.appendChild(newScript);
+        });
+      } catch (e) {
+        console.warn("Partial load error:", e);
+      }
+    }
+
+    // Carrega header — depois de inserido, inicializa o scroll e o menu
+    loadPartial("/components/header/header-lote.html", "header-placeholder").then(() => {
+      const navbar = document.getElementById("navbar");
+
+      // Scroll: fundo branco ao rolar (otimizado com throttle)
+      if (navbar) {
+        let scrollTicking = false;
+        let scrollTimeout;
+        window.addEventListener("scroll", () => {
+          if (!scrollTicking) {
+            scrollTicking = true;
+            // Adiciona classe durante scroll para desativar smooth behavior
+            document.documentElement.classList.add("is-scrolling");
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              document.documentElement.classList.remove("is-scrolling");
+            }, 150);
+
+            requestAnimationFrame(() => {
+              navbar.classList.toggle("scrolled", window.scrollY > 20);
+              scrollTicking = false;
+            });
+          }
+        }, { passive: true });
+
+        // Aplica imediatamente caso a página já esteja rolada
+        if (window.scrollY > 20) navbar.classList.add("scrolled");
+      }
+
+      // Menu lateral (hamburger)
+      const hamburger = document.getElementById("hamburger");
+      if (hamburger) {
+        hamburger.addEventListener("click", toggleMenu);
+      }
+
+      // Highlight de seção ativa ao rolar
+      const sections = document.querySelectorAll("section[id], header[id]");
+      const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+      if (sections.length && navLinks.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              navLinks.forEach(link => {
+                link.classList.remove("nav-link-active");
+                if (link.getAttribute("href") === "#" + entry.target.id) {
+                  link.classList.add("nav-link-active");
+                }
+              });
+            }
+          });
+        }, { rootMargin: "-50% 0px -50% 0px" });
+        sections.forEach(s => observer.observe(s));
+      }
+    });
+
+    function toggleMenu() {
+      const btn = document.getElementById("hamburger");
+      const menu = document.getElementById("sideMenu");
+      const overlay = document.getElementById("menuOverlay");
+      if (!btn || !menu || !overlay) return;
+      const isOpen = menu.classList.toggle("active");
+      overlay.classList.toggle("active", isOpen);
+      btn.classList.toggle("active", isOpen);
+      // Congela / libera o scroll da página enquanto menu estiver aberto
+      // Só libera se o modal do lote também não estiver aberto
+      const loteModalOpen = document.getElementById("loteModal") &&
+        document.getElementById("loteModal").classList.contains("lm-open");
+      if (isOpen) {
+        // Guarda a posição atual para restaurar depois (evita pulo no iOS)
+        document.body.dataset.scrollY = window.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.top = "-" + window.scrollY + "px";
+        document.body.style.left = "0";
+        document.body.style.right = "0";
+        document.body.style.overflow = "hidden";
+      } else if (!loteModalOpen) {
+        // Restaura posição de scroll
+        const scrollY = parseInt(document.body.dataset.scrollY || "0");
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, scrollY);
+      }
+      btn.setAttribute("aria-expanded", isOpen);
+      menu.setAttribute("aria-hidden", !isOpen);
+    }
+
+    // Carrega footer em paralelo
+    loadPartial("/components/footer/footer.html", "footer-placeholder");
+  </script>
+
+
+   <script>
+    // ═══ COMPORTAMENTOS GERAIS DE SCROLL E MENU (APLICADOS APÓS CARREGAR O HEADER) ═════════
+    // Scroll shadow
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Side menu toggle
+    function toggleSideMenu() {
+      const menu = document.getElementById('sideMenuImoveis');
+      const overlay = document.getElementById('sideOverlayImoveis');
+      const hamburger = document.getElementById('hamburger');
+      const isOpen = menu.classList.toggle('active');
+      overlay.classList.toggle('active', isOpen);
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      menu.setAttribute('aria-hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    // Fechar com tecla Esc
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('sideMenuImoveis');
+        if (menu.classList.contains('active')) toggleSideMenu();
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

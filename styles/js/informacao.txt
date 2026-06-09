@@ -1,0 +1,1 @@
+os javascripts das paginas estão no codigos delas mesmo, ainda não fiz a migração 

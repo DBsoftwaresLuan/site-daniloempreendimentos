@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danilo Empreendimentos - Imóveis</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ========================================
+       VARIÁVEIS CSS (DESIGN TOKENS)
+       ======================================== */
+    :root {
+      --primary: #9A6700;
+      --primary-hover: #8a5a00;
+      --background: #FFFFFF;
+      --foreground: #294069;
+      --muted: #F5F5F0;
+      --muted-foreground: #6B7280;
+      --border: #E5E5E0;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --radius: 12px;
+      --navbar-height: 80px;
+      --navbar-height-mobile: 64px;
+    }
+
+    /* ========================================
+       RESET E BASE
+       ======================================== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================
+       NAVBAR - DESKTOP
+       ======================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background: var(--background);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
+    .navbar__container {
+      max-width: 1400px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Logo */
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .navbar__logo:hover {
+      opacity: 0.9;
+    }
+
+    .navbar__logo-img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Menu Desktop */
+    .navbar__menu {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .navbar__menu-item {
+      position: relative;
+    }
+
+    .navbar__menu-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--foreground);
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .navbar__menu-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0.5rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar__menu-link:hover {
+      color: var(--primary);
+      background: rgba(154, 103, 0, 0.05);
+    }
+
+    .navbar__menu-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .navbar__menu-link--active {
+      color: var(--primary);
+    }
+
+    .navbar__menu-link--active::after {
+      transform: scaleX(1);
+    }
+
+    /* Botão CTA no menu */
+    .navbar__menu-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      background: #25d366;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .navbar__menu-cta:hover {
+      background: #20c05d;
+      transform: translateY(-1px);
+    }
+
+    .navbar__menu-cta svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Submenu dropdown */
+    .navbar__submenu-wrapper {
+      position: relative;
+    }
+
+    .navbar__submenu-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--foreground);
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .navbar__submenu-trigger:hover {
+      color: var(--primary);
+      background: rgba(154, 103, 0, 0.05);
+    }
+
+    .navbar__submenu-trigger svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .navbar__submenu-wrapper:hover .navbar__submenu-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .navbar__submenu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 280px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 0.75rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+      z-index: 1003;
+    }
+
+    .navbar__submenu-wrapper:hover .navbar__submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .navbar__submenu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--foreground);
+      text-decoration: none;
+      border-radius: calc(var(--radius) - 4px);
+      transition: all 0.2s ease;
+    }
+
+    .navbar__submenu-item:hover {
+      background: var(--muted);
+      color: var(--primary);
+    }
+
+    .navbar__submenu-item svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .navbar__submenu-item span {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar__submenu-item-label {
+      font-weight: 500;
+    }
+
+    .navbar__submenu-item-value {
+      font-size: 0.8rem;
+      color: var(--muted-foreground);
+    }
+
+    /* ========================================
+       HAMBURGER BUTTON
+       ======================================== */
+    .navbar__hamburger {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4.5px;
+      width: 42px;
+      height: 42px;
+      background: rgba(41, 64, 105, 0.06);
+      border: 1px solid rgba(41, 64, 105, 0.12);
+      border-radius: 11px;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1002;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar__hamburger:hover {
+      background: rgba(41, 64, 105, 0.1);
+      border-color: rgba(41, 64, 105, 0.2);
+    }
+
+    .navbar__hamburger-line {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: #294069;
+      border-radius: 2px;
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar__hamburger-line:nth-child(2) {
+      width: 13px;
+      align-self: flex-start;
+      margin-left: 12px;
+    }
+
+    .navbar__hamburger.active .navbar__hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translateY(6.5px) translateX(0.5px);
+      width: 18px;
+    }
+
+    .navbar__hamburger.active .navbar__hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .navbar__hamburger.active .navbar__hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translateY(-6.5px) translateX(0.5px);
+      width: 18px;
+      align-self: unset;
+    }
+
+    /* ========================================
+       SIDE MENU (menu lateral deslizante)
+       ======================================== */
+    .navbar__mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -340px;
+      width: 310px;
+      height: 100%;
+      height: 100dvh;
+      background: #ffffff;
+      z-index: 1001;
+      box-shadow: 4px 0 40px rgba(0, 0, 0, 0.16);
+      transition: left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar__mobile-menu.active {
+      left: 0;
+    }
+
+    .navbar__mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    .navbar__mobile-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Cabeçalho do menu lateral */
+    .side-head {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid rgba(41, 64, 105, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .side-head-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      text-decoration: none;
+    }
+
+    .side-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(41, 64, 105, 0.06);
+      border: 1px solid rgba(41, 64, 105, 0.1);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #294069;
+      transition: all 0.2s;
+    }
+
+    .side-close-btn:hover {
+      background: rgba(154, 103, 0, 0.1);
+      color: #9A6700;
+      border-color: rgba(154, 103, 0, 0.2);
+    }
+
+    /* Corpo do menu */
+    .side-body {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 12px 12px 0;
+    }
+
+    /* Rótulo de seção */
+    .side-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(41, 64, 105, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 10px 6px;
+    }
+
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .side-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: rgba(41, 64, 105, 0.75);
+      text-decoration: none;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .side-link:hover {
+      background: rgba(41, 64, 105, 0.05);
+      color: #294069;
+    }
+
+    .side-link--lotes {
+      background: rgba(56, 189, 248, 0.07);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .side-link--lotes:hover {
+      background: rgba(56, 189, 248, 0.13);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #0369a1;
+    }
+
+    .side-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(41, 64, 105, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.22s;
+      color: rgba(41, 64, 105, 0.45);
+    }
+
+    .side-link--lotes .side-link-icon {
+      background: rgba(56, 189, 248, 0.12);
+      color: #0284c7;
+    }
+
+    .side-link:hover .side-link-icon {
+      background: rgba(41, 64, 105, 0.08);
+      color: #294069;
+    }
+
+    .side-link--lotes:hover .side-link-icon {
+      background: rgba(56, 189, 248, 0.2);
+      color: #0369a1;
+    }
+
+    .side-link-icon svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .side-link-text {
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .side-link-sub {
+      display: block;
+      font-size: 11px;
+      color: rgba(41, 64, 105, 0.35);
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    .side-link--lotes .side-link-sub {
+      color: rgba(3, 105, 161, 0.6);
+    }
+
+    .side-link-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-size: 10px;
+      font-weight: 800;
+      border-radius: 50px;
+    }
+
+    .side-separator {
+      height: 1px;
+      background: rgba(41, 64, 105, 0.07);
+      margin: 10px 0;
+    }
+
+    /* Card da empresa */
+    .side-empresa-card {
+      background: linear-gradient(135deg, #0f1f35 0%, #1a2e4a 100%);
+      border-radius: 12px;
+      padding: 14px 14px 12px;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .side-empresa-card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(154, 103, 0, 0.15);
+    }
+
+    .side-empresa-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 5px;
+    }
+
+    .side-empresa-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+
+    .side-empresa-feats {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .side-empresa-feat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .side-empresa-feat-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #9A6700;
+      flex-shrink: 0;
+    }
+
+    /* Stats grid */
+    .side-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 0 0 4px;
+    }
+
+    .side-stat-card {
+      background: rgba(41, 64, 105, 0.04);
+      border: 1px solid rgba(41, 64, 105, 0.07);
+      border-radius: 10px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .side-stat-value {
+      font-size: 22px;
+      font-weight: 900;
+      color: #0f1f35;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .side-stat-value span {
+      color: #9A6700;
+    }
+
+    .side-stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(41, 64, 105, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 2px;
+    }
+
+    /* Rodapé do menu lateral */
+    .side-footer {
+      padding: 16px 12px 20px;
+      border-top: 1px solid rgba(41, 64, 105, 0.07);
+      flex-shrink: 0;
+    }
+
+    .side-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .side-btn-wa {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25d366;
+      color: #fff;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .side-btn-wa:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .side-btn-wa svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .side-btn-lotes {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #0f172a;
+      color: #38bdf8;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1.5px solid rgba(56, 189, 248, 0.3);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .side-btn-lotes:hover {
+      background: #1e293b;
+      border-color: rgba(56, 189, 248, 0.55);
+    }
+
+    .side-btn-lotes svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    .side-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .side-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(41, 64, 105, 0.45);
+      padding: 2px 4px;
+    }
+
+    .side-contact-row svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      color: rgba(41, 64, 105, 0.3);
+    }
+
+    .side-contact-row a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 968px) {
+      .navbar {
+        height: var(--navbar-height-mobile);
+      }
+
+      .navbar__container {
+        padding: 0 1rem;
+      }
+
+      .navbar__menu {
+        display: none;
+      }
+
+      .navbar__hamburger {
+        display: flex;
+      }
+
+      .navbar__logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .navbar__logo-img {
+        height: 48px;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar__container {
+        padding: 0 0.75rem;
+      }
+
+      .navbar__mobile-menu {
+        width: 290px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <div class="navbar__container">
+
+      <!-- Logo -->
+      <a href="https://www.daniloempreendimentos.com.br/" class="navbar__logo" title="Danilo Empreendimentos">
+        <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"
+          alt="Danilo Empreendimentos" class="navbar__logo-img">
+      </a>
+
+      <!-- Menu Desktop -->
+      <ul class="navbar__menu">
+        <li class="navbar__menu-item">
+          <a href="https://www.daniloempreendimentos.com.br/" class="navbar__menu-link">
+            In&iacute;cio
+          </a>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="https://imoveis.daniloempreendimentos.com.br/" class="navbar__menu-link navbar__menu-link--active">
+            Im&oacute;veis
+          </a>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="https://www.daniloempreendimentos.com.br/perito" target="_blank" rel="noopener noreferrer"
+            class="navbar__menu-link">
+            Perito
+          </a>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="/public/lotes/lote.html" class="navbar__menu-link">
+            Lotes &mdash; Colombo
+          </a>
+        </li>
+        <li class="navbar__menu-item navbar__submenu-wrapper">
+          <button class="navbar__submenu-trigger">
+            Contato
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="navbar__submenu">
+            <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" target="_blank" rel="noopener noreferrer"
+              class="navbar__submenu-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>
+                <span class="navbar__submenu-item-label">WhatsApp</span>
+                <span class="navbar__submenu-item-value">+55 41 9105-7438</span>
+              </span>
+            </a>
+            <a href="mailto:Danilo@daniloempreendimentos.com.br" class="navbar__submenu-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>
+                <span class="navbar__submenu-item-label">E-mail</span>
+                <span class="navbar__submenu-item-value">Danilo@daniloempreendimentos.com.br</span>
+              </span>
+            </a>
+          </div>
+        </li>
+        <li class="navbar__menu-item">
+          <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+            target="_blank" rel="noopener noreferrer" class="navbar__menu-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"/>
+            </svg>
+            Falar com Consultor
+          </a>
+        </li>
+      </ul>
+
+      <!-- Hamburger Mobile -->
+      <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="sideMenuImoveis" onclick="toggleSideMenu()">
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="navbar__mobile-overlay" id="sideOverlayImoveis" onclick="toggleSideMenu()" role="presentation"></div>
+
+  <!-- Menu lateral deslizante -->
+  <nav class="navbar__mobile-menu" id="sideMenuImoveis" aria-label="Menu de navegação" aria-hidden="true">
+
+    <!-- Cabeçalho -->
+    <div class="side-head">
+      <a href="https://www.daniloempreendimentos.com.br/" class="side-head-logo">
+        <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"
+          alt="Danilo Empreendimentos">
+      </a>
+      <button class="side-close-btn" onclick="toggleSideMenu()" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+          aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Corpo -->
+    <div class="side-body">
+
+      <!-- Card da empresa -->
+      <div style="padding: 12px 12px 0;">
+        <div class="side-empresa-card">
+          <p class="side-empresa-label">Portf&oacute;lio exclusivo</p>
+          <p class="side-empresa-name">Im&oacute;veis Premium</p>
+          <div class="side-empresa-feats">
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Casas, apartamentos e terrenos no Paran&aacute;
+            </div>
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Loteadora em Colombo &mdash; PR
+            </div>
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Perito avaliador de im&oacute;veis
+            </div>
+            <div class="side-empresa-feat">
+              <span class="side-empresa-feat-dot"></span>
+              Negocia&ccedil;&atilde;o facilitada
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div style="padding: 10px 12px 0;">
+        <p class="side-section-label" style="padding: 0 0 8px;">Portf&oacute;lio</p>
+        <div class="side-stats-grid">
+          <div class="side-stat-card">
+            <div class="side-stat-value">+<span>200</span></div>
+            <div class="side-stat-label">Im&oacute;veis</div>
+          </div>
+          <div class="side-stat-card">
+            <div class="side-stat-value">14</div>
+            <div class="side-stat-label">Lotes em Colombo</div>
+          </div>
+          <div class="side-stat-card">
+            <div class="side-stat-value">3</div>
+            <div class="side-stat-label">Cidades</div>
+          </div>
+          <div class="side-stat-card">
+            <div class="side-stat-value"><span>10</span>+</div>
+            <div class="side-stat-label">Anos de mercado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-separator" style="margin: 12px 0;"></div>
+
+      <!-- Navegação principal -->
+      <p class="side-section-label">Navega&ccedil;&atilde;o</p>
+      <div class="side-nav" role="list">
+
+        <a href="https://www.daniloempreendimentos.com.br/" class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            In&iacute;cio
+            <span class="side-link-sub">P&aacute;gina principal</span>
+          </div>
+        </a>
+
+        <a href="#imoveis" class="side-link" onclick="toggleSideMenu()" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            Buscar Im&oacute;veis
+            <span class="side-link-sub">Curitiba, Pontal, Guaraque&ccedil;aba</span>
+          </div>
+        </a>
+
+        <a href="https://www.daniloempreendimentos.com.br/perito" target="_blank" rel="noopener noreferrer"
+          class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            Perito
+            <span class="side-link-sub">Avalia&ccedil;&atilde;o de im&oacute;veis</span>
+          </div>
+        </a>
+
+        <!-- Botão em destaque: Lotes -->
+        <a href="/public/lotes/lote.html" class="side-link side-link--lotes" onclick="toggleSideMenu()" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            Lotes &mdash; Colombo
+            <span class="side-link-sub">14 lotes dispon&iacute;veis a partir de R$&nbsp;189k</span>
+          </div>
+          <span class="side-link-badge">14</span>
+        </a>
+      </div>
+
+      <div class="side-separator"></div>
+
+      <!-- Contato -->
+      <p class="side-section-label">Contato direto</p>
+      <div class="side-nav" role="list">
+        <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" target="_blank" rel="noopener noreferrer" class="side-link"
+          role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            WhatsApp
+            <span class="side-link-sub">+55 41 9105-7438</span>
+          </div>
+        </a>
+        <a href="mailto:Danilo@daniloempreendimentos.com.br" class="side-link" role="listitem">
+          <div class="side-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <div class="side-link-text">
+            E-mail
+            <span class="side-link-sub">Danilo@daniloempreendimentos.com.br</span>
+          </div>
+        </a>
+      </div>
+
+      <div style="height: 12px;"></div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="side-footer">
+      <div class="side-cta-group">
+        <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis" target="_blank" rel="noopener noreferrer" class="side-btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+          </svg>
+          Falar no WhatsApp
+        </a>
+        <a href="/public/lotes/lote.html" class="side-btn-lotes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          </svg>
+          Ver lotes em Colombo
+        </a>
+      </div>
+
+      <div class="side-contact-info">
+        <div class="side-contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Curitiba, Pontal do Paran&aacute; e Colombo &mdash; PR
+        </div>
+        <div class="side-contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path
+              d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 9.82a19.79 19.79 0 01-3.07-8.67A2 2 0 013 1.05h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+          </svg>
+          (41) 9105-7438
+        </div>
+        <div class="side-contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          Danilo@daniloempreendimentos.com.br
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+  <script>
+    // Scroll shadow
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Side menu toggle
+    function toggleSideMenu() {
+      const menu = document.getElementById('sideMenuImoveis');
+      const overlay = document.getElementById('sideOverlayImoveis');
+      const hamburger = document.getElementById('hamburger');
+      const isOpen = menu.classList.toggle('active');
+      overlay.classList.toggle('active', isOpen);
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      menu.setAttribute('aria-hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    // Fechar com tecla Esc
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('sideMenuImoveis');
+        if (menu.classList.contains('active')) toggleSideMenu();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

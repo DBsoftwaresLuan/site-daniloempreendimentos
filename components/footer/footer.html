@@ -1,126 +1,50 @@
-<!-- ===== FOOTER MINIMAL & ELEGANTE ===== -->
-<footer class="apple-footer">
-  
-  <div class="footer-content">
-
-    <!-- Marca -->
-    <div class="footer-brand">
-      <h2>Danilo Empreendimentos</h2>
-      <p>
-  Trabalhamos com imóveis pensando no longo prazo,
-  com clareza, estratégia e compromisso.
-      </p>
+<footer class="de-footer">
+  <div class="de-footer__top">
+    <div class="de-footer__brand">
+      <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"
+        alt="Danilo Empreendimentos" class="de-footer__logo">
+      <p>Inteligência patrimonial e curadoria imobiliária em Curitiba, Pontal do Paraná e Colombo — PR.</p>
+      <div class="de-footer__socials">
+        <a href="https://wa.me/5541991057438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"/></svg>
+        </a>
+        <a href="mailto:Danilo@daniloempreendimentos.com.br" aria-label="E-mail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="https://www.instagram.com/daniloempreendimentos_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Navegação -->
-    <nav class="footer-nav">
-      <a href="https://wa.me/554191057438" target="_blank">Serviços</a>
-      <a href="https://wa.me/554191057438" target="_blank">Contato</a>
-    </nav>
+    <div class="de-footer__col">
+      <h4>Navegação</h4>
+      <a href="/Index.html">Início</a>
+      <a href="/Imoveis.html">Imóveis</a>
+      <a href="/Index.html#servicos">Serviços</a>
+      <a href="/Index.html#empresa">A Empresa</a>
+      <a href="/Index.html#contato">Contato</a>
+    </div>
 
-    <!-- Social -->
-    <div class="footer-social">
-      <a href="https://www.instagram.com/daniloempreendimentos_/" target="_blank">Instagram</a>
-    </div>              
+    <div class="de-footer__col">
+      <h4>Destaques</h4>
+      <a href="/public/lotes/lote.html">Lotes — Colombo</a>
+      <a href="/public/perito_imobliario/perito.html">Perito Imobiliário</a>
+      <a href="/Imoveis.html">Apartamentos</a>
+      <a href="/Imoveis.html">Sobrados e Casas</a>
+      <a href="/Imoveis.html">Terrenos</a>
+    </div>
 
+    <div class="de-footer__col">
+      <h4>Contato direto</h4>
+      <a href="https://wa.me/5541991057438" target="_blank" rel="noopener noreferrer">(41) 9105-7438</a>
+      <a href="mailto:Danilo@daniloempreendimentos.com.br">Danilo@daniloempreendimentos.com.br</a>
+      <span class="de-footer__text">Curitiba · Pontal do Paraná · Colombo — PR</span>
+    </div>
   </div>
 
-  <div class="footer-bottom">
-    <span>© <span id="year"></span> DaniloEmpreendimentos. Todos os direitos reservados.</span>
+  <div class="de-footer__bottom">
+    <span>&copy; <span id="deFooterYear"></span> Danilo Empreendimentos. Todos os direitos reservados.</span>
+    <span>Portfólio exclusivo de imóveis premium.</span>
   </div>
-
 </footer>
-
-<!-- ===== ESTILO ===== -->
-<style>
-/* Base */
-.apple-footer {
-  background: #ffffff;
-  border-top: 1px solid #eef1f5;
-  padding: 60px 20px 25px;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-  color: #0b1f3a;
-}
-
-/* Container */
-.footer-content {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 40px;
-  align-items: center;
-}
-
-/* Marca */
-.footer-brand h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  margin: 0 0 6px;
-  color: #294069;
-}
-
-.footer-brand p {
-  font-size: 0.95rem;
-  color: #6b7280;
-  margin: 0;
-}
-
-/* Navegação */
-.footer-nav a {
-  display: block;
-  text-decoration: none;
-  font-size: 0.95rem;
-  color: #0b1f3a;
-  margin-bottom: 6px;
-  transition: opacity 0.2s ease;
-}
-
-.footer-nav a:hover {
-  opacity: 0.6;
-}
-
-/* Social */
-.footer-social a {
-  display: block;
-  font-size: 0.95rem;
-  text-decoration: none;
-  color: #c9a24d; /* dourado */
-  margin-bottom: 6px;
-  transition: opacity 0.2s ease;
-}
-
-.footer-social a:hover {
-  opacity: 0.7;
-}
-
-/* Bottom */
-.footer-bottom {
-  max-width: 1100px;
-  margin: 40px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid #eef1f5;
-  font-size: 0.85rem;
-  color: #6b7280;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 25px;
-  }
-
-  .footer-nav a,
-  .footer-social a {
-    margin-bottom: 10px;
-  }
-}
-</style>
-
-<!-- ===== JS ===== -->
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>

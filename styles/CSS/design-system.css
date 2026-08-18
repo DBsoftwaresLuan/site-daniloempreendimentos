@@ -1,0 +1,119 @@
+/* ========================================================================
+   DANILO EMPREENDIMENTOS — DESIGN SYSTEM (Fase 1)
+   Branco DE · Dourado DE · Azul DE
+   Importar este arquivo ANTES do CSS específico de cada página.
+   ======================================================================== */
+
+:root {
+  /* ---- Paleta de marca ---- */
+  --de-white: #ffffff;
+  --de-white-soft: #f7f5ef;      /* branco quente para seções alternadas */
+  --de-ink: #10192b;             /* texto principal sobre branco */
+  --de-ink-soft: #55617a;        /* texto secundário */
+
+  --de-blue: #0f1f35;            /* Azul DE profundo (hero, rodapé, cards escuros) */
+  --de-blue-soft: #1b3358;       /* Azul DE médio (gradientes, hover) */
+  --de-blue-mist: rgba(15, 31, 53, 0.06);
+
+  --de-gold: #9a6700;            /* Dourado DE — cor primária de ação */
+  --de-gold-light: #c68a13;      /* Dourado DE claro — hover/detalhe */
+  --de-gold-mist: rgba(154, 103, 0, 0.1);
+
+  --de-border: #e7e3d8;
+  --de-shadow-sm: 0 2px 10px rgba(15, 31, 53, 0.06);
+  --de-shadow-md: 0 10px 30px rgba(15, 31, 53, 0.1);
+  --de-shadow-lg: 0 24px 60px rgba(15, 31, 53, 0.16);
+  --de-radius-sm: 10px;
+  --de-radius-md: 16px;
+  --de-radius-lg: 24px;
+
+  /* ---- Aliases usados pelo CSS legado (mantém compatibilidade) ---- */
+  --background: var(--de-white);
+  --foreground: var(--de-blue);
+  --card: var(--de-white);
+  --card-foreground: var(--de-blue);
+  --primary: var(--de-gold);
+  --primary-foreground: var(--de-white);
+  --blue-danilo: var(--de-blue);
+  --secondary: var(--de-blue);
+  --secondary-foreground: var(--de-white);
+  --muted: var(--de-white-soft);
+  --muted-foreground: var(--de-ink-soft);
+  --accent: var(--de-gold);
+  --accent-foreground: var(--de-white);
+  --border: var(--de-border);
+  --input: var(--de-white);
+  --ring: rgba(154, 103, 0, 0.35);
+  --radius: var(--de-radius-md);
+  --shadow-sm: var(--de-shadow-sm);
+  --shadow-md: var(--de-shadow-md);
+  --shadow-lg: var(--de-shadow-lg);
+  --shadow-xl: var(--de-shadow-lg);
+
+  /* ---- Tipografia ---- */
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --navbar-height: 84px;
+  --navbar-height-mobile: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--de-ink);
+  background: var(--de-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--de-gold-mist);
+  color: var(--de-blue);
+}
+
+/* ---- Utilidades de animação (usadas pelo IntersectionObserver global) ---- */
+.de-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.de-reveal.de-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.de-reveal--scale {
+  transform: scale(0.94);
+}
+.de-reveal--scale.de-visible {
+  transform: scale(1);
+}
+.de-reveal--delay-1 { transition-delay: 0.08s; }
+.de-reveal--delay-2 { transition-delay: 0.16s; }
+.de-reveal--delay-3 { transition-delay: 0.24s; }
+.de-reveal--delay-4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .de-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

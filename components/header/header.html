@@ -1,0 +1,70 @@
+<nav class="de-nav" id="deNav" role="navigation" aria-label="Menu principal">
+  <div class="de-nav__container">
+    <a href="/Index.html" class="de-nav__logo" title="Danilo Empreendimentos">
+      <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png"
+        alt="Danilo Empreendimentos" class="de-nav__logo-img">
+    </a>
+
+    <ul class="de-nav__menu">
+      <li class="de-nav__item"><a href="/Index.html" class="de-nav__link" data-nav="inicio">Início</a></li>
+      <li class="de-nav__item"><a href="/Imoveis.html" class="de-nav__link" data-nav="imoveis">Imóveis</a></li>
+      <li class="de-nav__item"><a href="/Index.html#servicos" class="de-nav__link" data-nav="servicos">Serviços</a></li>
+      <li class="de-nav__item"><a href="/Index.html#empresa" class="de-nav__link" data-nav="empresa">A Empresa</a></li>
+      <li class="de-nav__item"><a href="/Index.html#contato" class="de-nav__link" data-nav="contato">Contato</a></li>
+    </ul>
+
+    <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+      target="_blank" rel="noopener noreferrer" class="de-nav__cta">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z"/>
+      </svg>
+      Encontrar um imóvel
+    </a>
+
+    <button class="de-nav__hamburger" id="deHamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="deMobileMenu">
+      <span class="de-nav__hamburger-line"></span>
+      <span class="de-nav__hamburger-line"></span>
+      <span class="de-nav__hamburger-line"></span>
+    </button>
+  </div>
+</nav>
+
+<div class="de-mobile-overlay" id="deMobileOverlay" role="presentation"></div>
+
+<nav class="de-mobile-menu" id="deMobileMenu" aria-label="Menu de navegação" aria-hidden="true">
+  <div class="de-mobile-head">
+    <a href="/Index.html" class="de-mobile-logo">
+      <img src="https://static.wixstatic.com/media/e9ba97_51edee501fb04e35a53825e8fa3069c1~mv2.png" alt="Danilo Empreendimentos">
+    </a>
+    <button class="de-mobile-close" id="deMobileClose" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="de-mobile-body">
+    <p class="de-mobile-label">Navegação</p>
+    <a href="/Index.html" class="de-mobile-link" data-nav="inicio">Início</a>
+    <a href="/Imoveis.html" class="de-mobile-link" data-nav="imoveis">Imóveis</a>
+    <a href="/Index.html#servicos" class="de-mobile-link" data-nav="servicos">Serviços</a>
+    <a href="/Index.html#empresa" class="de-mobile-link" data-nav="empresa">A Empresa</a>
+    <a href="/Index.html#contato" class="de-mobile-link" data-nav="contato">Contato</a>
+    <a href="/public/lotes/lote.html" class="de-mobile-link">Lotes — Colombo</a>
+    <a href="/public/perito_imobliario/perito.html" class="de-mobile-link">Perito Imobiliário</a>
+  </div>
+
+  <div class="de-mobile-footer">
+    <a href="https://wa.me/5541991057438?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20im%C3%B3veis"
+      target="_blank" rel="noopener noreferrer" class="de-mobile-btn-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.178 3.178 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.946 9.946 0 01-4.767-1.214l-3.316.87.886-3.236A9.944 9.944 0 012.06 12c0-5.477 4.452-9.929 9.929-9.929 5.478 0 9.929 4.452 9.929 9.929S17.478 18.88 12.03 18.88z" />
+      </svg>
+      Falar no WhatsApp
+    </a>
+    <div class="de-mobile-contact">(41) 9105-7438 · Danilo@daniloempreendimentos.com.br</div>
+  </div>
+</nav>

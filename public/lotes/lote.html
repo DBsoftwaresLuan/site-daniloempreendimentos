@@ -69,7 +69,7 @@
       <div class="reveal reveal-delay-1">
         <div class="lotes-counter">
           <span class="dot"></span>
-          14 lotes disponíveis agora
+          13 lotes disponíveis agora
         </div>
       </div>
     </div>
@@ -2133,7 +2133,7 @@ Contato: +55 41 9105-7438`,
         ]
       },
       "lote-2k": {
-        label: "LOTE 2‑K", tag: "Disponível", area: "3.649,79 m²",
+        label: "LOTE 2‑K", tag: "Vendido", sold: true, area: "3.649,79 m²",
         loc: "Colombo/PR",
         chips: ["Plano", "Frente Leste", "Arborizado"],
         price: "R$ 437.974,80", priceCond: "À vista • R$ 120,00/m²",
@@ -2829,17 +2829,25 @@ Contato: +55 41 9105-7438`,
     (function buildCarousel() {
       const track = document.getElementById("carouselTrack");
       Object.entries(LOTES_DATA).forEach(([key, d]) => {
-        const tagClass = d.tag === "Premium" ? "lote-tag premium"
+        const isSold = !!d.sold;
+        const tagClass = isSold ? "lote-tag sold"
+          : d.tag === "Premium" ? "lote-tag premium"
           : d.tag === "Última unidade" ? "lote-tag last"
             : "lote-tag";
         // TODO: chips temporariamente desativados até que as informações reais sejam definidas
         const chips = ""; // d.chips.map(c => `<span class="lote-chip">${c}</span>`).join("");
         const waMsg = encodeURIComponent(`Tenho interesse no ${d.label}!`);
+        const ctaHtml = isSold
+          ? `<button class="btn btn-gold sold-btn" disabled aria-disabled="true">Lote vendido</button>`
+          : `<a href="https://wa.me/554191057438?text=${waMsg}" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
+                    ${SVG_WA} Falar no WhatsApp
+                  </a>`;
         track.insertAdjacentHTML("beforeend", `
-          <article class="lote-card">
+          <article class="lote-card${isSold ? " sold" : ""}">
             <div class="lote-img lote-img-clickable" data-lote="${key}" data-lote-label="${d.label}" onclick="openCardLightbox(this)">
               <img src="${d.images[0].src}" alt="${d.label}" loading="lazy" />
               <div class="lote-img-overlay"></div>
+              ${isSold ? `<div class="sold-ribbon-wrap"><span class="sold-ribbon">Vendido</span></div>` : ""}
               <span class="${tagClass}">${d.tag}</span>
               <button class="lote-fav" aria-label="Salvar lote nos favoritos" onclick="toggleFav(this)">${SVG_HEART}</button>
               <span class="lote-area-badge">${d.area}</span>
@@ -2851,9 +2859,7 @@ Contato: +55 41 9105-7438`,
               <div class="lote-price-row">
                 <div class="lote-price">${d.price}<small>${d.priceCond}</small></div>
                 <div class="lote-cta-btns">
-                  <a href="https://wa.me/554191057438?text=${waMsg}" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
-                    ${SVG_WA} Falar no WhatsApp
-                  </a>
+                  ${ctaHtml}
                 </div>
               </div>
             </div>

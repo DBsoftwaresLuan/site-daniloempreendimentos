@@ -1,0 +1,612 @@
+/* ========================================================================
+   DANILO EMPREENDIMENTOS — HOME (Index)
+   Depende de design-system.css + components/header.css + components/footer.css
+   ======================================================================== */
+
+/* ---------- HERO ---------- */
+.home-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--navbar-height) + 3rem) 1.5rem 8rem;
+  background: linear-gradient(160deg, var(--de-blue) 0%, var(--de-blue-soft) 62%, #24406b 100%);
+  overflow: hidden;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://static.wixstatic.com/media/443a8d_9908def04558402eb69d20fc0a5a5ae7~mv2.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mix-blend-mode: luminosity;
+}
+
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 82% 12%, rgba(198, 138, 19, 0.22), transparent 55%);
+}
+
+.home-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.home-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(198, 138, 19, 0.16);
+  border: 1px solid rgba(198, 138, 19, 0.4);
+  color: var(--de-gold-light);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-hero h1 {
+  color: var(--de-white);
+  font-size: clamp(2.4rem, 5.2vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 760px;
+}
+
+.home-hero h1 em {
+  font-style: normal;
+  color: var(--de-gold-light);
+}
+
+.home-hero-lead {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.home-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.home-hero-stat strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--de-white);
+}
+
+.home-hero-stat span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- BUSCA RÁPIDA ---------- */
+.home-search {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  margin: -4.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.home-search-card {
+  background: var(--de-white);
+  border-radius: var(--de-radius-lg);
+  box-shadow: var(--de-shadow-lg);
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+.home-search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.home-search-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--de-ink-soft);
+}
+
+.home-search-field select,
+.home-search-field input {
+  height: 46px;
+  border-radius: var(--de-radius-sm);
+  border: 1px solid var(--de-border);
+  padding: 0 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--de-ink);
+  background: var(--de-white-soft);
+}
+
+.home-search-field select:focus,
+.home-search-field input:focus {
+  outline: none;
+  border-color: var(--de-gold-light);
+  box-shadow: 0 0 0 3px var(--de-gold-mist);
+}
+
+.home-search-submit {
+  height: 46px;
+  border: none;
+  border-radius: var(--de-radius-sm);
+  background: var(--de-gold);
+  color: var(--de-white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.home-search-submit:hover {
+  background: var(--de-gold-light);
+  transform: translateY(-1px);
+}
+
+.home-search-submit svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 900px) {
+  .home-search-card { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .home-hero { padding-bottom: 10rem; }
+  .home-search-card { grid-template-columns: 1fr; }
+  .home-search { margin-top: -6.5rem; }
+}
+
+/* ---------- SEÇÃO GENÉRICA ---------- */
+.home-section {
+  padding: 6.5rem 1.5rem;
+}
+.home-section--muted { background: var(--de-white-soft); }
+
+.home-section-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.home-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--de-gold);
+  margin-bottom: 0.75rem;
+}
+
+.home-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--de-gold);
+}
+
+.home-section-head h2 {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--de-blue);
+  max-width: 560px;
+  line-height: 1.15;
+}
+
+.home-section-head p {
+  max-width: 420px;
+  color: var(--de-ink-soft);
+  line-height: 1.6;
+}
+
+.home-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: var(--de-blue);
+  white-space: nowrap;
+  border-bottom: 2px solid var(--de-gold);
+  padding-bottom: 0.2rem;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+.home-link-arrow:hover { gap: 0.7rem; color: var(--de-gold); }
+
+/* ---------- IMÓVEIS EM DESTAQUE ---------- */
+.home-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.home-featured-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--de-white);
+  border: 1px solid var(--de-border);
+  border-radius: var(--de-radius-md);
+  overflow: hidden;
+  box-shadow: var(--de-shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.home-featured-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--de-shadow-lg);
+}
+
+.home-featured-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.home-featured-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.home-featured-card:hover .home-featured-media img { transform: scale(1.06); }
+
+.home-featured-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: var(--de-blue);
+  color: var(--de-white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.home-featured-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.home-featured-price {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--de-gold);
+}
+
+.home-featured-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--de-blue);
+  line-height: 1.4;
+}
+
+.home-featured-loc {
+  font-size: 0.88rem;
+  color: var(--de-ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.home-featured-loc svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--de-gold); }
+
+.home-featured-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.4rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--de-border);
+  font-size: 0.82rem;
+  color: var(--de-ink-soft);
+}
+
+@media (max-width: 960px) {
+  .home-featured-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .home-featured-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- SERVIÇOS ---------- */
+.home-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.home-service-card {
+  padding: 2.2rem 1.75rem;
+  background: var(--de-white);
+  border: 1px solid var(--de-border);
+  border-radius: var(--de-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.home-service-card:hover { transform: translateY(-4px); border-color: var(--de-gold-light); }
+
+.home-service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--de-radius-sm);
+  background: var(--de-blue);
+  color: var(--de-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-service-icon svg { width: 24px; height: 24px; }
+
+.home-service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--de-blue);
+}
+
+.home-service-card p {
+  font-size: 0.9rem;
+  color: var(--de-ink-soft);
+  line-height: 1.55;
+}
+
+@media (max-width: 960px) {
+  .home-services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .home-services-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- A EMPRESA ---------- */
+.home-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.home-about-media {
+  position: relative;
+  border-radius: var(--de-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--de-shadow-md);
+  aspect-ratio: 4 / 5;
+}
+.home-about-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.home-about-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background: rgba(15, 25, 43, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--de-white);
+  border-radius: var(--de-radius-md);
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.home-about-badge strong { font-size: 1.7rem; font-family: var(--font-heading); color: var(--de-gold-light); }
+.home-about-badge span { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.4; }
+
+.home-about-content h2 {
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--de-blue);
+  margin-bottom: 1.2rem;
+  line-height: 1.18;
+}
+
+.home-about-content p {
+  color: var(--de-ink-soft);
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+}
+
+.home-about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.home-about-list-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.home-about-list-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--de-gold);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.home-about-list-item span { color: var(--de-ink); font-size: 0.95rem; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .home-about { grid-template-columns: 1fr; }
+}
+
+/* ---------- DEPOIMENTOS ---------- */
+.home-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.home-testimonial {
+  background: var(--de-white);
+  border: 1px solid var(--de-border);
+  border-radius: var(--de-radius-md);
+  padding: 1.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.home-testimonial-stars { display: flex; gap: 0.2rem; color: var(--de-gold); }
+.home-testimonial-stars svg { width: 16px; height: 16px; }
+
+.home-testimonial p {
+  color: var(--de-ink);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.home-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.home-testimonial-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--de-blue);
+  color: var(--de-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.home-testimonial-author strong { display: block; font-size: 0.88rem; color: var(--de-blue); }
+.home-testimonial-author span { font-size: 0.78rem; color: var(--de-ink-soft); }
+
+@media (max-width: 900px) {
+  .home-testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- CTA CONTATO ---------- */
+.home-contact {
+  background: linear-gradient(155deg, var(--de-blue) 0%, var(--de-blue-soft) 100%);
+  border-radius: var(--de-radius-lg);
+  padding: 3.5rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-contact::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 10%, rgba(198, 138, 19, 0.25), transparent 55%);
+}
+
+.home-contact-copy { position: relative; z-index: 1; }
+
+.home-contact-copy h2 {
+  color: var(--de-white);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.home-contact-copy p {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.65;
+  max-width: 460px;
+}
+
+.home-contact-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--de-radius-sm);
+  padding: 1rem 1.2rem;
+  color: var(--de-white);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.home-contact-item:hover { background: rgba(255,255,255,0.12); border-color: rgba(198,138,19,0.5); }
+
+.home-contact-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--de-gold);
+  color: var(--de-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.home-contact-item-icon svg { width: 18px; height: 18px; }
+
+.home-contact-item strong { display: block; font-size: 0.92rem; }
+.home-contact-item span { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+
+@media (max-width: 900px) {
+  .home-contact { grid-template-columns: 1fr; padding: 2.5rem 1.75rem; }
+}
